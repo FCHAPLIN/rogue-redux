@@ -1,11 +1,19 @@
-export const PLAYER_CHANGE = 'PLAYER_CHANGE';
+export const PLAYER_NAME_CHANGE = 'PLAYER_NAME_CHANGE';
+export const PLAYER_CLASS_CHANGE = 'PLAYER_CLASS_CHANGE';
 export const PLAYER_SUBMIT = 'PLAYER_SUBMIT';
 export const GAME_START = 'GAME_START';
 
-export const playerChangeAction = (player) => {
+export const playerNameChangeAction = (value) => {
   return {
-    type: PLAYER_CHANGE,
-    value: player
+    type: PLAYER_NAME_CHANGE,
+    value
+  }
+}
+
+export const playerClassChangeAction = (value) => {
+  return {
+    type: PLAYER_CLASS_CHANGE,
+    value
   }
 }
 

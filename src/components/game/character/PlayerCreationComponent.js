@@ -7,14 +7,17 @@ import ClassSelector from 'components/game/character/ClassSelector'
 import Header from 'components/pages/partials/Header'
 
 
-const PlayerCreationComponent = ({onClick, onChange, value}) => (
+const PlayerCreationComponent = ({onClick,
+                                  onNameChange,
+                                  onClassChange,
+                                  state}) => (
 
   <div>
     <Header/>
-    <div class="title">PLAYER CREATION</div>
-    <NameSelector onChange={onChange}/>
-    <ClassSelector onChange={onChange}/>
-    <TraitsSelector onChange={onChange}/>
+    <div className="title">PLAYER CREATION</div>
+    <NameSelector onNameChange={onNameChange}/>
+    <ClassSelector onClassChange={onClassChange}/>
+    <TraitsSelector state={state}/>
     <hr/>
     <TriggerButton onClick={onClick}/>
   </div>
@@ -22,8 +25,9 @@ const PlayerCreationComponent = ({onClick, onChange, value}) => (
 
 PlayerCreationComponent.propTypes = {
   onClick: PropTypes.func.isRequired,
-  onChange: PropTypes.func.isRequired,
-  value: PropTypes.string
+  onNameChange: PropTypes.func.isRequired,
+  onClassChange: PropTypes.func.isRequired,
+  traitsValue: PropTypes.object
 }
 
 export default PlayerCreationComponent;

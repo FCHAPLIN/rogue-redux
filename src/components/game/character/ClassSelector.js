@@ -1,17 +1,15 @@
 import React, {Component, PropTypes} from 'react'
-import {changevalue} from 'actions'
-import { dispatch } from 'react-redux'
 
-const ClassSelector = ({onChange}) => (
-  <select  onChange={onChange}>
-    <option value="1">Un</option>
-    <option value="2">Deux</option>
-    <option value="3">Trois</option>
+const ClassSelector = ({onClassChange}) => (
+  <select  onChange={onClassChange}>
+    <option value="warrior">Warrior</option>
+    <option value="Thief">Thief</option>
+    <option value="Mage">Mage</option>
   </select>
 )
 
 ClassSelector.propTypes = {
-  onChange: PropTypes.func.isRequired
+  onClassChange: PropTypes.func.isRequired
 }
 
 export default ClassSelector;

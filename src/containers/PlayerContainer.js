@@ -1,20 +1,25 @@
 import { connect } from 'react-redux'
-import {CHANGE_VALUE, SELECT_VALUE} from 'actions'
+import {  playerClassChangeAction,
+          playerNameChangeAction,
+          playerSubmitAction} from 'actions'
 import PlayerCreationComponent from 'components/game/character/PlayerCreationComponent'
 
 const mapStateToProps = (state) => {
   return {
-    value:state.app.value
+    state
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
     onClick: () => {
-      dispatch(CHANGE_VALUE())
+      dispatch(playerSubmitAction())
     },
-    onChange: (e) => {
-      dispatch(SELECT_VALUE(e.nativeEvent.target.value))
+    onClassChange: (e) => {
+      dispatch(playerClassChangeAction(e.nativeEvent.target.value))
+    },
+    onNameChange: (e) => {
+      dispatch(playerNameChangeAction(e.nativeEvent.target.value))
     }
   }
 }

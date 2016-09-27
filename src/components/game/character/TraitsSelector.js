@@ -2,16 +2,17 @@ import React, {Component, PropTypes} from 'react'
 import {changevalue} from 'actions'
 import { dispatch } from 'react-redux'
 
-const TraitsSelector = ({onChange}) => (
-  <select  onChange={onChange}>
-    <option value="1">Un</option>
-    <option value="2">Deux</option>
-    <option value="3">Trois</option>
-  </select>
+const TraitsSelector = ({state}) => (
+
+  <div className="traits-container">
+    <div className="trait"><span className="trait-name">Strength : </span><span>{state.player.traits.strength}</span></div>
+    <div className="trait"><span className="trait-name">Intelect : </span><span>{state.player.traits.intelect}</span></div>
+    <div className="trait"><span className="trait-name">Dexterity : </span><span>{state.player.traits.dexterity}</span></div>
+  </div>
 )
 
 TraitsSelector.propTypes = {
-  onChange: PropTypes.func.isRequired
+  values: PropTypes.object
 }
 
 export default TraitsSelector;
