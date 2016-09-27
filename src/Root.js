@@ -11,9 +11,9 @@ class Root extends Component {
 		return(
 			<Router history={browserHistory}>
 				<Redirect from="/" to="Player Creation" />
-      	<Route name="Player" path="/player" component={PlayerContainer} />
-      	<Route name="Game" path="/game" component={GameContainer} />
-      	<Route name="Stats" path="/statistics" component={StatsContainer} />
+              	<Route name="Player" path="/player" component={PlayerContainer} />
+              	<Route name="Game" path="/game" component={GameContainer} />
+              	<Route name="Stats" path="/statistics" component={StatsContainer} />
 				<Route name="About" path="/about" component={AboutComponent} />
 				<Route name="Home" path="/home" component={HomeComponent} />
     	</Router>

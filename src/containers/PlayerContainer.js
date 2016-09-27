@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import {CHANGE_VALUE, SELECT_VALUE} from 'actions'
-import App from 'components/App'
+import PlayerCreationComponent from 'components/game/character/PlayerCreationComponent'
 
 const mapStateToProps = (state) => {
   return {
@@ -22,6 +22,6 @@ const mapDispatchToProps = (dispatch) => {
 const PlayerContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)
+)(PlayerCreationComponent)
 
 export default PlayerContainer;

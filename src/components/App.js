@@ -1,8 +1,8 @@
 import React, {Component, PropTypes} from 'react'
-import TriggerButton from 'components/TriggerButton'
-import Displayer from 'components/Displayer'
-import Selector from 'components/Selector'
-import Header from 'components/partials/Header'
+import TriggerButton from 'components/game/character/TriggerButton'
+import Displayer from 'components/game/character/Displayer'
+import Selector from 'components/game/character/Selector'
+import Header from 'components/pages/partials/Header'
 
 
 const App = ({onClick, onChange, value}) => (

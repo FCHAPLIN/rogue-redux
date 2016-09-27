@@ -3,7 +3,7 @@ import { Link } from 'react-router'
 
 const Header = () => (
   <div>
-    <span><Link to='Home'>Title</Link></span>
+    <span><Link to='Home'>ROGUE : Redux !</Link></span>
     <nav>
       <ul>
         <li><Link to='Home'>Home</Link></li>
