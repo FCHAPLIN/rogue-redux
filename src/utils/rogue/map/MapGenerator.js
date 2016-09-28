@@ -1,7 +1,6 @@
-import CellConstants from 'utils/map/CellConstants';
+import CellConstants from 'utils/rogue/map/CellConstants';
 
 class MapGenerator {
-
 
     constructor() {
       this.cells = [];

@@ -1,20 +1,36 @@
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import {CHANGE_VALUE, SELECT_VALUE} from 'actions'
+import { dispatch } from 'redux'
+import {mapRequestStartAction} from 'actions'
 import MapComponent from 'components/game/map/MapComponent'
 
-const mapStateToProps = (state) => {
-  state
+class GameContainer extends Component{
+    constructor(props){
+        super(props)
+    }
+
+    componentDidMount() {
+        const { dispatch } = this.props
+        dispatch(mapRequestStartAction())
+    }
+    componentWillReceiveProps(nextProps) {
+
+    }
+
+    render() {
+        const { data } = this.props
+        return (
+            <MapComponent data={ data }/>
+        )
+    }
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-
-  }
+const mapStateToProps = (store) => {
+    console.log(`mapStateToProps ${store}`);
+    return {
+        player: store.player
+    };
 }
 
-const GameContainer = connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(MapComponent)
 
-export default GameContainer;
+export default connect(mapStateToProps)(GameContainer)

@@ -12,7 +12,7 @@ const MapComponent = () => (
 )
 
 MapComponent.propTypes = {
-  
+
 }
 
 export default MapComponent;
