@@ -1,27 +1,20 @@
 import { connect } from 'react-redux'
 import {CHANGE_VALUE, SELECT_VALUE} from 'actions'
-import App from 'components/App'
+import MapComponent from 'components/game/map/MapComponent'
 
 const mapStateToProps = (state) => {
-  return {
-    value:state.app.value
-  }
+  state
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    onClick: () => {
-      dispatch(CHANGE_VALUE())
-    },
-    onChange: (e) => {
-      dispatch(SELECT_VALUE(e.nativeEvent.target.value))
-    }
+
   }
 }
 
 const GameContainer = connect(
   mapStateToProps,
   mapDispatchToProps
-)(App)
+)(MapComponent)
 
 export default GameContainer;

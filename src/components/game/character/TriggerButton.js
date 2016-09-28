@@ -3,7 +3,7 @@ import {changevalue} from 'actions'
 import { dispatch } from 'react-redux'
 
 const TriggerButton = ({onClick}) => (
-  <button  onClick={onClick}>Click Me !</button>
+  <button  onClick={onClick}>Go !</button>
 )
 
 TriggerButton.propTypes = {
