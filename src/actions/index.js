@@ -1,5 +1,3 @@
-import ReduxThunk from 'redux-thunk'
-import MapService from 'services/MapService'
 export const PLAYER_NAME_CHANGE = 'PLAYER_NAME_CHANGE';
 export const PLAYER_CLASS_CHANGE = 'PLAYER_CLASS_CHANGE';
 export const PLAYER_SUBMIT = 'PLAYER_SUBMIT';
@@ -31,32 +29,7 @@ export const gameStartAction = () => {
   }
 }
 
-export const MAP_REQUEST_START = 'MAP_REQUEST_START';
-export const MAP_REQUEST_SUCCESS = 'MAP_REQUEST_SUCCESS';
-export const MAP_REQUEST_ERROR = 'MAP_REQUEST_ERROR';
 
-export const mapRequestStartAction = () => {
-    return (dispatch) => {
-        return MapService.getMap().then(
-            data => dispatch(mapRequestSuccessAction(data)),
-            error => dispatch(mapRequestErrorAction(error))
-        );
-    }
-}
-
-export const mapRequestSuccessAction = (mapData) => {
-  return {
-    type: MAP_REQUEST_SUCCESS,
-    mapData
-  }
-}
-
-export const mapRequestErrorAction = (error) => {
-  return {
-    type: MAP_REQUEST_ERROR,
-    error
-  }
-}
 
 export const LEVEL_SET_UP_START = 'LEVEL_SET_UP_START';
 export const LEVEL_SET_UP_SUCCESS = 'LEVEL_SET_UP_SUCCESS';

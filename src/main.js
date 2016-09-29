@@ -2,7 +2,7 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 import Root from 'Root'
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk';
 import rootReducer from 'reducers'
 
@@ -17,7 +17,17 @@ const initialState = {
     }
   }
 };
-const store = createStore(rootReducer, initialState, applyMiddleware(thunk), window.devToolsExtension && window.devToolsExtension());
+
+const store = createStore(
+    rootReducer,
+    initialState,
+    compose(
+        applyMiddleware(
+            thunk
+        ),
+        window.devToolsExtension ? window.devToolsExtension() : f => f
+    )
+);
 
 
 ReactDOM.render(
