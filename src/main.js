@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk';
 import rootReducer from 'reducers'
+import 'assets/styles/sass/main.scss';
 
 const initialState = {
   player: {

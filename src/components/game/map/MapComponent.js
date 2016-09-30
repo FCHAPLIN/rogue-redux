@@ -25,10 +25,12 @@ const MapComponent = (data) => {
     }
 
     return (
-      <div className="map-container">
+      <div>
           <Header/>
           <div>Here, the map !</div>
-        {cellsElements}
+          <div className="map-container">
+            {cellsElements}
+          </div>
       </div>
     );
 }

@@ -1,0 +1,25 @@
+#app{
+  background-color: lighten($color3,50%);
+  color:$color1;
+  height:100vh;
+}
+.map-container{
+  position:relative;
+  width:100%;
+  height:calc(100vh - 150px);
+  overflow:scroll;
+
+      .cell{
+        position:absolute;
+        background-image: url('../../../assets/img/tiles50x50.jpg');
+        &.wall{
+          background-position: 0px 0px;
+          background-color: #000;
+        }
+        &.floor{
+          background-position: 100px 100px;
+          background-color: #444;
+        }
+      }
+  
+}

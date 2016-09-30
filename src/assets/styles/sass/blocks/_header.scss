@@ -1,0 +1,13 @@
+.navbar{
+    height: 100px;
+    background-color: $color1;
+    .container{
+    	margin-top: 40px;
+    }
+    > a{
+        color: $color1;
+        &:hover{
+            color: $color3;
+        }
+    }
+}
