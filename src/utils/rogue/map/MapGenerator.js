@@ -148,7 +148,12 @@ class MapGenerator {
                     roomCreationComplete = true;
                 }
             }
-            let room = new Room(posX, posY, roomWidth, roomHeight, selection);
+            //Store ref of the selection rather than plain cell Object
+            let selectionRefs = [];
+            for (let c of selection) {
+                selectionRefs.push(c.key);
+            }
+            let room = new Room(posX, posY, roomWidth, roomHeight, selectionRefs);
             this.makeRectanglarRoom(posX, posY, roomWidth, roomHeight, room);
             this.rooms.push(room);
         }
@@ -278,15 +283,31 @@ class MapGenerator {
     }
 
     setExitCell() {
-        let rn = Math.floor(Math.random() * this.openCells.length);
-        let startCell = this.openCells[rn];
-        return startCell;
+        let goodCell = false;
+        let exitCell;
+        while (goodCell != true) {
+          goodCell = true;
+          let rn = Math.floor(Math.random() * this.openCells.length);
+          exitCell = this.openCells[rn];
+          if (exitCell.cellType != CellConstants.FLOOR){
+            goodCell = false;
+          }
+        }
+        return exitCell;
     }
 
     setStartCell() {
+      let goodCell = false;
+      let startCell;
+      while (goodCell != true) {
+        goodCell = true;
         let rn = Math.floor(Math.random() * this.openCells.length);
-        let startCell = this.openCells[rn];
-        return startCell;
+        startCell = this.openCells[rn];
+        if (startCell.cellType != CellConstants.FLOOR){
+          goodCell = false;
+        }
+      }
+      return startCell;
     }
 
     getCell(posX, posY) {

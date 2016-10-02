@@ -36,6 +36,8 @@
         width:32px;
         height:32px;
         position:absolute;
+        transition-duration:0.2s;
+        transition-property: all;
         background-image: url('../../../assets/img/heroes.png');
         background-position: 0px 0px;
       }
