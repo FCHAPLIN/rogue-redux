@@ -1,12 +1,13 @@
 import MapGenerator from 'utils/rogue/map/MapGenerator'
 
 let promise = new Promise(function(resolve, reject) {
-    let cells = MapGenerator.generateMap();
-    if (cells.length > 1) {
-        resolve(cells);
+    let mapGenerator = new MapGenerator(120,120);
+    let data = mapGenerator.generateMap();
+    if (data.cells.length > 1) {
+        resolve(data);
     }
     else {
-        reject(Error("Ça a foiré"));
+        reject(Error("C'est tout pourri"));
     }
 });
 export default promise;

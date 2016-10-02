@@ -40,9 +40,7 @@ export const LEVEL_SET_UP_ERROR = 'LEVEL_SET_UP_ERROR';
 export const LEVEL_START = 'LEVEL_START';
 export const LEVEL_EXIT = 'LEVEL_END';
 
-export const PLAYER_DIED = 'PLAYER_DIED';
-export const PLAYER_MOVE = 'PLAYER_DIED';
-export const PLAYER_ATTACK = 'PLAYER_DIED';
+
 
 export const MONSTERS_TURN_START = 'MONSTERS_TURN_START';
 export const MONSTERS_TURN_END = 'MONSTERS_TURN_END';

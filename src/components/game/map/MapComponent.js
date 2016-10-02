@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react'
 import Header from 'components/pages/partials/Header'
 import CellComponent from 'components/game/map/CellComponent';
-
+import PlayerComponent from 'components/game/character/PlayerComponent';
 
 function getCellElement(cell){
   return (
@@ -16,23 +16,55 @@ function getCellElement(cell){
     />
   );
 }
-const MapComponent = (data) => {
-    let cellsElements= [];
-    let map = data.data.map;
-    console.log(map);
-    if (map.cells) {
-       cellsElements = map.cells.map(cell => getCellElement(cell));
-    }
+function getLivingElement(living){
+  return (
+    <LivingComponent
+      key={cell.key}
+      posX={cell.posX}
+      posY={cell.posY}
+      livingType = {living.livingType}
+    />
+  );
+}
+const MapComponent = (store) => {
 
-    return (
-      <div>
+    let map = store.data.map;
+    if (map.mapData){
+      let cellsElements= [];
+      let livingsElements= [];
+      let playerElement;
+      let player = store.data.player;
+      console.log(player);
+      let cells = map.mapData.cells;
+      let livings = map.mapData.livings;
+
+      if (cells) {
+        cellsElements = cells.map(cell => getCellElement(cell));
+      }
+      if (livings){
+        livingsElements = map.mapData.livings.map(living => getCellElement(living));
+      }
+
+      return (
+        <div>
           <Header/>
-          <div>Here, the map !</div>
+          <div>Here, the UI</div>
           <div className="map-container">
             {cellsElements}
+            {livingsElements}
+            <PlayerComponent
+              posX={player.posX}
+              posY={player.posY}
+              />
           </div>
-      </div>
-    );
+
+        </div>
+      );
+    }else{
+      return (
+        <div>Loading map...</div>
+        )
+    }
 }
 
 export default MapComponent;

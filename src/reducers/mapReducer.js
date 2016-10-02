@@ -7,7 +7,7 @@ const map = (state = {}, action) => {
     case 'MAP_REQUEST_SUCCESS':
         return Object.assign({}, state, {
 
-            cells: action.mapData
+            mapData: action.mapData
         })
 
     case 'MAP_REQUEST_ERROR':

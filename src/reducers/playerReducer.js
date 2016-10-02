@@ -17,7 +17,9 @@ const player = (state = {}, action) => {
                 strength:15,
                 intelect:5,
                 dexterity:10
-              }
+              },
+              posX:1,
+              posY:1
             })
           case 'Thief':
             return Object.assign({}, state, {
@@ -26,7 +28,10 @@ const player = (state = {}, action) => {
                 strength:7,
                 intelect:7,
                 dexterity:15
-              }
+              },
+              posX:1,
+              posY:1
+
             })
           case 'Mage':
             return Object.assign({}, state, {
@@ -35,7 +40,9 @@ const player = (state = {}, action) => {
                 strength:5,
                 intelect:15,
                 dexterity:10
-              }
+              },
+              posX:1,
+              posY:1
             })
           default:
             return state
@@ -44,7 +51,28 @@ const player = (state = {}, action) => {
     case 'PLAYER_SUBMIT':
         return Object.assign({}, state, {
           submited: 'true'
+
         })
+    case 'PLAYER_MOVE':
+        switch (action.keycode) {
+          case 'ArrowDown':
+            return Object.assign({}, state, {
+                posY:state.posY+1
+            })
+          case 'ArrowUp':
+            return Object.assign({}, state, {
+                posY:state.posY-1
+            })
+          case 'ArrowLeft':
+            return Object.assign({}, state, {
+                posX:state.posX-1
+            })
+          case 'ArrowRight':
+            return Object.assign({}, state, {
+                posX:state.posX+1
+            })
+        }
+
     default:
       return state
     }

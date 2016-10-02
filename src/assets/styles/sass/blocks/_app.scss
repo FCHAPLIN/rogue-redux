@@ -3,23 +3,40 @@
   color:$color1;
   height:100vh;
 }
-.map-container{
+.map-container, .livings-container{
   position:relative;
   width:100%;
   height:calc(100vh - 150px);
-  overflow:scroll;
-
+  overflow:auto;
+}
+.map-container{
       .cell{
         position:absolute;
         background-image: url('../../../assets/img/tiles50x50.jpg');
-        &.wall{
+        width:50px;
+        height:50px;
+        &.empty{
+          background-position: 0px 0px;
+        }
+        &.wall, &.corner{
           background-position: 0px 0px;
           background-color: #000;
         }
         &.floor{
-          background-position: 100px 100px;
+          background-position: -50px 0px;
           background-color: #444;
         }
+        &.door{
+          background-position: -100px 0px;
+        }
       }
-  
+      .player{
+        margin-left: 8px;
+        margin-top: 8px;
+        width:32px;
+        height:32px;
+        position:absolute;
+        background-image: url('../../../assets/img/heroes.png');
+        background-position: 0px 0px;
+      }
 }

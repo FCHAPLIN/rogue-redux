@@ -18,6 +18,8 @@
     "css-loader": "^0.24.0",
     "eslint": "^3.2.2",
     "eslint-plugin-react": "^6.0.0",
+    "event-emitter": "^0.3.4",
+    "eventemitter": "^0.3.3",
     "file-loader": "^0.9.0",
     "http-server": "^0.8.5",
     "node-sass": "^3.10.0",

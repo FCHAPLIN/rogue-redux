@@ -15,7 +15,9 @@ const initialState = {
       strength: 15,
       intelect: 5,
       dexterity: 10
-    }
+    },
+    posX:1,
+    posY:1
   }
 };
 
