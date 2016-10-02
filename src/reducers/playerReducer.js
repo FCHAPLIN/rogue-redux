@@ -1,9 +1,16 @@
 import {  PLAYER_NAME_CHANGE,
           PLAYER_CLASS_CHANGE,
           PLAYER_SUBMIT } from 'actions'
+import { SET_START_CELL } from 'actions/MapActions'
 
 const player = (state = {}, action) => {
   switch (action.type) {
+    case SET_START_CELL :
+      return Object.assign({}, state, {
+        posX: action.startCell.posX,
+        posY: action.startCell.posY
+      })
+
     case 'PLAYER_NAME_CHANGE':
       return Object.assign({}, state, {
         name: action.value
