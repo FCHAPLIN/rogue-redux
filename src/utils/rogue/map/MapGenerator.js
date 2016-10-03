@@ -28,6 +28,7 @@ class MapGenerator {
         this.generateRooms();
         this.generateDoors();
         this.generateCorridors();
+        this.cleanBlindRooms();
         this.setContiguousCells(true);
         this.startCell = this.setStartCell();
         this.exitCell = this.setExitCell();
@@ -158,7 +159,17 @@ class MapGenerator {
             this.rooms.push(room);
         }
     }
-
+    cleanBlindRooms(){
+      for (let room of this.rooms){
+        if (room.doors.length == 0){
+          let cells = this.getRectangularCells(room.posX, room.posY, room.roomWidth, room.roomHeight);
+          for (let c of cells){
+            c.cellType = CellConstants.EMPTY;
+            c.obst = true;
+          }
+        }
+      }
+    }
     generateCorridors() {
         //S'assurer que toutes les rooms sont connectées
         let cellsToCompute = [];
