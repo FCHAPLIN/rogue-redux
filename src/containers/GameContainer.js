@@ -13,8 +13,17 @@ class GameContainer extends Component{
     }
 
     componentDidMount() {
-        const { dispatch } = this.props
-        dispatch(mapRequestStartAction())
+        const { dispatch } = this.props;
+
+
+        if (Event.prototype.initEvent) {
+          var evt = window.document.createEvent('UIEvents');
+          evt.initUIEvent('resize', true, false, window, 0);
+          window.dispatchEvent(evt);
+        } else {
+          window.dispatchEvent(new Event('resize'));
+        }
+        dispatch(mapRequestStartAction());
         document.querySelectorAll('.command-input')[0].focus();
     }
 

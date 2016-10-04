@@ -1,5 +1,6 @@
 
 import { SET_START_CELL } from 'actions/MapActions'
+import { SCREEN_RESIZE } from 'actions/UIActions'
 
 const viewport = (state = {}, action) => {
   switch (action.type) {
@@ -8,7 +9,12 @@ const viewport = (state = {}, action) => {
           posX: action.startCell.posX,
           posY: action.startCell.posY
         })
+      case SCREEN_RESIZE :
+        return Object.assign({}, state, {
+          width: Math.ceil(action.width/action.cellSize),
+          height: Math.ceil(action.height/action.cellSize)
 
+        })
     default:
         return state
     }
