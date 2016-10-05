@@ -27,14 +27,15 @@ function getLivingElement(living){
   );
 }
 const MapComponent = (store) => {
-
+    console.log(store);
     let map = store.data.map;
+    let mapStyle = {}
     if (map.mapData){
       let cellsElements= [];
       let livingsElements= [];
       let playerElement;
       let player = store.data.player;
-      console.log(player);
+
       let cells = map.mapData.cells;
       let livings = map.mapData.livings;
 
@@ -44,18 +45,27 @@ const MapComponent = (store) => {
       if (livings){
         livingsElements = map.mapData.livings.map(living => getCellElement(living));
       }
+      if (store.data.viewport){
+          let viewport = store.data.viewport;
+          mapStyle = {
+              left: 0 - (viewport.posX-viewport.width*0.5) * 50,
+              top: 0 - (viewport.posY-viewport.height*0.5) * 50
 
+          }
+      }
       return (
         <div>
           <Header/>
           <div>Here, the UI</div>
-          <div className="map-container">
-            {cellsElements}
-            {livingsElements}
-            <PlayerComponent
-              posX={player.posX}
-              posY={player.posY}
-              />
+          <div className="map-wrapper">
+              <div className="map-container" style={mapStyle}>
+                {cellsElements}
+                {livingsElements}
+                <PlayerComponent
+                  posX={player.posX}
+                  posY={player.posY}
+                  />
+              </div>
           </div>
 
         </div>

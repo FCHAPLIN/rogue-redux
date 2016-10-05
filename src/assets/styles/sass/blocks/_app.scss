@@ -1,44 +1,66 @@
-#app{
-  background-color: lighten($color3,50%);
-  color:$color1;
-  height:100vh;
+#app
+{
+    height: 100vh;
+
+    color: $color1;
+    background-color: lighten($color3,50%);
 }
-.map-container, .livings-container{
-  position:relative;
-  width:100%;
-  height:calc(100vh - 180px);
-  overflow:auto;
-}
-.map-container{
-      .cell{
-        position:absolute;
-        background-image: url('../../../assets/img/tiles50x50.jpg');
-        width:50px;
-        height:50px;
-        &.empty{
-          background-position: 0px 0px;
+.map-wrapper
+{
+    position: relative;
+
+    overflow: hidden;
+
+    width: 100%;
+    height: calc(100vh - 180px);
+
+    .map-container
+    {
+        position: absolute;
+        top: 0;
+        left: 0;
+        .cell
+        {
+            position: absolute;
+
+            width: 50px;
+            height: 50px;
+
+            background-image: url('../../../assets/img/tiles50x50.jpg');
+            &.empty
+            {
+                background-position: 0 0;
+            }
+            &.wall,
+            &.corner
+            {
+                background-color: #000;
+                background-position: 0 0;
+            }
+            &.floor
+            {
+                background-color: #444;
+                background-position: -50px 0;
+            }
+            &.door
+            {
+                background-position: -100px 0;
+            }
         }
-        &.wall, &.corner{
-          background-position: 0px 0px;
-          background-color: #000;
+        .player
+        {
+            position: absolute;
+
+            width: 32px;
+            height: 32px;
+            margin-top: 8px;
+            margin-left: 8px;
+
+            transition-duration: .2s;
+            transition-property: all;
+
+            background-image: url('../../../assets/img/heroes.png');
+            background-position: 0 0;
         }
-        &.floor{
-          background-position: -50px 0px;
-          background-color: #444;
-        }
-        &.door{
-          background-position: -100px 0px;
-        }
-      }
-      .player{
-        margin-left: 8px;
-        margin-top: 8px;
-        width:32px;
-        height:32px;
-        position:absolute;
-        transition-duration:0.2s;
-        transition-property: all;
-        background-image: url('../../../assets/img/heroes.png');
-        background-position: 0px 0px;
-      }
+    }
 }

@@ -3,10 +3,11 @@ export const SCREEN_INIT = 'SCREEN_INIT';
 
 
 export const screenResizeAction = (width, height, cellSize) => {
-    let processedWidth = Math.ceil(width/cellSize);
-    let processedHeight = Math.ceil(height/cellSize);
-    let originLeft = Math.floor(processedWidth*0.5);
-    let originTop = Math.floor(processedHeight*0.5)
+    console.log ('resize');
+    let processedWidth = Math.floor(width/cellSize);
+    let processedHeight = Math.floor(height/cellSize);
+    let originLeft = Math.ceil(processedWidth*0.5);
+    let originTop = Math.ceil(processedHeight*0.5)
     return {
         type: SCREEN_RESIZE,
         processedWidth,

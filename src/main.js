@@ -5,6 +5,7 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk';
 import rootReducer from 'reducers'
+import {screenResizeAction} from 'actions/UIActions'
 import 'assets/styles/sass/main.scss';
 
 
@@ -28,6 +29,11 @@ const initialState = {
       posY:1
   }
 };
+
+//listen resize event
+window.addEventListener('resize', () => {
+    store.dispatch(screenResizeAction(window.innerWidth,window.innerHeight-160,50));
+});
 
 
 
