@@ -11,9 +11,8 @@ const viewport = (state = {}, action) => {
         })
       case SCREEN_RESIZE :
         return Object.assign({}, state, {
-          width: Math.ceil(action.width/action.cellSize),
-          height: Math.ceil(action.height/action.cellSize)
-
+          width: Math.ceil(action.width/action.cellSize)+4,
+          height: Math.ceil(action.height/action.cellSize)+4,
         })
     default:
         return state
