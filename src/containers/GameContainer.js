@@ -15,7 +15,6 @@ class GameContainer extends Component{
     componentDidMount() {
         const { dispatch } = this.props;
 
-
         if (Event.prototype.initEvent) {
           var evt = window.document.createEvent('UIEvents');
           evt.initUIEvent('resize', true, false, window, 0);

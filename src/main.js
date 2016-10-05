@@ -6,14 +6,10 @@ import { createStore, applyMiddleware, compose } from 'redux'
 import thunk from 'redux-thunk';
 import rootReducer from 'reducers'
 import 'assets/styles/sass/main.scss';
-import { screenResizeAction } from 'actions/UIActions'
+
+
 
 const initialState = {
-  config: {
-    cellSize: '50'
-  },
-  viewport: {},
-  map: {},
   player: {
     name: '',
     class: 'warrior',
@@ -24,8 +20,16 @@ const initialState = {
     },
     posX:1,
     posY:1
+},
+  viewport: {
+      width:0,
+      height:0,
+      posX:1,
+      posY:1
   }
 };
+
+
 
 const store = createStore(
     rootReducer,
@@ -37,10 +41,7 @@ const store = createStore(
         window.devToolsExtension ? window.devToolsExtension() : f => f
     )
 );
-window.addEventListener('resize', () => {
-    console.log(store.getState().config.cellSize);
-    store.dispatch(screenResizeAction(window.innerWidth,window.innerHeight,store.getState().config.cellSize));
-});
+
 
 ReactDOM.render(
   <Provider store={store}>
