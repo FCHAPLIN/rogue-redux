@@ -21,7 +21,7 @@ class Map {
     }
 
     generateMap() {
-        generator = new MapGenerator(height, width);
+        generator = new MapGenerator(this.width, this.height);
         this.data = generator.generateMap();
         /*this.cells =  this.data.cells;
         this.openCells= this.data.openCells,
