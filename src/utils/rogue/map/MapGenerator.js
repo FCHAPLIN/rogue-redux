@@ -35,6 +35,13 @@ class MapGenerator {
         //this.generatePopulation();
         this.data = {
             cells: this.cells,
+            openCells: this.openCells,
+            rooms: this.rooms,
+            doors: this.doors,
+            map2d: this.map,
+            player: this.player,
+            corridors: this.corridors,
+            livings: this.livings,
             exit: {
                 posX: this.exitCell.posX,
                 posY: this.exitCell.posY
