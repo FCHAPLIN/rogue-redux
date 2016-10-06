@@ -2,8 +2,13 @@
 {
     height: 100vh;
 
-    color: $color1;
-    background-color: lighten($color3,50%);
+    color: $color2;
+    background-color: lighten($color3,40%);
+}
+.command-input{
+  position:absolute;
+  left:-1000px;
+  top:0px;
 }
 .map-wrapper
 {
@@ -19,6 +24,8 @@
         position: absolute;
         top: 0;
         left: 0;
+        transition-duration: .2s;
+        transition-property: all;
         .cell
         {
             position: absolute;

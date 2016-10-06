@@ -1,5 +1,6 @@
 
 import { SET_START_CELL } from 'actions/MapActions'
+import { PLAYER_MOVE } from 'actions/PlayerActions'
 import { SCREEN_RESIZE } from 'actions/UIActions'
 
 const viewport = (state = {}, action) => {
@@ -14,6 +15,26 @@ const viewport = (state = {}, action) => {
           width : action.processedWidth,
           height : action.processedHeight
         })
+      case PLAYER_MOVE :
+      case 'PLAYER_MOVE':
+          switch (action.keycode) {
+            case 'ArrowDown':
+              return Object.assign({}, state, {
+                  posY:state.posY+1
+              })
+            case 'ArrowUp':
+              return Object.assign({}, state, {
+                  posY:state.posY-1
+              })
+            case 'ArrowLeft':
+              return Object.assign({}, state, {
+                  posX:state.posX-1
+              })
+            case 'ArrowRight':
+              return Object.assign({}, state, {
+                  posX:state.posX+1
+              })
+          }
     default:
         return state
     }
