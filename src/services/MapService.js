@@ -1,10 +1,11 @@
-import MapGenerator from 'utils/rogue/map/MapGenerator'
+import Map from 'utils/rogue/map/Map'
 
 class MapService{
     constructor(){
+        let map = new Map(80,80);
         this.getNewMap = new Promise(function(resolve, reject) {
-            let mapGenerator = new MapGenerator(80,80);
-            let data = mapGenerator.generateMap();
+
+            let data = map.generateMap();
             if (data.cells.length > 1) {
                 resolve(data);
             }
@@ -13,6 +14,7 @@ class MapService{
             }
         });
         this.updateCells = new Promise(function(resolve, reject) {
+            let data = map.data;
             if (data.cells.length > 1) {
                 resolve(data);
             }
@@ -21,6 +23,7 @@ class MapService{
             }
         });
         this.isBlocking = new Promise(function(resolve, reject) {
+            let data = map.data;
             if (data.cells.length > 1) {
                 resolve(data);
             }
@@ -32,4 +35,3 @@ class MapService{
 }
 
 export default MapService;
-

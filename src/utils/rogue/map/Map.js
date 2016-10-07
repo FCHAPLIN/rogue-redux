@@ -21,8 +21,10 @@ class Map {
     }
 
     generateMap() {
-        generator = new MapGenerator(this.width, this.height);
+        let generator = new MapGenerator(this.width, this.height);
         this.data = generator.generateMap();
+        console.log(this.data);
+        return this.data;
         /*this.cells =  this.data.cells;
         this.openCells= this.data.openCells,
         this.rooms= this.data.rooms,
@@ -57,3 +59,4 @@ class Map {
 
     }
 }
+export default Map;
