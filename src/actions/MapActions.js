@@ -10,13 +10,9 @@ const mapService = new MapService();
 
 export const mapRequestStartAction = () => {
     return (dispatch) => {
-        return mapService.getNewMap.then(
-            data => {
-                dispatch(mapRequestSuccessAction(data))
-                dispatch(setStartCellAction(data.start));
-            },
-            error => dispatch(mapRequestErrorAction(error))
-        );
+        let data = mapService.getNewMap();
+        dispatch(mapRequestSuccessAction(data));
+        dispatch(setStartCellAction(data.start));
     }
 }
 
