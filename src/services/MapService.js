@@ -1,38 +1,18 @@
-import MapGenerator from 'utils/rogue/map/MapGenerator'
+import Map from 'utils/rogue/map/Map'
 
-let getNewMap = new Promise(function(resolve, reject) {
-    let mapGenerator = new MapGenerator(80,80);
-    let data = mapGenerator.generateMap();
-    if (data.cells.length > 1) {
-        resolve(data);
-    }
-    else {
-        reject(Error("C'est tout pourri"));
-    }
-});
-export default getNewMap;
+class MapService{
 
-// let updateCells = new Promise(function(resolve, reject) {
-//
-//
-//     if (data.cells.length > 1) {
-//         resolve(data);
-//     }
-//     else {
-//         reject(Error("C'est tout pourri"));
-//     }
-// });
-// export default updateCells;
-//
-// let isBlocking = new Promise(function(resolve, reject) {
-//
-//
-//     if (data.cells.length > 1) {
-//         resolve(data);
-//     }
-//     else {
-//         reject(Error("C'est tout pourri"));
-//     }
-// });
-// export default isBlocking;
-//  : create a class here, map must be satic datas
+    constructor(){
+        this.map = new Map(80,80);
+    }
+
+    getNewMap(param){
+        return this.map.generateMap();
+    }
+
+    updateCells(posX, posY, width, height) {
+        return this.map.getRectangularCells(posX, posY, width, height);
+    }
+}
+
+export default MapService;

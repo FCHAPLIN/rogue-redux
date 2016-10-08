@@ -1,4 +1,4 @@
-import getNewMap from 'services/MapService'
+import MapService from 'services/MapService'
 
 export const MAP_REQUEST_START = 'MAP_REQUEST_START';
 export const MAP_REQUEST_SUCCESS = 'MAP_REQUEST_SUCCESS';
@@ -6,15 +6,13 @@ export const MAP_REQUEST_ERROR = 'MAP_REQUEST_ERROR';
 
 export const SET_START_CELL = 'SET_START_CELL';
 
+const mapService = new MapService();
+
 export const mapRequestStartAction = () => {
     return (dispatch) => {
-        return getNewMap.then(
-            data => {
-                dispatch(mapRequestSuccessAction(data))
-                dispatch(setStartCellAction(data.start));
-            },
-            error => dispatch(mapRequestErrorAction(error))
-        );
+        let data = mapService.getNewMap();
+        dispatch(mapRequestSuccessAction(data));
+        dispatch(setStartCellAction(data.start));
     }
 }
 

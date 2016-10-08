@@ -13,26 +13,32 @@ const viewport = (state = {}, action) => {
       case SCREEN_RESIZE :
         return Object.assign({}, state, {
           width : action.processedWidth,
-          height : action.processedHeight
+          height : action.processedHeight,
+          originLeft : action.originLeft,
+          originTop : action.originTop
         })
       case PLAYER_MOVE :
       case 'PLAYER_MOVE':
           switch (action.keycode) {
             case 'ArrowDown':
               return Object.assign({}, state, {
-                  posY:state.posY+1
+                  posY:state.posY+1,
+                  originTop:state.originTop+1
               })
             case 'ArrowUp':
               return Object.assign({}, state, {
-                  posY:state.posY-1
+                  posY:state.posY-1,
+                  originTop: state.originTop-1
               })
             case 'ArrowLeft':
               return Object.assign({}, state, {
-                  posX:state.posX-1
+                  posX:state.posX-1,
+                  originLeft: state.originLeft-1
               })
             case 'ArrowRight':
               return Object.assign({}, state, {
-                  posX:state.posX+1
+                  posX:state.posX+1,
+                  originLeft: state.originLeft+1
               })
           }
     default:

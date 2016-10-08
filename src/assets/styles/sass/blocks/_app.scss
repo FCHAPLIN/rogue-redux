@@ -1,6 +1,6 @@
 #app
 {
-    height: 100vh;
+    height: 90vh;
 
     color: $color2;
     background-color: lighten($color3,40%);
@@ -17,7 +17,7 @@
     overflow: hidden;
 
     width: 100%;
-    height: calc(100vh - 180px);
+    height: calc(90vh);
 
     .map-container
     {
