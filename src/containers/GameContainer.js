@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react'
 import {connect} from 'react-redux'
 import {dispatch} from 'redux'
 import {mapRequestStartAction} from 'actions/MapActions'
-import {playerMoveAction} from 'actions/PlayerActions'
+import {inputKeyAction} from 'actions/PlayerActions'
 import shallowCompare from 'react-addons-shallow-compare';
 import MapComponent from 'components/game/map/MapComponent'
 
@@ -50,7 +50,7 @@ class GameContainer extends Component {
 
     //catch user keyboard entry in hidden input
     command(event) {
-        this.props.dispatch(playerMoveAction(event.key));
+        this.props.dispatch(inputKeyAction(event.key,this.props.viewport.posX, this.props.viewport.posY));
     }
 
     render() {

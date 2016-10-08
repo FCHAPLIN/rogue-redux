@@ -9,7 +9,7 @@ class Cell {
         this.cellType = cellType;
         this.content = [];
         this.room = false;
-        this.obst= false;
+        this.obst= true;
         this.canBeCorridor = true;
         this.contiguousCells = [];
         this.movement = 1;

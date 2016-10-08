@@ -15,7 +15,6 @@ class Map {
     generateMap() {
         let generator = new MapGenerator(this.width, this.height);
         this.data = generator.generateMap();
-        console.log(this.data);
         return this.data;
     }
 
@@ -45,7 +44,7 @@ class Map {
     }
 
     getCell(posX,posY) {
-
+        return this.data.map2d[posX][posY];
     }
 
     isBlocked(posX,posY) {

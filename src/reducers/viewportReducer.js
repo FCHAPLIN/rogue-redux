@@ -17,7 +17,7 @@ const viewport = (state = {}, action) => {
           originLeft : action.originLeft,
           originTop : action.originTop
         })
-      case PLAYER_MOVE :
+      
       case 'PLAYER_MOVE':
           switch (action.keycode) {
             case 'ArrowDown':

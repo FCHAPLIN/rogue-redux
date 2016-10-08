@@ -61,7 +61,10 @@ class MapComponent extends Component {
           }
         }
         if (cells) {
+          var t0 = performance.now();
           cellsElements = cells.map(cell => getCellElement(cell, store.data.viewport));
+          var t1 = performance.now();
+          console.log('cells mapping took '+ (t1-t0));
         }
         if (livings){
           livingsElements = map.mapData.livings.map(living => getCellElement(living));

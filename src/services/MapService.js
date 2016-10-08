@@ -1,13 +1,22 @@
 import Map from 'utils/rogue/map/Map'
+let mapServiceInstance = null;
 
 class MapService{
 
     constructor(){
-        this.map = new Map(80,80);
+        if(!mapServiceInstance){
+              mapServiceInstance = this;
+              this.map = new Map(80,80);
+        }
+        return mapServiceInstance;
     }
 
     getNewMap(param){
         return this.map.generateMap();
+    }
+
+    getCell(posX, posY) {
+        return this.map.getCell(posX, posY);
     }
 
     updateCells(posX, posY, width, height) {
