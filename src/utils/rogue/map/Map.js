@@ -10,14 +10,6 @@ class Map {
         this.height = height;
         this.width = width;
         this.data = {}
-        /*this.cells = [];
-        this.openCells = [];
-        this.map2d = []
-        this.rooms = [];
-        this.doors = [];
-        this.player = {};
-        this.livings = [];
-        this.corridors = [];*/
     }
 
     generateMap() {
@@ -25,24 +17,25 @@ class Map {
         this.data = generator.generateMap();
         console.log(this.data);
         return this.data;
-        /*this.cells =  this.data.cells;
-        this.openCells= this.data.openCells,
-        this.rooms= this.data.rooms,
-        this.doors= this.data.doors,
-        this.map2d= this.data.map,
-        this.player= this.data.player,
-        this.corridors= this.data.corridors,
-        this.livings= this.data.livings,
-        this.exit = this.data.exit,
-        this.start = this.data.start: */
     }
 
     getFullMap() {
         return this.data;
     }
 
-    getCells(posX, posY, width, height) {
+    getRectangularCells(rectX, rectY, rectWidth, rectHeight) {
+        var result = [];
+        for (let c of this.cells) {
+            if (c.posX >= rectX && c.posX <= rectX + rectWidth && c.posY >= rectY && c.posY <= rectY + rectHeight) {
+                result.push(c);
+            }
+        }
+        return result;
+    }
+
+    getCells(cellKeys) {
         let cells= [];
+
         return cells;
     }
 

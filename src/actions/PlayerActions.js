@@ -2,6 +2,7 @@ export const PLAYER_DIED = 'PLAYER_DIED';
 export const PLAYER_MOVE = 'PLAYER_MOVE';
 export const PLAYER_ATTACK = 'PLAYER_ATTACK';
 
+
 export const playerMoveAction = (keycode) => {
   return {
     type: PLAYER_MOVE,

@@ -17,22 +17,17 @@ class GameContainer extends Component {
 
     componentWillUpdate(nextProps, nextState){
         //const {dispatch} = this.props;
-        console.log('update !');
         //dispatch(mapRequestStartAction());
     }
     componentWillReceiveProps(nextProps) {
-      console.log('old');
-      console.log(this.props.viewport);
-      console.log('nexProps!');
-      console.log(nextProps.viewport);
-      console.log(this.props.viewport.posX == nextProps.viewport.posX );
-      console.log(this.props.viewport.posY == nextProps.viewport.posY );
-      console.log(this.props.viewport.width == nextProps.viewport.width );
-      console.log(this.props.viewport.height == nextProps.viewport.height );
+
     }
     componentDidMount() {
         //get dispatch function
         const {dispatch} = this.props;
+
+        //request new map
+        dispatch(mapRequestStartAction());
 
         //cast resize action on resize viewport
         if (Event.prototype.initEvent) {
@@ -42,11 +37,6 @@ class GameContainer extends Component {
         } else {
             window.dispatchEvent(new Event('resize'));
         }
-
-
-
-        //request new map
-        dispatch(mapRequestStartAction());
 
         //keep focus on command-input
         document.querySelectorAll('.command-input')[0].focus();
@@ -64,7 +54,7 @@ class GameContainer extends Component {
     }
 
     render() {
-        console.log('render !');
+        console.log('update !');
         const {data} = this.props
         return (
             <div>
