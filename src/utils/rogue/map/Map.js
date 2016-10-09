@@ -47,8 +47,12 @@ class Map {
         return this.data.map2d[posX][posY];
     }
 
-    isBlocked(posX,posY) {
+    monstersTurn(){
 
+      for (let monster of this.data.livings){
+        monster.doYourStuff(this.data.openCells);
+      }
+      return {}
     }
 }
 export default Map;

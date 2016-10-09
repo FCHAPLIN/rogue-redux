@@ -33,7 +33,7 @@ const Interface = (props) => (
                 </li>
             </ul>
         </div>
-        <div><Link to='Home'>Return Home</Link></div>
+        <div><Link className="back-menu" to='Home'><i className="icon-library"></i></Link></div>
     </div>
 )
 

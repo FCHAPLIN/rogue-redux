@@ -15,6 +15,10 @@ class MapService{
         return this.map.generateMap();
     }
 
+    monstersTurn(){
+      return this.map.monstersTurn();
+    }
+    
     getCell(posX, posY) {
         return this.map.getCell(posX, posY);
     }

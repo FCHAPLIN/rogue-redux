@@ -382,7 +382,7 @@ class MapGenerator {
               monsterType = MonsterConstants.GOBLIN;
               break;
           }
-          monster = new Monster(cell.posX, cell.posY, monsterType,monsterLevel);
+          monster = new Monster(cell, monsterType,monsterLevel);
           //cell.content = monster;
           this.livings.push(monster);
           livingsLevel -=monsterLevel;

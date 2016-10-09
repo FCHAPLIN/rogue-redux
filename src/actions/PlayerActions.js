@@ -2,6 +2,7 @@ import MapService from 'services/MapService'
 export const PLAYER_DIED = 'PLAYER_DIED';
 export const PLAYER_MOVE = 'PLAYER_MOVE';
 export const PLAYER_ATTACK = 'PLAYER_ATTACK';
+export const TURN_RESULT = 'TURN_RESULT';
 
 let mapService = new MapService();
 
@@ -25,13 +26,28 @@ export const inputKeyAction = (keycode, posX, posY) => {
         if (!targetCell.obst) {
             dispatch(playerMoveProcessAction(keycode));
         }
+        dispatch(monstersTurnAction());
     }
+}
+
+export const monstersTurnAction = () => {
+  return (dispatch) => {
+    let results = mapService.monstersTurn();
+    dispatch(turnResultsAction(results));
+  }
 }
 
 export const playerMoveProcessAction = (keycode) => {
     return {
         type: PLAYER_MOVE,
         keycode
+    }
+}
+
+export const turnResultsAction = (results) => {
+    return {
+        type: TURN_RESULT,
+        results
     }
 }
 
