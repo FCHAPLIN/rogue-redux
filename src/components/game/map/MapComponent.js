@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react'
 import Header from 'components/pages/partials/Header'
 import CellComponent from 'components/game/map/CellComponent';
+
 import PlayerComponent from 'components/game/character/PlayerComponent';
 
 function getCellElement(cell, viewport){
@@ -71,7 +72,7 @@ class MapComponent extends Component {
         }
         return (
           <div>
-            <div>Here, the UI</div>
+
             <div className="map-wrapper">
                 <div className="map-container" style={mapStyle}>
                   {cellsElements}

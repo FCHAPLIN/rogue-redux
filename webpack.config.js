@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
-
+const autoprefixer = require('autoprefixer');
 
 var config = {
     entry: './src/main.js',
@@ -20,10 +20,10 @@ var config = {
 
     module: {
         loaders: [
-            { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
-            { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" }, {
+            { test: /\.woff(2)?(\?[a-z0-9]+)?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
+            { test: /\.(ttf|eot|svg)(\?[a-z0-9]+)?$/, loader: "file-loader" }, {
                 test: /\.css$/,
-                loader: "style-loader!css-loader!resolve-url-loader"
+                loader: "style-loader!css-loader!resolve-url-loader!postcss-loader"
             },
 
             {
@@ -35,6 +35,7 @@ var config = {
             { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' }
         ]
     },
+    postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
     plugins: [
         new webpack.DefinePlugin({
             'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)

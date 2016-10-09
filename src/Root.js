@@ -10,7 +10,7 @@ class Root extends Component {
 	render() {
 		return(
 			<Router history={browserHistory}>
-				<Redirect from="/" to="Player Creation" />
+				<Redirect from="/" to="Home" />
               	<Route name="Player" path="/player" component={PlayerContainer} />
               	<Route name="Game" path="/game" component={GameContainer} />
               	<Route name="Stats" path="/statistics" component={StatsContainer} />

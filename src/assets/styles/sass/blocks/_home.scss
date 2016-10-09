@@ -1,0 +1,56 @@
+.home{
+  height: 95vh;
+  overflow: hidden;
+  color: $color1;
+  font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  background-image: url('../../../assets/img/mainbg.jpg');
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  img{
+    width:50%;
+    min-width: 300px;
+    max-width: 500px;
+  }
+  ul{
+    list-style: none;
+    padding:0px;
+    margin:0px;
+
+  }
+  .main-menu{
+    li{
+      font-size: 2em;
+      text-align: center;
+      cursor:pointer;
+      &.inactive{
+        color: darken($color1,60%);
+        cursor:auto;;
+      }
+      a{
+        text-decoration: none;
+        color:$color1;
+        transition-property: all;
+        transition-duration: 0.4s;
+        &:hover{
+          color:lighten($color5,30%);
+          &.inactive{
+            color: darken($color1,60%);
+          }
+        }
+      }
+    }
+  }
+  .social{
+    li{
+      display:inline;
+      font-size:2em;
+      padding:20px;
+    }
+  }
+}
