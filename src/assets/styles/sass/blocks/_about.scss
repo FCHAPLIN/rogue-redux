@@ -1,0 +1,21 @@
+.about{
+  height: 95vh;
+  overflow: hidden;
+  color: $color1;
+  font-family: Palatino, "Palatino LT STD", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+  background-image: url('../../../assets/img/mainbg.jpg');
+  background-position: 50% 50%;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  img{
+    width:200px;
+  }
+  .intro{
+    padding:10px;
+  }
+}

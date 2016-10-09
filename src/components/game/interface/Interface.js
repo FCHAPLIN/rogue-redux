@@ -33,7 +33,7 @@ const Interface = (props) => (
                 </li>
             </ul>
         </div>
-        <div></div>
+        <div><Link to='Home'>Return Home</Link></div>
     </div>
 )
 

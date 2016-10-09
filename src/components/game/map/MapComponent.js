@@ -3,13 +3,14 @@ import Header from 'components/pages/partials/Header'
 import CellComponent from 'components/game/map/CellComponent';
 
 import PlayerComponent from 'components/game/character/PlayerComponent';
+import MonsterComponent from 'components/game/character/MonsterComponent';
 
 function getCellElement(cell, viewport){
 
-  if (  cell.posX>=viewport.originLeft-5 &&
-        cell.posX<=viewport.originLeft+viewport.width+5 &&
-        cell.posY>=viewport.originTop-5 &&
-        cell.posY<=viewport.originTop+viewport.height+5
+  if (  cell.posX>=viewport.originLeft-2 &&
+        cell.posX<=viewport.originLeft+viewport.width+2 &&
+        cell.posY>=viewport.originTop-2 &&
+        cell.posY<=viewport.originTop+viewport.height+2
   ){
     return (
       <CellComponent
@@ -24,13 +25,13 @@ function getCellElement(cell, viewport){
     );
   }
 }
-function getLivingElement(living){
+function getMonsterElement(living){
   return (
-    <LivingComponent
-      key={cell.key}
-      posX={cell.posX}
-      posY={cell.posY}
-      livingType = {living.livingType}
+    <MonsterComponent
+      key={living.key}
+      posX={living.posX}
+      posY={living.posY}
+      monsterType = {living.monsterType}
     />
   );
 }
@@ -62,13 +63,10 @@ class MapComponent extends Component {
           }
         }
         if (cells) {
-          var t0 = performance.now();
           cellsElements = cells.map(cell => getCellElement(cell, store.data.viewport));
-          var t1 = performance.now();
-          console.log('cells mapping took '+ (t1-t0));
         }
         if (livings){
-          livingsElements = map.mapData.livings.map(living => getCellElement(living));
+          livingsElements = map.mapData.livings.map(living => getMonsterElement(living));
         }
         return (
           <div>

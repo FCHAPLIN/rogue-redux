@@ -8,7 +8,7 @@ const HomeComponent = () => (
 		<div className="main-menu">
 			<nav>
 				<ul>
-					<li><Link to='Player'>Start New Game</Link></li>
+					<li><Link to='Game'>Start New Game</Link></li>
 					<li className="inactive">Continue game</li>
 					<li><Link to='About'>About</Link></li>
 				</ul>

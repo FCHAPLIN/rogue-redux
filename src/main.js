@@ -11,7 +11,7 @@ import 'assets/styles/sass/main.scss'
 
 const initialState = {
     player: {
-        name: '',
+        name: 'Grûh the Great',
         class: 'warrior',
         traits: {
             strength : 15,

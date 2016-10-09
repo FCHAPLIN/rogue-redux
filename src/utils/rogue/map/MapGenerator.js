@@ -1,6 +1,8 @@
 'use strict';
 
 import CellConstants from 'utils/rogue/map/CellConstants';
+import MonsterConstants from 'utils/rogue/map/MonsterConstants';
+import Monster from 'utils/rogue/map/Monster';
 import Room from 'utils/rogue/map/Room';
 import Cell from 'utils/rogue/map/Cell';
 import CorridorMaker from 'utils/rogue/map/CorridorMaker';
@@ -32,7 +34,7 @@ class MapGenerator {
         this.setContiguousCells(true);
         this.startCell = this.setStartCell();
         this.exitCell = this.setExitCell();
-        //this.generatePopulation();
+        this.generatePopulation();
         this.data = {
             cells: this.cells,
             openCells: this.openCells,
@@ -361,12 +363,32 @@ class MapGenerator {
         return Math.floor((max - min + 1) * Math.random() + min);
     }
 
-    generatePopulation() {
-        this.player = {
-            posX: "1",
-            posY: "1"
-        };
-        this.livings = [];
+    generatePopulation(level) {
+        let livingsLevel = 40;
+        while (livingsLevel > 0){
+          let cell = this.setStartCell();
+          let monster;
+          let monsterType;
+          let monsterLevel = 1;
+          let rnd = this.randomize(1,3);
+          switch (rnd){
+            case 1:
+              monsterType = MonsterConstants.ORC;
+              break;
+            case 2:
+              monsterType = MonsterConstants.CYCLOP;
+              break;
+            case 3:
+              monsterType = MonsterConstants.GOBLIN;
+              break;
+          }
+          monster = new Monster(cell.posX, cell.posY, monsterType,monsterLevel);
+          //cell.content = monster;
+          this.livings.push(monster);
+          livingsLevel -=monsterLevel;
+
+        }
+
     }
 }
 

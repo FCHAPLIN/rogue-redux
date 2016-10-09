@@ -48,5 +48,27 @@
             background-image: url('../../../assets/img/heroes.png');
             background-position: 0 0;
         }
+        .monster {
+            position: absolute;
+            width: 32px;
+            height: 32px;
+            margin-top: 8px;
+            margin-left: 8px;
+            transition-duration: 0.2s;
+            transition-property: all;
+            &.ORC{
+              background-image: url('../../../assets/img/foes.png');
+              background-position: 0 0;
+
+            }
+            &.GOBLIN{
+              background-image: url('../../../assets/img/foes.png');
+              background-position: -96px 0;
+            }
+            &.CYCLOP{
+              background-image: url('../../../assets/img/foes.png');
+              background-position: -192px 0;
+            }
+        }
     }
 }
