@@ -3,5 +3,7 @@ export default {
   	FLOOR: 'floor',
   	CORNER: 'corner',
   	DOOR: 'door',
-  	EMPTY: 'empty'
+  	EMPTY: 'empty',
+  	EXIT: 'exit',
+    START: 'start'
 };

@@ -1,24 +1,28 @@
 import Map from 'utils/rogue/map/Map'
 let mapServiceInstance = null;
 
-class MapService{
+class MapService {
 
-    constructor(){
-        if(!mapServiceInstance){
-              mapServiceInstance = this;
-              this.map = new Map(80,80);
+    constructor() {
+        if (!mapServiceInstance) {
+            mapServiceInstance = this;
+            this.map = new Map(80, 80);
         }
         return mapServiceInstance;
     }
 
-    getNewMap(param){
+    getNewMap(param) {
         return this.map.generateMap();
     }
 
-    monstersTurn(){
-      return this.map.monstersTurn();
+    monstersTurn() {
+        return this.map.monstersTurn();
     }
-    
+
+    getPath() {
+        return this.map.getPath(posX, posY, targetX, targetY);
+    }
+
     getCell(posX, posY) {
         return this.map.getCell(posX, posY);
     }

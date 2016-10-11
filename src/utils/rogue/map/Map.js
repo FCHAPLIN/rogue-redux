@@ -48,11 +48,10 @@ class Map {
     }
 
     monstersTurn(){
-
       for (let monster of this.data.livings){
         monster.doYourStuff(this.data.openCells);
       }
-      return {}
+      return this.data.livings;
     }
 }
 export default Map;
