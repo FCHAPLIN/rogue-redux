@@ -47,9 +47,10 @@ class Map {
         return this.data.map2d[posX][posY];
     }
 
-    monstersTurn(){
+    monstersTurn(playerCell){
+    
       for (let monster of this.data.livings){
-        monster.doYourStuff(this.data.openCells);
+        monster.doYourStuff(this.data.map2d, this.data.openCells, playerCell );
       }
       return this.data.livings;
     }

@@ -23,16 +23,17 @@ export const inputKeyAction = (keycode, posX, posY) => {
                 targetCell = mapService.getCell(posX + 1, posY);
                 break;
         }
-        if (!targetCell.obst) {
+        if (targetCell && !targetCell.obst) {
             dispatch(playerMoveProcessAction(keycode));
+            dispatch(monstersTurnAction(targetCell));
         }
-        dispatch(monstersTurnAction());
+
     }
 }
 
-export const monstersTurnAction = () => {
+export const monstersTurnAction = (targetCell) => {
   return (dispatch) => {
-    let results = mapService.monstersTurn();
+    let results = mapService.monstersTurn(targetCell);
     dispatch(turnResultsAction(results));
   }
 }

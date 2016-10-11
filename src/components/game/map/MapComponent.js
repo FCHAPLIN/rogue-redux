@@ -55,7 +55,7 @@ class MapComponent extends Component {
         let livings = map.mapData.livings;
         if (store.data.viewport){
           let viewport = store.data.viewport;
-          console.log(viewport);
+          
           mapStyle = {
             left: 0 - (viewport.posX-viewport.width*0.5) * 50,
             top: 0 - (viewport.posY-viewport.height*0.5) * 50

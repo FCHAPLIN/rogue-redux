@@ -15,8 +15,9 @@ class MapService {
         return this.map.generateMap();
     }
 
-    monstersTurn() {
-        return this.map.monstersTurn();
+    monstersTurn(playerCell) {
+    
+        return this.map.monstersTurn(playerCell);
     }
 
     getPath() {

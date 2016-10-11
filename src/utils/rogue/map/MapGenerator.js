@@ -6,7 +6,6 @@ import Monster from 'utils/rogue/map/Monster';
 import Room from 'utils/rogue/map/Room';
 import Cell from 'utils/rogue/map/Cell';
 import CorridorMaker from 'utils/rogue/map/CorridorMaker';
-import PathFinderEvent from 'utils/rogue/pathfinding/PathFinderEvent';
 
 
 

@@ -55,7 +55,7 @@ class GameContainer extends Component {
     }
 
     render() {
-        console.log('update !');
+        
         const {data} = this.props
         return (
             <div>

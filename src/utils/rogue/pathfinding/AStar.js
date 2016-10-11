@@ -1,7 +1,5 @@
-'use strict';
-
-class CorridorMaker {
-    constructor(map, gridWidth, gridHeight, emitter) {
+class AStar {
+    constructor(map, gridWidth, gridHeight) {
         this.mapArray = map;
         this.gridWidth = gridWidth;
         this.gridHeight = gridHeight;
@@ -14,7 +12,7 @@ class CorridorMaker {
 
         this.openList = [];
         this.closedList = [];
-        this.emitter = emitter;
+
     }
     getCell(posX, posY) {
         let resultCell;
@@ -87,7 +85,7 @@ class CorridorMaker {
         let adjacentCell = [];
         for (let adjCellKey of this.currentCell.contiguousCells) {
             let adjCell = this.getCellByKey(adjCellKey);
-            if (adjCell.canBeCorridor && this.closedList.indexOf(adjCell) == -1) {
+            if (!adjCell.obst && this.closedList.indexOf(adjCell) == -1) {
                 adjacentCell.push(adjCell);
             }
         }
@@ -125,4 +123,4 @@ class CorridorMaker {
     }
 }
 
-export default CorridorMaker;
+export default AStar;
