@@ -31,7 +31,7 @@ class MapGenerator {
         this.generateCorridors();
         this.cleanBlindRooms();
         this.setContiguousCells(true);
-        this.startCell = this.setStartCell();
+        this.startCell = this.setStartCell(true);
         this.exitCell = this.setExitCell();
         this.generatePopulation();
         this.data = {
@@ -312,10 +312,11 @@ class MapGenerator {
             goodCell = false;
           }
         }
+        exitCell.cellType = CellConstants.EXIT
         return exitCell;
     }
 
-    setStartCell() {
+    setStartCell(player) {
       let goodCell = false;
       let startCell;
       while (goodCell != true) {
@@ -325,6 +326,9 @@ class MapGenerator {
         if (startCell.cellType != CellConstants.FLOOR){
           goodCell = false;
         }
+      }
+      if (player){
+        startCell.cellType = CellConstants.START;
       }
       return startCell;
     }

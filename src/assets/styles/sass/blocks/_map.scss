@@ -35,6 +35,15 @@
             &.door {
                 background-position: -100px 0;
             }
+
+            &.start {
+                background-position: 0 0;
+                background-image: url('../../../assets/img/stairs.png');
+            }
+            &.exit {
+                background-position: 0 -50px;
+                background-image: url('../../../assets/img/stairs.png');
+            }
         }
 
         .player {
