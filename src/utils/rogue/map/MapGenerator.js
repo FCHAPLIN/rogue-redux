@@ -369,7 +369,18 @@ class MapGenerator {
     generatePopulation(level) {
         let livingsLevel = 40;
         while (livingsLevel > 0){
-          let cell = this.setStartCell();
+            let goodCell;
+            let cell
+            while(!goodCell){
+                goodCell=true;
+                cell = this.setStartCell();
+                for (let i=0; i<this.livings; i++){
+                    let monst = this.livings[i];
+                    if (monst.cell.posX == cell.posX || monst.cell.posY == cell.posY){
+                        goodCell=false;
+                    }
+                }
+            }
           let monster;
           let monsterType;
           let monsterLevel = 1;
