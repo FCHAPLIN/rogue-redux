@@ -1,8 +1,8 @@
-'use strict';
-
 import CellConstants from 'utils/rogue/map/CellConstants';
 import MonsterConstants from 'utils/rogue/map/MonsterConstants';
+import TreasureConstants from 'utils/rogue/map/TreasureConstants';
 import Monster from 'utils/rogue/map/Monster';
+import Treasure from 'utils/rogue/map/Treasure';
 import Room from 'utils/rogue/map/Room';
 import Cell from 'utils/rogue/map/Cell';
 import CorridorMaker from 'utils/rogue/map/CorridorMaker';
@@ -31,6 +31,7 @@ class MapGenerator {
         this.generateCorridors();
         this.cleanBlindRooms();
         this.setContiguousCells(true);
+        this.generateTreasures();
         this.startCell = this.setStartCell(true);
         this.exitCell = this.setExitCell();
         this.generatePopulation();
@@ -114,7 +115,7 @@ class MapGenerator {
         }
     }
 
-    getCellByKey(key){
+    getCellByKey(key) {
         let pos = key.split('-');
         let c = this.getCell(pos[0], pos[1]);
         return c;
@@ -167,16 +168,16 @@ class MapGenerator {
             this.rooms.push(room);
         }
     }
-    cleanBlindRooms(){
-      for (let room of this.rooms){
-        if (room.doors.length == 0){
-          let cells = this.getRectangularCells(room.posX, room.posY, room.roomWidth, room.roomHeight);
-          for (let c of cells){
-            c.cellType = CellConstants.EMPTY;
-            c.obst = true;
-          }
+    cleanBlindRooms() {
+        for (let room of this.rooms) {
+            if (room.doors.length == 0) {
+                let cells = this.getRectangularCells(room.posX, room.posY, room.roomWidth, room.roomHeight);
+                for (let c of cells) {
+                    c.cellType = CellConstants.EMPTY;
+                    c.obst = true;
+                }
+            }
         }
-      }
     }
     generateCorridors() {
         //S'assurer que toutes les rooms sont connectées
@@ -305,32 +306,32 @@ class MapGenerator {
         let goodCell = false;
         let exitCell;
         while (goodCell != true) {
-          goodCell = true;
-          let rn = Math.floor(Math.random() * this.openCells.length);
-          exitCell = this.openCells[rn];
-          if (exitCell.cellType != CellConstants.FLOOR){
-            goodCell = false;
-          }
+            goodCell = true;
+            let rn = Math.floor(Math.random() * this.openCells.length);
+            exitCell = this.openCells[rn];
+            if (exitCell.cellType != CellConstants.FLOOR) {
+                goodCell = false;
+            }
         }
         exitCell.cellType = CellConstants.EXIT
         return exitCell;
     }
 
     setStartCell(player) {
-      let goodCell = false;
-      let startCell;
-      while (goodCell != true) {
-        goodCell = true;
-        let rn = Math.floor(Math.random() * this.openCells.length);
-        startCell = this.openCells[rn];
-        if (startCell.cellType != CellConstants.FLOOR){
-          goodCell = false;
+        let goodCell = false;
+        let startCell;
+        while (goodCell != true) {
+            goodCell = true;
+            let rn = Math.floor(Math.random() * this.openCells.length);
+            startCell = this.openCells[rn];
+            if (startCell.cellType != CellConstants.FLOOR) {
+                goodCell = false;
+            }
         }
-      }
-      if (player){
-        startCell.cellType = CellConstants.START;
-      }
-      return startCell;
+        if (player) {
+            startCell.cellType = CellConstants.START;
+        }
+        return startCell;
     }
 
     getCell(posX, posY) {
@@ -368,42 +369,65 @@ class MapGenerator {
 
     generatePopulation(level) {
         let livingsLevel = 40;
-        while (livingsLevel > 0){
+        while (livingsLevel > 0) {
             let goodCell;
             let cell
-            while(!goodCell){
-                goodCell=true;
+            while (!goodCell) {
+                goodCell = true;
                 cell = this.setStartCell();
-                for (let i=0; i<this.livings; i++){
+                for (let i = 0; i < this.livings; i++) {
                     let monst = this.livings[i];
-                    if (monst.cell.posX == cell.posX || monst.cell.posY == cell.posY){
-                        goodCell=false;
+                    if (monst.cell.posX == cell.posX || monst.cell.posY == cell.posY) {
+                        goodCell = false;
                     }
                 }
             }
-          let monster;
-          let monsterType;
-          let monsterLevel = 1;
-          let rnd = this.randomize(1,3);
-          switch (rnd){
+            let monster;
+            let monsterType;
+            let monsterLevel = 1;
+            let rnd = this.randomize(1, 3);
+            switch (rnd) {
             case 1:
-              monsterType = MonsterConstants.ORC;
-              break;
+                monsterType = MonsterConstants.ORC;
+                break;
             case 2:
-              monsterType = MonsterConstants.CYCLOP;
-              break;
+                monsterType = MonsterConstants.CYCLOP;
+                break;
             case 3:
-              monsterType = MonsterConstants.GOBLIN;
-              break;
-          }
-          monster = new Monster(cell, monsterType,monsterLevel);
-          //cell.content = monster;
-          this.livings.push(monster);
-          livingsLevel -=monsterLevel;
-
+                monsterType = MonsterConstants.GOBLIN;
+                break;
+            }
+            monster = new Monster(cell, monsterType, monsterLevel);
+            //cell.content = monster;
+            this.livings.push(monster);
+            livingsLevel -= monsterLevel;
         }
+    }
 
+    generateTreasures() {
+        let treasureLevel = 40;
+        while (treasureLevel > 0) {
+            let cell = this.setStartCell();
+            let treasure;
+            let treasureType;
+            let treasureLevel = 1;
+            let rnd = this.randomize(1, 3);
+            switch (rnd) {
+            case 1:
+                treasureType = TreasureConstants.GOLD;
+                break;
+            case 2:
+                treasureType = TreasureConstants.CHEST;
+                break;
+            case 3:
+                treasureType = TreasureConstants.POTION;
+                break;
+            }
+            treasure = new Treasure(treasureType, treasureLevel);
+            cell.content = treasure;
+            treasureLevel -= treasureLevel;
+            console.log(treasureLevel);
+        }
     }
 }
-
 export default MapGenerator;
