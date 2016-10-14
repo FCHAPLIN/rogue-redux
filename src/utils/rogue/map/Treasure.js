@@ -4,7 +4,7 @@ import TreasureConstants from 'utils/rogue/map/TreasureConstants';
 
 class Treasure {
     constructor(treasureType, treasureLevel) {
-        this.treasureType = treasureType;
+        this.type = treasureType;
     }
 }
 export default Treasure;

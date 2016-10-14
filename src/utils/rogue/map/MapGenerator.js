@@ -406,11 +406,11 @@ class MapGenerator {
 
     generateTreasures() {
         let treasureLevel = 40;
+        console.log('create treasure !')
         while (treasureLevel > 0) {
             let cell = this.setStartCell();
             let treasure;
             let treasureType;
-            let treasureLevel = 1;
             let rnd = this.randomize(1, 3);
             switch (rnd) {
             case 1:
@@ -423,10 +423,11 @@ class MapGenerator {
                 treasureType = TreasureConstants.POTION;
                 break;
             }
-            treasure = new Treasure(treasureType, treasureLevel);
-            cell.content = treasure;
-            treasureLevel -= treasureLevel;
-            console.log(treasureLevel);
+            treasure = new Treasure(treasureType, 1);
+            cell.cellContent.push(treasure);
+            treasureLevel = treasureLevel-1;
+            console.log(treasure);
+            console.log(cell)
         }
     }
 }
