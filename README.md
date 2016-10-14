@@ -27,7 +27,7 @@ $ npm start
 make a production build:
 
 ```sh
-$ npm build
+$ npm run build
 ```
 
 ## Credits

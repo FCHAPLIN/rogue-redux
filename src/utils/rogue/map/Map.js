@@ -79,7 +79,7 @@ class Map {
         return result;
     }
 
-    monstersTurn(playerCell){
+    monstersTurn(playerCell: Cell){
       for (let monster of this.data.livings){
           if (monster.patience>5){
               console.log('my patience is out!!!')

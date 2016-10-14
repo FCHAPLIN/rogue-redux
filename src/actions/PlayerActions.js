@@ -1,6 +1,7 @@
 import MapService from 'services/MapService'
 export const PLAYER_DIED = 'PLAYER_DIED';
 export const PLAYER_MOVE = 'PLAYER_MOVE';
+export const PLAYER_GET_ITEM = 'PLAYER_GET_ITEM';
 export const PLAYER_ATTACK = 'PLAYER_ATTACK';
 export const TURN_RESULT = 'TURN_RESULT';
 
@@ -25,9 +26,19 @@ export const inputKeyAction = (keycode, posX, posY) => {
         }
         if (targetCell && !targetCell.obst) {
             dispatch(playerMoveProcessAction(keycode));
+            if (targetCell.cellContent.length){
+                dispatch(playerGetItemsAction(targetCell));
+            }
             dispatch(monstersTurnAction(targetCell));
         }
 
+    }
+}
+
+export const playerGetItemsAction = (targetCell) => {
+    return {
+        type: PLAYER_GET_ITEM,
+        targetCell
     }
 }
 
