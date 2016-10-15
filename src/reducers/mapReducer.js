@@ -1,6 +1,3 @@
-import {  MAP_REQUEST_START,
-          MAP_REQUEST_SUCCESS,
-          MAP_REQUEST_ERROR } from 'actions/MapActions'
 
 
 const map = (state = {}, action) => {
@@ -9,6 +6,7 @@ const map = (state = {}, action) => {
         return Object.assign({}, state, {
             mapData: action.mapData
         })
+
     case 'MAP_REQUEST_ERROR':
         return Object.assign({}, state, {
             error: 'Errorrrrrrr !'

@@ -15,9 +15,7 @@ const Interface = (props) => (
                 <li>
                     <span className="item class">{props.data.player.class}</span>
                 </li>
-                <li>
-                    <span className="item">Life : 20/20</span>
-                </li>
+
               </ul>
           </div>
           <div>
@@ -33,6 +31,19 @@ const Interface = (props) => (
                 </li>
             </ul>
         </div>
+        <div>
+            <ul>
+              <li>
+                  <span className="item">Life : {props.data.player.life}/{props.data.player.maxLife}</span>
+              </li>
+              <li>
+                  <span className="item">Experience : {props.data.player.experience}</span>
+              </li>
+              <li>
+                  <span className="item">Gold: {props.data.player.gold}</span>
+              </li>
+          </ul>
+      </div>
         <div><Link className="back-menu" to='Home'><i className="icon-library"></i></Link></div>
     </div>
 )

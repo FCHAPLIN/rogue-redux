@@ -48,8 +48,13 @@ class Map {
     }
     getCells(cellKeys) {
         let cells= [];
-
         return cells;
+    }
+
+    setCellContent(cell, content) {
+        let targetCell= this.getCell(cell.posX,cell.posY);
+        targetCell.cellContent = content;
+        return targetCell;
     }
 
     getPath(posX, posY, targetX, targetY){
@@ -70,9 +75,6 @@ class Map {
 
             if (monst.cell.posX == cell.posX && monst.cell.posY == cell.posY){
                 result=true;
-                console.log(cell);
-                console.log(monst.cell);
-                console.log('occupied');
                 break;
             }
         }
@@ -82,7 +84,6 @@ class Map {
     monstersTurn(playerCell: Cell){
       for (let monster of this.data.livings){
           if (monster.patience>5){
-              console.log('my patience is out!!!')
               monster.path = [];
               monster.goalType = MonsterConstants.WANDERING;
               monster.patience=0;

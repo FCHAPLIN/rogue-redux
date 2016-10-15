@@ -2,7 +2,6 @@ import React, {Component, PropTypes} from 'react'
 import CellContent from 'components/game/map/CellContent'
 
 function getContentElement(content){
-    console.log(content);
     return (
       <CellContent
         key={content.key}

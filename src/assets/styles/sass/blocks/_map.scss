@@ -14,7 +14,7 @@
         left: 0;
 
         transition-duration: .2s;
-        transition-property: all;
+        transition-property: top left;
 
         .cell
         {
@@ -85,7 +85,7 @@
             margin-left: 8px;
 
             transition-duration: .2s;
-            transition-property: all;
+            transition-property: top left;
 
             background-image: url('../../../assets/img/heroes.png');
             background-position: 0 0;
@@ -100,7 +100,7 @@
             margin-left: 8px;
 
             transition-duration: .2s;
-            transition-property: all;
+            transition-property: top left;
             &.ORC
             {
                 background-image: url('../../../assets/img/foes.png');

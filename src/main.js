@@ -24,6 +24,10 @@ const initialState = {
             intelect : 5,
             dexterity : 10
         },
+        gold:0,
+        maxLife:20,
+        experience:0,
+        life:10,
         posX: 1,
         posY: 1
     },

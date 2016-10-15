@@ -406,7 +406,6 @@ class MapGenerator {
 
     generateTreasures() {
         let treasureLevel = 40;
-        console.log('create treasure !')
         while (treasureLevel > 0) {
             let cell = this.setStartCell();
             let treasure;
@@ -426,8 +425,6 @@ class MapGenerator {
             treasure = new Treasure(treasureType, 1);
             cell.cellContent.push(treasure);
             treasureLevel = treasureLevel-1;
-            console.log(treasure);
-            console.log(cell)
         }
     }
 }

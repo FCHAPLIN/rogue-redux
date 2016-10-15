@@ -14,9 +14,10 @@ class MapService {
     getNewMap(param) {
         return this.map.generateMap();
     }
-
+    setCellContent(cell, content) {
+        return this.map.setCellContent(cell, content);
+    }
     monstersTurn(playerCell) {
-    
         return this.map.monstersTurn(playerCell);
     }
 

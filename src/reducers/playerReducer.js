@@ -3,6 +3,7 @@ import {  PLAYER_NAME_CHANGE,
           PLAYER_SUBMIT } from 'actions'
 import { SET_START_CELL } from 'actions/MapActions'
 
+
 const player = (state = {}, action) => {
   switch (action.type) {
     case SET_START_CELL :
@@ -10,7 +11,15 @@ const player = (state = {}, action) => {
         posX: action.startCell.posX,
         posY: action.startCell.posY
       })
-
+    case 'PLAYER_GET_POTION':
+        let newLife = Math.min(state.life+action.value, state.maxLife)
+        return Object.assign({}, state, {
+          life:newLife
+        })
+    case 'PLAYER_GET_GOLD':
+        return Object.assign({}, state, {
+          gold: state.gold+action.value
+        })
     case 'PLAYER_NAME_CHANGE':
       return Object.assign({}, state, {
         name: action.value
@@ -58,7 +67,6 @@ const player = (state = {}, action) => {
     case 'PLAYER_SUBMIT':
         return Object.assign({}, state, {
           submited: 'true'
-
         })
     case 'PLAYER_MOVE':
         switch (action.keycode) {
