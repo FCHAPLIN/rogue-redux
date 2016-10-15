@@ -1,52 +1,54 @@
-const webpack = require('webpack');
-const path = require('path');
+"use strict";
+var webpack = require('webpack');
+var path = require('path');
+var loaders = require('./webpack.loaders');
+var HtmlWebpackPlugin = require('html-webpack-plugin');
 const autoprefixer = require('autoprefixer');
 
-var config = {
-    entry: './src/main.js',
-    output: {
-        path: "./bin",
-        publicPath: "/assets/",
-        filename: "bundle.js"
-    },
+const HOST = process.env.HOST || "127.0.0.1";
+const PORT = process.env.PORT || "8080";
 
-    devServer: {
-        contentBase: "./bin",
-        inline: true,
-        historyApiFallback: true,
-        hot: true,
-        port: 8080
-    },
+// global css
+loaders.push({
+	test: /[\/\\](node_modules|global)[\/\\].*\.css$/,
+	loaders: [
+		'style?sourceMap',
+		'css'
+	]
+});
 
-    module: {
-        loaders: [
-            { test: /\.woff(2)?(\?[a-z0-9]+)?$/, loader: "url-loader?limit=10000&mimetype=application/font-woff" },
-            { test: /\.(ttf|eot|svg)(\?[a-z0-9]+)?$/, loader: "file-loader" }, {
-                test: /\.css$/,
-                loader: "style-loader!css-loader!resolve-url-loader!postcss-loader"
-            },
+module.exports = {
+  entry: './src/main.js',
+  output: {
+      path: "./bin",
+      publicPath: "/assets/",
+      filename: "bundle.js"
+  },
 
-            {
-                test: /\.scss$/,
-                loader: "style-loader!css-loader!resolve-url-loader!sass-loader"
-            },
-            { test: /\.png$/, loader: "url-loader?limit=1000000" },
-            { test: /\.jpg$/, loader: "file-loader" },
-            { test: /\.jsx?$/, exclude: /node_modules/, loader: 'babel-loader' }
-        ]
-    },
-    postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
-    plugins: [
-        new webpack.DefinePlugin({
-            'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
-        })
-    ],
-    resolve: {
-        extensions: ['', '.js', '.css', '.png'],
-        root: [
-            path.resolve('./src')
-        ]
-    }
-}
+  devServer: {
+      contentBase: "./bin",
+      inline: true,
+      historyApiFallback: true,
+      hot: true,
+      port: 8080
+  },
+	resolve: {
+		extensions: ['', '.js', '.jsx'],
+    root: [
+        path.resolve('./src')
+    ]
+	},
+	module: {
+		loaders
+	},
+  postcss: [ autoprefixer({ browsers: ['last 2 versions'] }) ],
 
-  module.exports = config;
+	plugins: [
+    new webpack.DefinePlugin({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV)
+    }),
+		new HtmlWebpackPlugin({
+			template: './src/template.html'
+		}),
+	]
+};
