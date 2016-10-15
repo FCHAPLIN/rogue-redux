@@ -1,73 +1,120 @@
-.map-wrapper {
+.map-wrapper
+{
     position: relative;
+
     overflow: hidden;
+
     width: 100%;
     height: 80vh;
 
-    .map-container {
+    .map-container
+    {
         position: absolute;
         top: 0;
         left: 0;
-        transition-duration: 0.2s;
+
+        transition-duration: .2s;
         transition-property: all;
 
-        .cell {
+        .cell
+        {
             position: absolute;
+
             width: 50px;
             height: 50px;
+
             background-image: url('../../../assets/img/tiles50x50.jpg');
 
-            &.empty {
+            &.empty
+            {
                 background-position: 0 0;
             }
 
             &.corner,
-            &.wall {
+            &.wall
+            {
                 background-color: #000;
                 background-position: 0 0;
             }
 
-            &.floor {
+            &.floor
+            {
                 background-color: #444;
                 background-position: -50px 0;
             }
 
-            &.door {
+            &.door
+            {
                 background-position: -100px 0;
+            }
+
+            &.start
+            {
+                background-position: -150px 0;
+            }
+            &.exit
+            {
+                background-position: -200px 0;
+            }
+            .item{
+              position:absolute;
+              top:0px;
+              left:0px;
+              width: 100%;
+              height:100%;
+              background-image: url('../../../assets/img/items.png');
+              &.treasure{
+                background-position: -0px 0;
+              }
+              &.potion{
+                background-position: -50px 0;
+              }
+              &.gold{
+                background-position: -100px 0;
+              }
             }
         }
 
-        .player {
+        .player
+        {
             position: absolute;
+
             width: 32px;
             height: 32px;
             margin-top: 8px;
             margin-left: 8px;
-            transition-duration: 0.2s;
+
+            transition-duration: .2s;
             transition-property: all;
+
             background-image: url('../../../assets/img/heroes.png');
             background-position: 0 0;
         }
-        .monster {
+        .monster
+        {
             position: absolute;
+
             width: 32px;
             height: 32px;
             margin-top: 8px;
             margin-left: 8px;
-            transition-duration: 0.2s;
-            transition-property: all;
-            &.ORC{
-              background-image: url('../../../assets/img/foes.png');
-              background-position: 0 0;
 
+            transition-duration: .2s;
+            transition-property: all;
+            &.ORC
+            {
+                background-image: url('../../../assets/img/foes.png');
+                background-position: 0 0;
             }
-            &.GOBLIN{
-              background-image: url('../../../assets/img/foes.png');
-              background-position: -96px 0;
+            &.GOBLIN
+            {
+                background-image: url('../../../assets/img/foes.png');
+                background-position: -96px 0;
             }
-            &.CYCLOP{
-              background-image: url('../../../assets/img/foes.png');
-              background-position: -192px 0;
+            &.CYCLOP
+            {
+                background-image: url('../../../assets/img/foes.png');
+                background-position: -192px 0;
             }
         }
     }

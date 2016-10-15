@@ -13,7 +13,9 @@ const AboutComponent = () => (
 			<p></p>
 			<h2>Thanks to the sprites designers : </h2>
 			<p><a href="http://hanatoa.deviantart.com/">Hanatoa: </a><a href="http://hanatoa.deviantart.com/art/Random-Enemies-Sprites-vx-ace-558695978">the foes and heroe sprites</a></p>
-			<p><a href="http://ayene-chan.deviantart.com/">Ayene-chan: </a><a href="http://ayene-chan.deviantart.com/art/RPG-Maker-VX-Gate-IV-290332458">the doors sprites</a></p>
+            <p><a href="http://www.rpgmakercentral.com/topic/16280-charlesthehursts-resources/">Charles Hurst: </a><a href="http://www.rpgmakercentral.com/topic/16280-charlesthehursts-resources/">the chests</a></p>
+			<p><a href="http://7soul1.deviantart.com/">7soul1: </a><a href="http://www.deviantart.com/art/Extra-98-Free-RPG-Icons-389778011">items sprites</a></p>
+            <p><a href="http://ayene-chan.deviantart.com/">Ayene-chan: </a><a href="http://ayene-chan.deviantart.com/art/RPG-Maker-VX-Gate-IV-290332458">the doors sprites</a></p>
 			<p>I didn't found the author of the floor and wall sets. If he recognize it's work, i'll make him somme room here :)</p>
 		</div>
 		<div className="description">

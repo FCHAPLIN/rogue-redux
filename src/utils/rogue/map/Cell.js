@@ -5,7 +5,7 @@ class Cell {
         this.posX = posX;
         this.posY = posY;
         this.cellType = cellType;
-        this.content = [];
+        this.cellContent = [];
         this.room = false;
         this.obst= true;
         this.canBeCorridor = true;

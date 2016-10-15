@@ -4,7 +4,7 @@ import {dispatch} from 'redux'
 import {mapRequestStartAction} from 'actions/MapActions'
 import {inputKeyAction} from 'actions/PlayerActions'
 import shallowCompare from 'react-addons-shallow-compare';
-import MapComponent from 'components/game/map/MapComponent'
+import MapComponent from 'components/game/map/MapComponent';
 import Interface from 'components/game/interface/Interface';
 
 class GameContainer extends Component {
@@ -55,7 +55,7 @@ class GameContainer extends Component {
     }
 
     render() {
-        console.log('update !');
+
         const {data} = this.props
         return (
             <div>

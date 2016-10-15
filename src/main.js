@@ -9,6 +9,12 @@ import config from 'config'
 import {screenResizeAction} from 'actions/UIActions'
 import 'assets/styles/sass/main.scss'
 
+//TO DO for install app locally
+//Register service worker
+//Check registration point and listen install event
+//In callback, set up cache manifest
+//listen fetch events to get content from the cache
+
 const initialState = {
     player: {
         name: 'Grûh the Great',

@@ -1,5 +1,7 @@
 export default {
   	ORC: 'ORC',
   	GOBLIN: 'GOBLIN',
-  	CYCLOP: 'CYCLOP'
+  	CYCLOP: 'CYCLOP',
+    ATTACK: 'ATTACK',
+    WANDERING: 'WANDERING'
 };
