@@ -11,6 +11,11 @@ const player = (state = {}, action) => {
         posX: action.startCell.posX,
         posY: action.startCell.posY
       })
+    case 'TURN_RESULT':{
+        return Object.assign({}, state, {
+            life: state.life - action.totalDamage
+        })
+    }
     case 'PLAYER_GET_POTION':
         let newLife = Math.min(state.life+action.value, state.maxLife)
         return Object.assign({}, state, {

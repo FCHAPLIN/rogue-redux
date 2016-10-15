@@ -29,28 +29,37 @@ export const inputKeyAction = (keycode, posX, posY) => {
         }
 
         if (targetCell && !targetCell.obst) {
+          if (targetCell.occupant) {
+              console.log('there is somebody on this cell !');
+              console.log(targetCell.occupant);
+              mapService.playerAttack(targetCell.occupant);
+          }else{
             if (targetCell.cellContent.length) {
-                console.log(targetCell.cellContent);
-                for (let content of targetCell.cellContent) {
-                    switch (content.type) {
-                        case 'potion':
-                            dispatch(playerGetPotionAction(5));
-                            break;
-                        case 'gold':
-                            dispatch(playerGetGoldAction(20));
-                            break;
-                        case 'chest':
-                            dispatch(playerGetGoldAction(100));
-                            break;
-                    }
+              console.log(targetCell.cellContent);
+              for (let content of targetCell.cellContent) {
+                switch (content.type) {
+                  case 'potion':
+                  dispatch(playerGetPotionAction(5));
+                  break;
+                  case 'gold':
+                  dispatch(playerGetGoldAction(20));
+                  break;
+                  case 'chest':
+                  dispatch(playerGetGoldAction(100));
+                  break;
                 }
-                mapService.setCellContent(targetCell, []);
+              }
+              mapService.setCellContent(targetCell, []);
             }
             dispatch(playerMoveProcessAction(keycode));
-            dispatch(monstersTurnAction(targetCell));
+
             if (targetCell.cellType == 'exit'){
-                dispatch(mapRequestStartAction());
+              dispatch(mapRequestStartAction());
             }
+          }
+
+
+            dispatch(monstersTurnAction(targetCell));
         }
     }
 }
@@ -73,6 +82,7 @@ export const playerGetGoldAction = (value) => {
 export const monstersTurnAction = (targetCell) => {
     return (dispatch) => {
         let results = mapService.monstersTurn(targetCell);
+        console.log(results);
         dispatch(turnResultsAction(results));
     }
 }
@@ -85,9 +95,13 @@ export const playerMoveProcessAction = (keycode) => {
 }
 
 export const turnResultsAction = (results) => {
+    let totalDamage = 0;
+    for (let damage of results[1]){
+      totalDamage+=damage;
+    }
     return {
         type: TURN_RESULT,
-        results
+        totalDamage
     }
 }
 

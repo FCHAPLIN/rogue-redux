@@ -1,5 +1,5 @@
 export default {
-  mapWidth: 80,
-  mapHeight:80,
+  mapWidth: 40,
+  mapHeight:40,
   cellSize:50
 }

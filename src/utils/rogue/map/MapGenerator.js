@@ -375,12 +375,11 @@ class MapGenerator {
             while (!goodCell) {
                 goodCell = true;
                 cell = this.setStartCell();
-                for (let i = 0; i < this.livings; i++) {
-                    let monst = this.livings[i];
-                    if (monst.cell.posX == cell.posX || monst.cell.posY == cell.posY) {
-                        goodCell = false;
-                    }
+
+                if (cell.occupant) {
+                    goodCell = false;
                 }
+
             }
             let monster;
             let monsterType;
@@ -398,6 +397,7 @@ class MapGenerator {
                 break;
             }
             monster = new Monster(cell, monsterType, monsterLevel);
+            cell.occupant=monster.key;
             //cell.content = monster;
             this.livings.push(monster);
             livingsLevel -= monsterLevel;
