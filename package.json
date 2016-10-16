@@ -48,5 +48,8 @@
     "webpack": "^1.13.1",
     "webpack-cleanup-plugin": "^0.4.1",
     "webpack-dev-server": "^1.14.1"
+  },
+  "devDependencies": {
+    "jest": "^16.0.1"
   }
 }
