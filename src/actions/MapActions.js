@@ -13,6 +13,7 @@ export const mapRequestStartAction = () => {
         let data = mapService.getNewMap();
         dispatch(mapRequestSuccessAction(data));
         dispatch(setStartCellAction(data.start));
+        window.dispatchEvent(new Event('resize'));
     }
 }
 

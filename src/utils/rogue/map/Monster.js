@@ -1,7 +1,6 @@
 import CellConstants from 'utils/rogue/map/CellConstants';
 import MonsterConstants from 'utils/rogue/map/MonsterConstants';
 
-
 class Monster {
     constructor(cell, monsterType, monsterLevel) {
         this.cell = cell;
@@ -14,7 +13,7 @@ class Monster {
         this.path = [];
         this.life = 10;
         this.dexterity = 5;
-        this.strength = 5;
+        this.strength = 2;
         this.intelect = 5;
         this.patience=0;
     }
@@ -25,15 +24,19 @@ class Monster {
         let distanceToGoal;
         if (this.goalType == MonsterConstants.WANDERING) {
             if (this.path.length > 0) {
+                this.cell.occupant = false;
                 this.cell = this.path.pop();
                 this.posX = this.cell.posX;
                 this.posY = this.cell.posY;
+                this.cell.occupant = this.key;
             }
         } else if (this.goalType == MonsterConstants.ATTACK) {
             if (this.path.length > 1) {
+                this.cell.occupant = false;
                 this.cell = this.path.pop();
                 this.posX = this.cell.posX;
                 this.posY = this.cell.posY;
+                this.cell.occupant = this.key;
             } else {
                 this.attack();
             }
@@ -41,7 +44,7 @@ class Monster {
     }
 
     attack() {
-        console.log('I am a ' + this.monsterType + ' ! I attack the player !');
+        return this.strength;
     }
 
     detectPlayer(playerCell) {
@@ -51,8 +54,6 @@ class Monster {
         } else {
             return false;
         }
-
     }
-
 }
 export default Monster;

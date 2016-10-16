@@ -1,5 +1,8 @@
 import MapService from 'services/MapService';
-import { SET_START_CELL, mapRequestStartAction } from 'actions/MapActions';
+import {
+    SET_START_CELL,
+    mapRequestStartAction
+} from 'actions/MapActions';
 
 export const PLAYER_DIED = 'PLAYER_DIED';
 export const PLAYER_MOVE = 'PLAYER_MOVE';
@@ -13,6 +16,7 @@ let mapService = new MapService();
 export const inputKeyAction = (keycode, posX, posY) => {
     return (dispatch) => {
         let targetCell;
+        let originCell = mapService.getCell(posX, posY);
         switch (keycode) {
             case 'ArrowDown':
                 targetCell = mapService.getCell(posX, posY + 1);
@@ -29,28 +33,33 @@ export const inputKeyAction = (keycode, posX, posY) => {
         }
 
         if (targetCell && !targetCell.obst) {
-            if (targetCell.cellContent.length) {
-                console.log(targetCell.cellContent);
-                for (let content of targetCell.cellContent) {
-                    switch (content.type) {
-                        case 'potion':
-                            dispatch(playerGetPotionAction(5));
-                            break;
-                        case 'gold':
-                            dispatch(playerGetGoldAction(20));
-                            break;
-                        case 'chest':
-                            dispatch(playerGetGoldAction(100));
-                            break;
+            if (targetCell.occupant) {
+                mapService.playerAttack(targetCell.occupant);
+                targetCell = originCell;
+            } else {
+                if (targetCell.cellContent.length) {
+                    for (let content of targetCell.cellContent) {
+                        switch (content.type) {
+                            case 'potion':
+                                dispatch(playerGetPotionAction(5));
+                                break;
+                            case 'gold':
+                                dispatch(playerGetGoldAction(20));
+                                break;
+                            case 'chest':
+                                dispatch(playerGetGoldAction(100));
+                                break;
+                        }
                     }
+                    mapService.setCellContent(targetCell, []);
                 }
-                mapService.setCellContent(targetCell, []);
+                dispatch(playerMoveProcessAction(keycode));
+
+                if (targetCell.cellType == 'exit') {
+                    dispatch(mapRequestStartAction());
+                }
             }
-            dispatch(playerMoveProcessAction(keycode));
             dispatch(monstersTurnAction(targetCell));
-            if (targetCell.cellType == 'exit'){
-                dispatch(mapRequestStartAction());
-            }
         }
     }
 }
@@ -73,6 +82,7 @@ export const playerGetGoldAction = (value) => {
 export const monstersTurnAction = (targetCell) => {
     return (dispatch) => {
         let results = mapService.monstersTurn(targetCell);
+        console.log(results);
         dispatch(turnResultsAction(results));
     }
 }
@@ -85,9 +95,13 @@ export const playerMoveProcessAction = (keycode) => {
 }
 
 export const turnResultsAction = (results) => {
+    let totalDamage = 0;
+    for (let damage of results[1]) {
+        totalDamage += damage;
+    }
     return {
         type: TURN_RESULT,
-        results
+        totalDamage
     }
 }
 
