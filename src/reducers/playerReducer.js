@@ -39,6 +39,24 @@ const player = (state = {}, action) => {
                 intelect:5,
                 dexterity:10
               },
+              gold:0,
+              maxLife:20,
+              experience:0,
+              life:20,
+              armor : {
+                  type : 'mail armor',
+                  name : 'mail armor',
+                  bonus: 0,
+                  ac: 8,
+              },
+              weapon:{
+                  type: 'sword',
+                  name: 'sword',
+                  bonus: 0,
+                  damageMin: 4,
+                  damageMax: 8
+              },
+              inventory:[],
               posX:1,
               posY:1
             })
@@ -50,20 +68,23 @@ const player = (state = {}, action) => {
                 intelect:7,
                 dexterity:15
               },
+              armor : {
+                  type : 'leather armor',
+                  name : 'leather armor',
+                  bonus: 0,
+                  ac: 6,
+              },
+              weapon:{
+                  type: 'sword',
+                  name: 'sword',
+                  bonus: 0,
+                  damageMin: 4,
+                  damageMax: 10
+              },
+              inventory:[],
               posX:1,
               posY:1
 
-            })
-          case 'Mage':
-            return Object.assign({}, state, {
-              class: action.value,
-              traits : {
-                strength:5,
-                intelect:15,
-                dexterity:10
-              },
-              posX:1,
-              posY:1
             })
           default:
             return state

@@ -26,8 +26,22 @@ const initialState = {
         },
         gold:0,
         maxLife:20,
+        life:20,
         experience:0,
-        life:10,
+        armor : {
+            type : 'leather armor',
+            name : 'leather armor',
+            bonus: 0,
+            ac: 6,
+        },
+        weapon:{
+            type: 'sword',
+            name: 'sword',
+            bonus: 0,
+            damageMin: 4,
+            damageMax: 8
+        },
+        inventory:[],
         posX: 1,
         posY: 1
     },
