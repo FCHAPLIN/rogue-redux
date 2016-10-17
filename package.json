@@ -4,9 +4,12 @@
   "description": "Redux training",
   "main": "main.js",
   "scripts": {
-    "test": "test",
+    "test": "jest",
     "start": "webpack-dev-server --hot --display-error-details ",
     "build": "webpack --config webpack.production.config.js --progress --profile --colors"
+  },
+  "jest": {
+    "verbose": true
   },
   "author": "F.CHAPLIN",
   "license": "ISC",
@@ -50,6 +53,8 @@
     "webpack-dev-server": "^1.14.1"
   },
   "devDependencies": {
-    "jest": "^16.0.1"
+    "babel-jest": "^16.0.0",
+    "jest": "^16.0.1",
+    "react-test-renderer": "^15.3.2"
   }
 }
