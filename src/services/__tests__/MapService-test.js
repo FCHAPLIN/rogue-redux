@@ -1,7 +1,10 @@
-//test if it's a singleton
+import Map from 'utils/rogue/map/Map';
+import MapService from './../MapService';
+test('MapService', () => {
+    const mapServiceInstance = new MapService();
 
-//test if getNewMap() return a full map
+    this.map = new Map(80, 80);
 
-//test if getPath() return an array of cells
-
-//test if getCell() return a cell
+    expect(new MapService()).toBe(mapServiceInstance);
+    expect(mapServiceInstance. )
+});
