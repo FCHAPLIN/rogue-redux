@@ -1,10 +1,26 @@
 import Map from 'utils/rogue/map/Map';
 import MapService from './../MapService';
+import Cell from 'utils/rogue/map/Cell';
+
 test('MapService', () => {
     const mapServiceInstance = new MapService();
-
-    this.map = new Map(80, 80);
+    const map = mapServiceInstance.getNewMap();
+    const testCell = mapServiceInstance.getCell(1,1);
 
     expect(new MapService()).toBe(mapServiceInstance);
-    expect(mapServiceInstance. )
+    expect(map).toBeInstanceOf(Object);
+    expect(map.cells.length).toBeGreaterThan(0);
+    expect(map.openCells.length).toBeGreaterThan(0);
+    expect(map.rooms.length).toBeGreaterThan(4);
+    expect(map.map2d.length).toBeGreaterThan(8);
+    expect(map.map2d[0]).toBeInstanceOf(Array);
+    expect(map.corridors.length).toBeGreaterThan(4);
+    expect(map.livings.length).toBeGreaterThan(0);
+
+    expect(testCell).toBeInstanceOf(Cell);
+    expect(testCell.posX).toEqual(1);
+    expect(testCell.posY).toEqual(1);
+    expect(testCell.key).toBe("1-1");
+
+
 });
