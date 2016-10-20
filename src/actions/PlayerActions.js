@@ -11,9 +11,13 @@ export const PLAYER_GET_POTION = 'PLAYER_GET_POTION';
 export const PLAYER_GET_GOLD = 'PLAYER_GET_GOLD';
 export const PLAYER_ATTACK = 'PLAYER_ATTACK';
 export const TURN_RESULT = 'TURN_RESULT';
+export const PLAYER_MESSAGE = 'PLAYER_MESSAGE';
+export const REMOVE_MESSAGE = 'REMOVE_MESSAGE';
+
 let mapService = new MapService();
 
 export const inputKeyAction = (keycode, posX, posY) => {
+    console.log(keycode);
     return (dispatch) => {
         let targetCell;
         let originCell = mapService.getCell(posX, posY);
@@ -30,24 +34,42 @@ export const inputKeyAction = (keycode, posX, posY) => {
             case 'ArrowRight':
                 targetCell = mapService.getCell(posX + 1, posY);
                 break;
+            default:
+                break;
         }
 
         if (targetCell && !targetCell.obst) {
             if (targetCell.occupant) {
                 mapService.playerAttack(targetCell.occupant);
                 targetCell = originCell;
+                dispatch(playerMessageAction('YOU\'RE GOING TO DIIIIIE !'));
+                setTimeout(function() {
+                    dispatch(removeMessageAction());
+                },3000);
             } else {
                 if (targetCell.cellContent.length) {
                     for (let content of targetCell.cellContent) {
                         switch (content.type) {
                             case 'potion':
                                 dispatch(playerGetPotionAction(5));
+                                dispatch(playerMessageAction('Let\'s drink !'));
+                                setTimeout(function() {
+                                    dispatch(removeMessageAction());
+                                },3000);
                                 break;
                             case 'gold':
                                 dispatch(playerGetGoldAction(20));
+                                dispatch(playerMessageAction('I am soooo f..ng rich !'));
+                                setTimeout(function() {
+                                    dispatch(removeMessageAction());
+                                },3000);
                                 break;
                             case 'chest':
                                 dispatch(playerGetGoldAction(100));
+                                dispatch(playerMessageAction('Mmmmh... What\s \n inside this thing ?'));
+                                setTimeout(function() {
+                                    dispatch(removeMessageAction());
+                                },3000);
                                 break;
                         }
                     }
@@ -60,7 +82,23 @@ export const inputKeyAction = (keycode, posX, posY) => {
                 }
             }
             dispatch(monstersTurnAction(targetCell));
+        }else{
+            dispatch(playerMessageAction('OMAGAD !!! \n I FU..ING SPEAK !!!'));
+            setTimeout(function() {
+                dispatch(removeMessageAction());
+            },3000);
         }
+    }
+}
+export const removeMessageAction = () => {
+    return {
+        type: REMOVE_MESSAGE
+    }
+}
+export const playerMessageAction = (message) => {
+    return {
+        type: PLAYER_MESSAGE,
+        message
     }
 }
 

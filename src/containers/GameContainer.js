@@ -26,7 +26,7 @@ class GameContainer extends Component {
     componentDidMount() {
         //get dispatch function
         const {dispatch} = this.props;
-        console.log('test compoennet')
+
         //request new map
         dispatch(mapRequestStartAction());
 

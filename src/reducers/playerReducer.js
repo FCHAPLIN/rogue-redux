@@ -95,6 +95,7 @@ const player = (state = {}, action) => {
           submited: 'true'
         })
     case 'PLAYER_MOVE':
+        
         switch (action.keycode) {
           case 'ArrowDown':
             return Object.assign({}, state, {

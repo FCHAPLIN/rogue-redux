@@ -1,7 +1,7 @@
 import React, {Component, PropTypes} from 'react'
 import Header from 'components/pages/partials/Header'
 import CellComponent from 'components/game/map/CellComponent';
-
+import NotificationWindow from 'components/game/map/NotificationWindow';
 import PlayerComponent from 'components/game/character/PlayerComponent';
 import MonsterComponent from 'components/game/character/MonsterComponent';
 
@@ -51,6 +51,7 @@ class MapComponent extends Component {
         let cellsElements= [];
         let livingsElements= [];
         let player = store.data.player;
+
         let cells = map.mapData.cells;
         let livings = map.mapData.livings;
         if (store.data.viewport){
@@ -75,6 +76,20 @@ class MapComponent extends Component {
                 <div className="map-container" style={mapStyle}>
                   {cellsElements}
                   {livingsElements}
+                  {(() => {
+                    if (store.data.viewport.notification){
+                      return (
+                          <NotificationWindow
+                            notify={store.data.viewport.notification.notify}
+                            textContent={store.data.viewport.notification.text}
+                            duration={store.data.viewport.notification.duration}
+                            posX={player.posX}
+                            posY={player.posY}
+                            />
+                      )
+                    }
+                  })()}
+
                   <PlayerComponent
                     posX={player.posX}
                     posY={player.posY}
