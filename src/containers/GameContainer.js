@@ -6,6 +6,7 @@ import {inputKeyAction} from 'actions/PlayerActions'
 import shallowCompare from 'react-addons-shallow-compare';
 import MapComponent from 'components/game/map/MapComponent';
 import Interface from 'components/game/interface/Interface';
+import Inventory from 'components/game/interface/Inventory';
 
 class GameContainer extends Component {
     constructor(props) {
@@ -62,6 +63,7 @@ class GameContainer extends Component {
                 <input className="command-input" onKeyDown={this.command}></input>
                 <Interface data={this.props} />
                 <MapComponent data={this.props} />
+                <Inventory data={this.props} />
             </div>
         )
     }

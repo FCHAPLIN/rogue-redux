@@ -28,20 +28,47 @@ const initialState = {
         maxLife:20,
         life:20,
         experience:0,
-        armor : {
-            type : 'leather armor',
-            name : 'leather armor',
-            bonus: 0,
-            ac: 6,
+
+        inventory:{
+            equipedArmor : 'k15',
+            equipedWeapon: 'k14',
+            maxSlots : 30,
+            content:[{
+                key:'k14',
+                type: 'sword',
+                name: 'sword',
+                bonus: 0,
+                damageMin: 4,
+                damageMax: 8
+            },{
+                key:'k15',
+                type: 'leather armor',
+                name: 'leather armor',
+                bonus: 0,
+                ac: 6
+            },{
+                key:'k16',
+                type: 'scroll',
+                name: 'Magic Scroll',
+                effect: 0,
+                damageMin: 4,
+                damageMax: 8
+            },{
+                key:'k17',
+                type: 'scroll',
+                name: 'Magic Scroll',
+                effect: 0,
+                damageMin: 4,
+                damageMax: 8
+            },{
+                key:'k18',
+                type: 'scroll',
+                name: 'Magic Scroll',
+                effect: 0,
+                damageMin: 4,
+                damageMax: 8
+            }]
         },
-        weapon:{
-            type: 'sword',
-            name: 'sword',
-            bonus: 0,
-            damageMin: 4,
-            damageMax: 8
-        },
-        inventory:[],
         posX: 1,
         posY: 1
     },
