@@ -15,7 +15,7 @@ function collect(connect, monitor) {
   };
 }
 
-class SlotComponent extends Component {
+class WeaponSlotComponent extends Component {
   constructor(props) {
       super(props);
       this.props = props;
@@ -24,11 +24,11 @@ class SlotComponent extends Component {
     let connectDropTarget = this.props.connectDropTarget;
     let isOver = this.props.isOver;
     return connectDropTarget(
-      <div className="inventory__slot" >
+      <div className="inventory__weaponslot" >
         {this.props.children}
       </div>
     )
   }
 
 }
-export default DropTarget('item', slotTarget, collect)(SlotComponent);
+export default DropTarget(['item','weapon'], slotTarget, collect)(WeaponSlotComponent);

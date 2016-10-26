@@ -1,20 +1,26 @@
 import React, {Component, PropTypes} from 'react'
 import SlotItemComponent from 'components/game/interface/SlotItemComponent';
 import SlotComponent from 'components/game/interface/SlotComponent';
+import WeaponSlotComponent from 'components/game/interface/WeaponSlotComponent';
+import { DragDropContext } from 'react-dnd';
+import HTML5Backend from 'react-dnd-html5-backend';
 
 function getItemElement(item){
     return (
       <SlotItemComponent
         key={item.key}
+        name={item.name}
+        type={item.type}
+        type={item.type}
         />
     );
 }
 function getSlotElement(item=false, key){
-    console.log(item);
+
     if (item){
         return (
           <SlotComponent
-            key={key} content={item}
+            key={key} children={item}
             />
         );
     }else{
@@ -36,8 +42,8 @@ class Inventory extends Component {
         let player = store.data.player;
         let maxSlots = player.inventory.maxSlots;
         let itemsElements = player.inventory.content.map(item => getItemElement(item));
-        console.log(itemsElements);
         let slotsElements = [];
+
         for (let i=0; i<player.inventory.maxSlots; i++){
             let item;
             if (i<itemsElements.length){
@@ -45,10 +51,19 @@ class Inventory extends Component {
             }
             slotsElements.push(getSlotElement(item, "slot"+i));
         }
+
         return(
             <div className="inventory">
                 <div className="inventory__window-title">Inventory</div>
-                <div className="inventory__equiped-slots"></div>
+                <div className="inventory__equiped-slots">
+                  <WeaponSlotComponent key="weaponslot"/>
+                  <WeaponSlotComponent key="armorslot"/>
+                  <WeaponSlotComponent key="shieldslot"/>
+                  <WeaponSlotComponent key="helmslot"/>
+                  <WeaponSlotComponent key="cloakslot"/>
+                  <WeaponSlotComponent key="jewelslot"/>
+
+                </div>
                 <div className="inventory__slots">
                     {slotsElements}
                 </div>
@@ -59,4 +74,4 @@ class Inventory extends Component {
     }
 }
 
-export default Inventory;
+export default DragDropContext(HTML5Backend)(Inventory);

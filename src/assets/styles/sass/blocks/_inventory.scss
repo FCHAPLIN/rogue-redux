@@ -11,7 +11,7 @@
 
     background: #121211;
 
-    &__slots
+    &__slots, &__equiped-slots
     {
         line-height: 52px;
 
@@ -20,6 +20,9 @@
         list-style: none;
 
         text-align: center;
+    }
+    &__equiped-slots{
+      margin-bottom: 10px;
     }
     &__slot
     {
@@ -35,7 +38,22 @@
 
         vertical-align: top;
 
-        border: 1px solid #444;;
+        border: 1px solid #444;
+    }
+    &__weaponslot{
+      font-size: 0;
+      line-height: 52px;
+
+      position: relative;
+
+      display: inline-block;
+
+      width: 50px;
+      height: 50px;
+
+      vertical-align: top;
+
+      border: 1px solid #444;;
     }
     &__slot-item
     {

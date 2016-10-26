@@ -30,8 +30,21 @@ const initialState = {
         experience:0,
 
         inventory:{
-            equipedArmor : 'k15',
-            equipedWeapon: 'k14',
+            equipedArmor : {
+                key:'k15',
+                type: 'leather armor',
+                name: 'leather armor',
+                bonus: 0,
+                ac: 6
+            },
+            equipedWeapon: {
+                key:'k14',
+                type: 'sword',
+                name: 'sword',
+                bonus: 0,
+                damageMin: 4,
+                damageMax: 8
+            },
             maxSlots : 30,
             content:[{
                 key:'k14',
