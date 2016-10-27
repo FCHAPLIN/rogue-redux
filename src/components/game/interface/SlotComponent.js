@@ -2,30 +2,50 @@ import React, {Component, PropTypes} from 'react'
 import { DropTarget } from 'react-dnd';
 
 const slotTarget = {
-  drop(props, monitor) {
+  drop(props, monitor,component) {
     console.log('droped !');
-    console.log(props);
-  }
+    console.log(component);
+  },
+  canDrop(props) {
+    return {};
+  },
 };
 function collect(connect, monitor) {
 
   return {
     connectDropTarget: connect.dropTarget(),
-    isOver: monitor.isOver()
+    isOver: monitor.isOver(),
+    canDrop: monitor.canDrop()
   };
 }
-
 class SlotComponent extends Component {
   constructor(props) {
       super(props);
       this.props = props;
   }
+  renderOverlay(color) {
+    return (
+      <div style={{
+        position: 'absolute',
+        top: 0,
+        left: 0,
+        height: '100%',
+        width: '100%',
+        zIndex: 1,
+        opacity: 0.5,
+        backgroundColor: color,
+      }} />
+    );
+  }
   render() {
     let connectDropTarget = this.props.connectDropTarget;
+    let canDrop = this.props.canDrop;
     let isOver = this.props.isOver;
     return connectDropTarget(
       <div className="inventory__slot" >
         {this.props.children}
+        {isOver && !canDrop && this.renderOverlay('red')}
+        {isOver && canDrop && this.renderOverlay('green')}
       </div>
     )
   }
