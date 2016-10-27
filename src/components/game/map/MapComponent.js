@@ -60,7 +60,6 @@ class MapComponent extends Component {
           mapStyle = {
             left: 0 - (viewport.posX-viewport.width*0.5) * 50,
             top: 0 - (viewport.posY-viewport.height*0.5) * 50
-
           }
         }
         if (cells) {

@@ -28,34 +28,23 @@ const initialState = {
         maxLife:20,
         life:20,
         experience:0,
-
+        equipedArmor : false,
+        equipedWeapon: false,
+        equipedJewel:false,
+        equipedHelm:false,
+        equipedShield:false,
         inventory:{
-            equipedArmor : {
-                key:'k15',
-                type: 'leather armor',
-                name: 'leather armor',
-                bonus: 0,
-                ac: 6
-            },
-            equipedWeapon: {
-                key:'k14',
-                type: 'sword',
-                name: 'sword',
-                bonus: 0,
-                damageMin: 4,
-                damageMax: 8
-            },
             maxSlots : 30,
             content:[{
                 key:'k14',
-                type: 'sword',
+                type: 'weapon',
                 name: 'sword',
                 bonus: 0,
                 damageMin: 4,
                 damageMax: 8
             },{
                 key:'k15',
-                type: 'leather armor',
+                type: 'armor',
                 name: 'leather armor',
                 bonus: 0,
                 ac: 6

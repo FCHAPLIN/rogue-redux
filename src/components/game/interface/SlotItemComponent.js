@@ -3,23 +3,29 @@ import { DragSource } from 'react-dnd';
 
 const itemSource = {
   beginDrag(props) {
-    console.log(props);
-
-    return {};
+    return {
+        name: props.name,
+        type:props.type,
+        onDrop:props.onDrop
+    };
   },
-  endDrag(props){
-    console.log(props);
+  endDrag(props, monitor,component){
+      const item = monitor.getItem();
+      const dropResult = monitor.getDropResult();
+      if (dropResult) {
+        dropResult.onDrop(item,dropResult );
+        window.alert(
+          `You dropped ${item.name} into ${dropResult.name}!`
+        );
+      }
   }
 };
 
-
 function collect(connect, monitor) {
-
   return {
     connectDragSource: connect.dragSource(),
     connectDragPreview: connect.dragPreview(),
     isDragging: monitor.isDragging()
-
   }
 }
 
@@ -27,12 +33,10 @@ class SlotItemComponent extends Component {
   constructor(props) {
       super(props);
       this.props = props;
-      console.log(this.props);
   }
   render() {
-    var isDragging = this.props.isDragging;
-    var connectDragSource = this.props.connectDragSource;
-    var text = this.props.text;
+    const {isDragging, connectDragSource } = this.props;
+    const {name, type, onDrop} = this.props;
     return connectDragSource(
       <div className="inventory__slot-item" ></div>
     )
@@ -40,4 +44,4 @@ class SlotItemComponent extends Component {
 
 }
 
-export default DragSource('item', itemSource, collect)(SlotItemComponent);
+export default DragSource(props=>props.type, itemSource, collect)(SlotItemComponent);

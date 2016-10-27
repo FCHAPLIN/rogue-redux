@@ -3,8 +3,10 @@ import { DropTarget } from 'react-dnd';
 
 const slotTarget = {
   drop(props, monitor,component) {
-    console.log('droped !');
-    console.log(component);
+      return{
+          name: props.name,
+          onDrop:props.onDrop
+      }
   },
   canDrop(props) {
     return {};
@@ -39,9 +41,9 @@ class WeaponSlotComponent extends Component {
     );
   }
   render() {
-    let connectDropTarget = this.props.connectDropTarget;
-    let isOver = this.props.isOver;
-    let canDrop = this.props.canDrop;
+    const {accepts, isOver, connectDropTarget,canDrop } = this.props;
+    const {name, onDrop} = this.props;
+    console.log(onDrop);
     return connectDropTarget(
       <div className="inventory__weaponslot" >
         {this.props.children}
@@ -52,4 +54,4 @@ class WeaponSlotComponent extends Component {
   }
 
 }
-export default DropTarget('item', slotTarget, collect)(WeaponSlotComponent);
+export default DropTarget(props => props.accepts, slotTarget, collect)(WeaponSlotComponent);

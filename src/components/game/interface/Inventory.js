@@ -4,13 +4,13 @@ import SlotComponent from 'components/game/interface/SlotComponent';
 import WeaponSlotComponent from 'components/game/interface/WeaponSlotComponent';
 import { DragDropContext } from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
+import ItemTypes from 'components/game/interface/ItemTypes';
 
 function getItemElement(item){
     return (
       <SlotItemComponent
         key={item.key}
         name={item.name}
-        type={item.type}
         type={item.type}
         />
     );
@@ -44,6 +44,7 @@ class Inventory extends Component {
         let itemsElements = player.inventory.content.map(item => getItemElement(item));
         let slotsElements = [];
 
+        let inventoryDrop = this.props.onDrop;
         for (let i=0; i<player.inventory.maxSlots; i++){
             let item;
             if (i<itemsElements.length){
@@ -56,13 +57,12 @@ class Inventory extends Component {
             <div className="inventory">
                 <div className="inventory__window-title">Inventory</div>
                 <div className="inventory__equiped-slots">
-                  <WeaponSlotComponent key="weaponslot"/>
-                  <WeaponSlotComponent key="armorslot"/>
-                  <WeaponSlotComponent key="shieldslot"/>
-                  <WeaponSlotComponent key="helmslot"/>
-                  <WeaponSlotComponent key="cloakslot"/>
-                  <WeaponSlotComponent key="jewelslot"/>
-
+                  <WeaponSlotComponent key="weaponslot" name="weaponslot" accepts={[ItemTypes.WEAPON]} onDrop={inventoryDrop}/>
+                  <WeaponSlotComponent key="armorslot" name="armorslot" accepts={[ItemTypes.ARMOR]} onDrop={inventoryDrop}/>
+                  <WeaponSlotComponent key="shieldslot" name="shieldslot" accepts={[ItemTypes.SHIELD]} onDrop={inventoryDrop}/>
+                  <WeaponSlotComponent key="helmslot" name="helmslot" accepts={[ItemTypes.HELM]} onDrop={inventoryDrop}/>
+                  <WeaponSlotComponent key="cloakslot" name="cloakslot" accepts={[ItemTypes.CLOAK]} onDrop={inventoryDrop}/>
+                  <WeaponSlotComponent key="jewelslot" name="jewelslot" accepts={[ItemTypes.JEWEL]} onDrop={inventoryDrop}/>
                 </div>
                 <div className="inventory__slots">
                     {slotsElements}

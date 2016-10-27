@@ -1,5 +1,6 @@
 export const SCREEN_RESIZE = 'SCREEN_RESIZE';
 export const SCREEN_INIT = 'SCREEN_INIT';
+export const INVENTORY_DROP = 'INVENTORY_DROP';
 
 
 export const screenResizeAction = (width, height, playerPosX, playerPosY, mapWidth, mapHeight, cellSize) => {
@@ -19,4 +20,12 @@ export const screenResizeAction = (width, height, playerPosX, playerPosY, mapWid
         posY,
         cellSize
     }
+}
+export const inventoryDropAction = (item, slot) => {
+    return {
+        type: INVENTORY_DROP,
+        item,
+        slot
+    }
+
 }

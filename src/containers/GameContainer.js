@@ -3,6 +3,7 @@ import {connect} from 'react-redux'
 import {dispatch} from 'redux'
 import {mapRequestStartAction} from 'actions/MapActions'
 import {inputKeyAction} from 'actions/PlayerActions'
+import {inventoryDropAction} from 'actions/UIActions'
 import shallowCompare from 'react-addons-shallow-compare';
 import MapComponent from 'components/game/map/MapComponent';
 import Interface from 'components/game/interface/Interface';
@@ -12,6 +13,7 @@ class GameContainer extends Component {
     constructor(props) {
         super(props);
         this.command = this.command.bind(this);
+        this.inventoryDrop = this.inventoryDrop.bind(this);
     }
     shouldComponentUpdate(nextProps, nextState){
       return shallowCompare(this, nextProps, nextState);
@@ -42,7 +44,7 @@ class GameContainer extends Component {
 
         //keep focus on command-input
         document.querySelectorAll('.command-input')[0].focus();
-        document.querySelectorAll('.command-input')[0].onblur = function(event) {
+        document.querySelectorAll('.command-input')[0].onblur = function(event)  {
             let blurElement = this;
             setTimeout(function() {
                 blurElement.focus()
@@ -52,7 +54,14 @@ class GameContainer extends Component {
 
     //catch user keyboard entry in hidden input
     command(event) {
+        console.log(this.props)
         this.props.dispatch(inputKeyAction(event.key,this.props.viewport.posX, this.props.viewport.posY));
+    }
+
+    inventoryDrop(item, target) {
+
+
+        this.props.dispatch(inventoryDropAction(item,target));
     }
 
     render() {
@@ -63,7 +72,7 @@ class GameContainer extends Component {
                 <input className="command-input" onKeyDown={this.command}></input>
                 <Interface data={this.props} />
                 <MapComponent data={this.props} />
-                <Inventory data={this.props} />
+                <Inventory data={this.props} onDrop={this.inventoryDrop}/>
             </div>
         )
     }
