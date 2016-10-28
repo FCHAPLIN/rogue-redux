@@ -43,7 +43,6 @@ class WeaponSlotComponent extends Component {
   render() {
     const {accepts, isOver, connectDropTarget,canDrop } = this.props;
     const {name, onDrop} = this.props;
-    console.log(onDrop);
     return connectDropTarget(
       <div className="inventory__weaponslot" >
         {this.props.children}

@@ -4,5 +4,8 @@ export default {
   SHIELD: 'shield',
   HELM: 'helm',
   JEWEL: 'jewel',
+  CHEST: 'chest',
+  POTION: 'potion',
+  SCROLL: 'scroll',
   CLOAK: 'cloak'
 };

@@ -3,24 +3,29 @@ import { DropTarget } from 'react-dnd';
 
 const slotTarget = {
   drop(props, monitor,component) {
-    console.log('droped !');
-    console.log(component);
+      return{
+          name: props.name,
+          onDrop:props.onDrop
+      }
   },
   canDrop(props) {
     return {};
   },
 };
 function collect(connect, monitor) {
+
   return {
     connectDropTarget: connect.dropTarget(),
     isOver: monitor.isOver(),
     canDrop: monitor.canDrop()
   };
 }
+
 class SlotComponent extends Component {
   constructor(props) {
       super(props);
       this.props = props;
+      
   }
   renderOverlay(color) {
     return (
@@ -37,9 +42,8 @@ class SlotComponent extends Component {
     );
   }
   render() {
-    let connectDropTarget = this.props.connectDropTarget;
-    let canDrop = this.props.canDrop;
-    let isOver = this.props.isOver;
+    const {accepts, isOver, connectDropTarget,canDrop } = this.props;
+    const {name, onDrop} = this.props;
     return connectDropTarget(
       <div className="inventory__slot" >
         {this.props.children}
@@ -50,4 +54,4 @@ class SlotComponent extends Component {
   }
 
 }
-export default DropTarget('item', slotTarget, collect)(SlotComponent);
+export default DropTarget(props => props.accepts, slotTarget, collect)(SlotComponent);

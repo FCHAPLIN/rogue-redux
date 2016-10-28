@@ -15,18 +15,35 @@ function getItemElement(item){
         />
     );
 }
-function getSlotElement(item=false, key){
-
+function getSlotElement(slotId, key, onDrop, item=false ){
+    const accepts = [
+      ItemTypes.WEAPON,
+      ItemTypes.ARMOR,
+      ItemTypes.HELM,
+      ItemTypes.JEWEL,
+      ItemTypes.SHIELD,
+      ItemTypes.CLOAK,
+      ItemTypes.CHEST,
+      ItemTypes.POTION,
+      ItemTypes.SCROLL
+    ];
     if (item){
         return (
           <SlotComponent
-            key={key} children={item}
+            key={key}
+            children={item}
+            name={slotId}
+            accepts={accepts}
+            onDrop={onDrop}
             />
         );
     }else{
         return (
           <SlotComponent
             key={key}
+            name={slotId}
+            accepts={accepts}
+            onDrop={onDrop}
             />
         );
     }
@@ -50,7 +67,7 @@ class Inventory extends Component {
             if (i<itemsElements.length){
                 item = itemsElements[i];
             }
-            slotsElements.push(getSlotElement(item, "slot"+i));
+            slotsElements.push(getSlotElement("slot"+i, i, inventoryDrop, item));
         }
 
         return(
