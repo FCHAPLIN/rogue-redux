@@ -2,6 +2,7 @@ import {  PLAYER_NAME_CHANGE,
           PLAYER_CLASS_CHANGE,
           PLAYER_SUBMIT } from 'actions'
 import { SET_START_CELL } from 'actions/MapActions'
+import { INVENTORY_DROP } from 'actions/UIActions'
 
 
 const player = (state = {}, action) => {
@@ -14,6 +15,13 @@ const player = (state = {}, action) => {
     case 'TURN_RESULT':{
         return Object.assign({}, state, {
             life: state.life - action.totalDamage
+        })
+    }
+    case 'INVENTORY_DROP':{
+        console.log(action.item, action.slot);
+
+        return Object.assign({}, state, {
+            
         })
     }
     case 'PLAYER_GET_POTION':
@@ -95,7 +103,7 @@ const player = (state = {}, action) => {
           submited: 'true'
         })
     case 'PLAYER_MOVE':
-        
+
         switch (action.keycode) {
           case 'ArrowDown':
             return Object.assign({}, state, {

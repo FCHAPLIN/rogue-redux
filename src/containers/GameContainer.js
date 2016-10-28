@@ -58,10 +58,8 @@ class GameContainer extends Component {
         this.props.dispatch(inputKeyAction(event.key,this.props.viewport.posX, this.props.viewport.posY));
     }
 
-    inventoryDrop(item, target) {
-
-
-        this.props.dispatch(inventoryDropAction(item,target));
+    inventoryDrop(item, target){
+        this.props.dispatch(inventoryDropAction(item, target));
     }
 
     render() {
