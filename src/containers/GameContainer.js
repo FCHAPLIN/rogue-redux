@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 import {dispatch} from 'redux'
 import {mapRequestStartAction} from 'actions/MapActions'
 import {inputKeyAction} from 'actions/PlayerActions'
-import {inventoryDropAction} from 'actions/UIActions'
+import {inventoryDropAction, inventoryToggleAction} from 'actions/UIActions'
 import shallowCompare from 'react-addons-shallow-compare';
 import MapComponent from 'components/game/map/MapComponent';
 import Interface from 'components/game/interface/Interface';
@@ -14,6 +14,7 @@ class GameContainer extends Component {
         super(props);
         this.command = this.command.bind(this);
         this.inventoryDrop = this.inventoryDrop.bind(this);
+        this.inventoryToggle = this.inventoryToggle.bind(this);
     }
     shouldComponentUpdate(nextProps, nextState){
       return shallowCompare(this, nextProps, nextState);
@@ -62,15 +63,28 @@ class GameContainer extends Component {
         this.props.dispatch(inventoryDropAction(item, target));
     }
 
+    inventoryToggle(){
+        this.props.dispatch(inventoryToggleAction());
+    }
+
     render() {
 
-        const {data} = this.props
+        const {data} = this.props;
+        const inventory = this.props.viewport.inventory;
         return (
             <div>
                 <input className="command-input" onKeyDown={this.command}></input>
-                <Interface data={this.props} />
+                <Interface
+                  data={this.props}
+                  onInventoryClick= {this.inventoryToggle}
+                />
                 <MapComponent data={this.props} />
-                <Inventory data={this.props} onDrop={this.inventoryDrop}/>
+                {inventory &&
+                  <Inventory
+                    data={this.props}
+                    onDrop={this.inventoryDrop}
+                    onClose= {this.inventoryToggle}
+                  />}
             </div>
         )
     }

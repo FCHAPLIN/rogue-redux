@@ -76,7 +76,9 @@ export const initialState = {
         width: 0,
         height: 0,
         posX: 1,
-        posY: 1
+        posY: 1,
+        inventory:true,
+        menu:false
     },
     config:{
         mapWidth:config.mapWidth,

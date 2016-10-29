@@ -110,7 +110,6 @@ export const playerGetPotionAction = (value) => {
 }
 
 export const playerGetGoldAction = (value) => {
-    console.log('playerGetGoldAction');
     return {
         type: PLAYER_GET_GOLD,
         value
@@ -120,7 +119,6 @@ export const playerGetGoldAction = (value) => {
 export const monstersTurnAction = (targetCell) => {
     return (dispatch) => {
         let results = mapService.monstersTurn(targetCell);
-        console.log(results);
         dispatch(turnResultsAction(results));
     }
 }

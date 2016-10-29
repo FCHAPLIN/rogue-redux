@@ -4,25 +4,56 @@
     top: 50%;
     left: 50%;
 
-    width: 330px;
+    width: 320px;
     height: 500px;
 
     transform: translate(-50%, -50%);
 
-    background: #121211;
-
+    background-image: url('../../../assets/img/windowbg.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: absolute;
+    box-shadow: 0px 10px 45px 5px rgba(0,0,0,0.67);
+    z-index: 3;
+  &__close-inventory{
+    position:absolute;
+    top:10px;
+    right:15px;
+    cursor:pointer;
+    &:hover{
+      color:$color3;
+    }
+  }
+    &__window-title{
+      text-align: center;
+      width:100%;
+      margin-top: 10px;
+      text-transform: uppercase;
+      font-family: $font1;
+      letter-spacing: 3px;
+    }
     &__slots, &__equiped-slots
     {
         line-height: 52px;
-
         padding-left: 0;
-
+        margin-left: -3px;
+        width:100%;
         list-style: none;
 
         text-align: center;
     }
+    &__slots{
+      position:absolute;
+      left:0px;
+      bottom:5px;
+    }
     &__equiped-slots{
+      position:absolute;
+      left:0px;
+      bottom:260px;
       margin-bottom: 10px;
+
     }
     &__slot
     {
@@ -30,31 +61,37 @@
         line-height: 52px;
 
         position: relative;
-
+        background-image: url('../../../assets/img/slots.jpg');
+        background-position: 0px 0px;
+        background-repeat: no-repeat;
         display: inline-block;
 
-        width: 50px;
-        height: 50px;
+        width: 44px;
+        height: 44px;
 
         vertical-align: top;
-
-        border: 1px solid #444;
+        margin-left: 3px;
+        margin-bottom:3px;
+        &.weaponslot{
+          background-position: -44px 0px;
+        }
+        &.armorslot{
+          background-position: -88px 0px;
+        }
+        &.shieldslot{
+          background-position: -132px 0px;
+        }
+        &.helmslot{
+          background-position: -176px 0px;
+        }
+        &.cloakslot{
+          background-position: -220px 0px;
+        }
+        &.jewelslot{
+          background-position: -264px 0px;
+        }
     }
-    &__weaponslot{
-      font-size: 0;
-      line-height: 52px;
 
-      position: relative;
-
-      display: inline-block;
-
-      width: 50px;
-      height: 50px;
-
-      vertical-align: top;
-
-      border: 1px solid #444;;
-    }
     &__slot-item
     {
         position: absolute;

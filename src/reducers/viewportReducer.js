@@ -1,63 +1,65 @@
-import { SET_START_CELL } from 'actions/MapActions'
+import { SET_START_CELL} from 'actions/MapActions'
 import { PLAYER_MOVE, PLAYER_MESSAGE } from 'actions/PlayerActions'
 import { SCREEN_RESIZE } from 'actions/UIActions'
 
 const viewport = (state = {}, action) => {
     switch (action.type) {
-    case SET_START_CELL:
-        return Object.assign({}, state, {
-            posX: action.startCell.posX,
-            posY: action.startCell.posY
-        })
-    case SCREEN_RESIZE:
-        return Object.assign({}, state, {
-            width: action.processedWidth,
-            height: action.processedHeight,
-            originLeft: action.originLeft,
-            originTop: action.originTop
-        })
-    case 'PLAYER_MESSAGE':
+        case SET_START_CELL:
+            return Object.assign({}, state, {
+                posX: action.startCell.posX,
+                posY: action.startCell.posY
+            })
+        case SCREEN_RESIZE:
+            return Object.assign({}, state, {
+                width: action.processedWidth,
+                height: action.processedHeight,
+                originLeft: action.originLeft,
+                originTop: action.originTop
+            })
+        case 'PLAYER_MESSAGE':
+            return Object.assign({}, state, {
+                notification: {
+                    notify: true,
+                    text: action.message,
+                }
+            })
 
-        return Object.assign({}, state, {
-            notification: {
-                notify : true,
-                text: action.message,
+        case 'REMOVE_MESSAGE':
+            return Object.assign({}, state, {
+                notification: {
+                    notify: false,
+                    message: ''
+                }
+            })
+        case 'PLAYER_MOVE':
+            switch (action.keycode) {
+                case 'ArrowDown':
+                    return Object.assign({}, state, {
+                        posY: state.posY + 1,
+                        originTop: state.originTop + 1
+                    })
+                case 'ArrowUp':
+                    return Object.assign({}, state, {
+                        posY: state.posY - 1,
+                        originTop: state.originTop - 1
+                    })
+                case 'ArrowLeft':
+                    return Object.assign({}, state, {
+                        posX: state.posX - 1,
+                        originLeft: state.originLeft - 1
+                    })
+                case 'ArrowRight':
+                    return Object.assign({}, state, {
+                        posX: state.posX + 1,
+                        originLeft: state.originLeft + 1
+                    })
             }
-        })
-
-    case 'REMOVE_MESSAGE':
-
-        return Object.assign({}, state, {
-            notification: {
-                notify : false,
-                message:''
-            }
-        })
-    case 'PLAYER_MOVE':
-        switch (action.keycode) {
-        case 'ArrowDown':
+        case 'INVENTORY_TOGGLE':
             return Object.assign({}, state, {
-                posY: state.posY + 1,
-                originTop: state.originTop + 1
+                inventory: !state.inventory
             })
-        case 'ArrowUp':
-            return Object.assign({}, state, {
-                posY: state.posY - 1,
-                originTop: state.originTop - 1
-            })
-        case 'ArrowLeft':
-            return Object.assign({}, state, {
-                posX: state.posX - 1,
-                originLeft: state.originLeft - 1
-            })
-        case 'ArrowRight':
-            return Object.assign({}, state, {
-                posX: state.posX + 1,
-                originLeft: state.originLeft + 1
-            })
-        }
-    default:
-        return state
+        default:
+            return state
     }
 }
 

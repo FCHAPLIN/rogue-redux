@@ -6,7 +6,7 @@ const itemSource = {
     return {
         name: props.name,
         type:props.type,
-        onDrop:props.onDrop
+
     };
   },
   endDrag(props, monitor,component){
@@ -36,7 +36,7 @@ class SlotItemComponent extends Component {
   }
   render() {
     const {isDragging, connectDragSource } = this.props;
-    const {name, type, onDrop} = this.props;
+    const {name, type} = this.props;
     return connectDragSource(
       <div className="inventory__slot-item" ></div>
     )

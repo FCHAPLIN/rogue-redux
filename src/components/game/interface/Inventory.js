@@ -16,6 +16,7 @@ function getItemElement(item){
     );
 }
 function getSlotElement(slotId, key, onDrop, item=false ){
+
     const accepts = [
       ItemTypes.WEAPON,
       ItemTypes.ARMOR,
@@ -27,27 +28,16 @@ function getSlotElement(slotId, key, onDrop, item=false ){
       ItemTypes.POTION,
       ItemTypes.SCROLL
     ];
-    if (item){
-        return (
-          <SlotComponent
-            key={key}
-            children={item}
-            name={slotId}
-            accepts={accepts}
-            onDrop={onDrop}
-            />
-        );
-    }else{
-        return (
-          <SlotComponent
-            key={key}
-            name={slotId}
-            accepts={accepts}
-            onDrop={onDrop}
-            />
-        );
-    }
 
+    return (
+      <SlotComponent
+        key={key}
+        children={item}
+        name={slotId}
+        accepts={accepts}
+        onDrop={onDrop}
+        />
+    );
 }
 class Inventory extends Component {
     constructor(props) {
@@ -62,6 +52,7 @@ class Inventory extends Component {
         let slotsElements = [];
 
         let inventoryDrop = this.props.onDrop;
+        let inventoryToggle = this.props.onClose;
         for (let i=0; i<player.inventory.maxSlots; i++){
             let item;
             if (i<itemsElements.length){
@@ -84,8 +75,8 @@ class Inventory extends Component {
                 <div className="inventory__slots">
                     {slotsElements}
                 </div>
-                <div className="selected-view"></div>
-                <div className="close-inventory"><i className="icon-close"></i></div>
+                <div className="inventory__selected-view"></div>
+                <div className="inventory__close-inventory" onClick={inventoryToggle}><i className="icon-cross"></i></div>
             </div>
         )
     }
