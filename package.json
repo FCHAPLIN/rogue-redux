@@ -4,13 +4,21 @@
   "description": "Redux training",
   "main": "main.js",
   "scripts": {
-    "test": "test",
+    "test": "jest",
     "start": "webpack-dev-server --hot --display-error-details ",
     "build": "webpack --config webpack.production.config.js --progress --profile --colors"
+  },
+  "jest": {
+    "verbose": true,
+    "modulePaths": [
+      "src"
+    ]
   },
   "author": "F.CHAPLIN",
   "license": "ISC",
   "dependencies": {
+    "@types/react": "^0.14.41",
+    "@types/react-dom": "^0.14.18",
     "autoprefixer": "^6.5.0",
     "babel-cli": "^6.14.0",
     "babel-core": "^6.13.2",
@@ -34,6 +42,8 @@
     "raw-loader": "^0.5.1",
     "react": "^15.3.0",
     "react-addons-shallow-compare": "^15.3.2",
+    "react-dnd": "^2.1.4",
+    "react-dnd-html5-backend": "^2.1.2",
     "react-dom": "^15.3.0",
     "react-redux": "^4.4.5",
     "react-router": "^2.8.1",
@@ -44,12 +54,18 @@
     "resolve-url-loader": "^1.6.0",
     "sass-loader": "^4.0.2",
     "style-loader": "^0.13.1",
+    "ts-loader": "^0.9.5",
+    "typescript": "^2.0.3",
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-cleanup-plugin": "^0.4.1",
     "webpack-dev-server": "^1.14.1"
   },
   "devDependencies": {
-    "jest": "^16.0.1"
+    "babel-jest": "^16.0.0",
+    "chai": "^3.5.0",
+    "flow-bin": "^0.33.0",
+    "jest": "^16.0.1",
+    "react-test-renderer": "^15.3.2"
   }
 }
