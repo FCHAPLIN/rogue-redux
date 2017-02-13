@@ -1,13 +1,13 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Root from 'Root'
-import {Provider} from 'react-redux'
-import {createStore, applyMiddleware, compose} from 'redux'
-import thunk from 'redux-thunk'
-import rootReducer from 'reducers'
-import config from 'config'
-import {screenResizeAction} from 'actions/UIActions'
-import 'assets/styles/sass/main.scss'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Root from 'Root';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from 'reducers';
+import config from 'config';
+import { screenResizeAction } from 'actions/UIActions';
+import 'assets/styles/sass/main.scss';
 
 //TO DO for install app locally
 //Register service worker
@@ -20,47 +20,46 @@ const initialState = {
         name: 'Grûh the Great',
         class: 'warrior',
         traits: {
-            strength : 15,
-            intelect : 5,
-            dexterity : 10
-        },
-        gold:0,
-        maxLife:20,
-        life:20,
-        experience:0,
-        armor : {
-            type : 'leather armor',
-            name : 'leather armor',
+            strength: 15,
+            intelect: 5,
+            dexterity: 10,
+          },
+        gold: 0,
+        maxLife: 20,
+        life: 20,
+        experience: 0,
+        armor: {
+            type: 'leather armor',
+            name: 'leather armor',
             bonus: 0,
             ac: 6,
-        },
-        weapon:{
+          },
+        weapon: {
             type: 'sword',
             name: 'sword',
             bonus: 0,
             damageMin: 4,
-            damageMax: 8
-        },
-        inventory:[],
+            damageMax: 8,
+          },
+        inventory: [],
         posX: 1,
-        posY: 1
-    },
+        posY: 1,
+      },
     viewport: {
         width: 0,
         height: 0,
         posX: 1,
-        posY: 1
-    },
-    config:{
-        mapWidth:config.mapWidth,
-        mapHeight:config.mapHeight,
-        cellSize:config.cellSize
-    }
-};
+        posY: 1,
+      },
+    config: {
+        mapWidth: config.mapWidth,
+        mapHeight: config.mapHeight,
+        cellSize: config.cellSize,
+      },
+  };
 
-const store = createStore(rootReducer, initialState, compose(applyMiddleware(thunk), window.devToolsExtension
-    ? window.devToolsExtension()
-    : f => f));
+const store = createStore(rootReducer, initialState, compose(applyMiddleware(thunk),
+    window.devToolsExtension ? window.devToolsExtension() : f => f));
 
 window.addEventListener('resize', () => {
     let currentState = store.getState();
@@ -71,7 +70,7 @@ window.addEventListener('resize', () => {
                                       currentState.config.mapWidth,
                                       currentState.config.mapHeight,
                                       currentState.config.cellSize));
-});
+  });
 
 ReactDOM.render(
     <Provider store={store}>
