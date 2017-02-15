@@ -1,14 +1,14 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import Root from 'Root'
-import {Provider} from 'react-redux'
-import {createStore, applyMiddleware, compose} from 'redux'
-import thunk from 'redux-thunk'
-import rootReducer from 'reducers'
-import config from 'config/config'
-import {screenResizeAction} from 'actions/UIActions'
-import {initialState} from 'config/initialState';
-import 'assets/styles/sass/main.scss'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Root from 'Root';
+import { Provider } from 'react-redux';
+import { createStore, applyMiddleware, compose } from 'redux';
+import thunk from 'redux-thunk';
+import rootReducer from 'reducers';
+import config from 'config/config';
+import { screenResizeAction } from 'actions/UIActions';
+import { initialState } from 'config/initialState';
+import 'assets/styles/sass/main.scss';
 
 //TO DO for install app locally
 //Register service worker
@@ -29,7 +29,7 @@ window.addEventListener('resize', () => {
                                       currentState.config.mapWidth,
                                       currentState.config.mapHeight,
                                       currentState.config.cellSize));
-});
+  });
 
 ReactDOM.render(
     <Provider store={store}>
