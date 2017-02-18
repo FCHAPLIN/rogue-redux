@@ -10,6 +10,7 @@ class Interface extends Component {
     render() {
       const props = this.props;
       const inventoryToggle = props.onInventoryClick;
+      const infoModalToggle = props.onInfoClick;
       return(
         <div className="interface-panel">
             <div className="branding">
@@ -54,6 +55,7 @@ class Interface extends Component {
           </div>
             <div><Link className="back-menu" to='Home'><i className="icon-library"></i></Link></div>
             <div onClick={inventoryToggle}>inventory</div>
+            <div onClick={infoModalToggle}>info</div>
         </div>
       )
     }

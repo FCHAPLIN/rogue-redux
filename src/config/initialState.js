@@ -82,6 +82,9 @@ export const initialState = {
         notificationWindow: false,
         characterWindow: false,
         attributesWindow: false,
+        infoModal: {
+            isOpen: false,
+        },
       },
     config: {
         mapWidth: config.mapWidth,

@@ -58,6 +58,18 @@ const viewport = (state = {}, action) => {
             return Object.assign({}, state, {
                 inventory: !state.inventory
             })
+        case 'INFOMODAL_CLOSE':
+            return Object.assign({}, state, {
+                infoModal: {
+                    isOpen: false,
+                }
+            })
+        case 'INFOMODAL_OPEN':
+            return Object.assign({}, state, {
+                infoModal: {
+                    isOpen: true,
+                }
+            })
         default:
             return state
     }

@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react'
 import { Link } from 'react-router'
 import logo from 'assets/img/logobig.png';
+import Modal from 'react-modal';
 
 const HomeComponent = () => (
 	<div className="home">
@@ -24,7 +25,9 @@ const HomeComponent = () => (
 			</nav>
 		</div>
 		<footer>Made with React+Redux+Love by @FCHAPLIN</footer>
+
 	</div>
+
 )
 
 
