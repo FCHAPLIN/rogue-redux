@@ -80,6 +80,28 @@ export const initialState = {
         inventory:true,
         menu:false
     },
+	log: {
+    	visible:true,
+		entries:[
+			{
+				id: "3554-5464546-5464564654",
+				time: "12h35",
+				text: "You walked north",
+			},{
+				id: "3554-5464546-5464564655",
+				time: "12h35",
+				text: "You walked north",
+			},{
+				id: "3554-5464546-5464564656",
+				time: "12h35",
+				text: "You walked north, an	orc has seen you and walks toward you",
+			},{
+				id: "3554-5464546-5464564657",
+				time: "12h36",
+				text: "You walked north, an	orc attacked you with a blow, dealing 4 damages",
+			}
+		]
+	},
     config:{
         mapWidth:config.mapWidth,
         mapHeight:config.mapHeight,

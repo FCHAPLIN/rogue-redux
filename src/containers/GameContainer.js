@@ -3,10 +3,13 @@ import {connect} from 'react-redux'
 import {dispatch} from 'redux'
 import {mapRequestStartAction} from 'actions/MapActions'
 import {inputKeyAction} from 'actions/PlayerActions'
-import {inventoryDropAction, inventoryToggleAction} from 'actions/UIActions'
+import {inventoryDropAction,
+		inventoryToggleAction,
+		logToggleAction} from 'actions/UIActions'
 import shallowCompare from 'react-addons-shallow-compare';
 import MapComponent from 'components/game/map/MapComponent';
 import Interface from 'components/game/interface/Interface';
+import Log from 'components/game/interface/Log';
 import Inventory from 'components/game/interface/Inventory';
 
 class GameContainer extends Component {
@@ -15,6 +18,7 @@ class GameContainer extends Component {
         this.command = this.command.bind(this);
         this.inventoryDrop = this.inventoryDrop.bind(this);
         this.inventoryToggle = this.inventoryToggle.bind(this);
+        this.logToggle = this.logToggle.bind(this);
     }
     shouldComponentUpdate(nextProps, nextState){
       return shallowCompare(this, nextProps, nextState);
@@ -67,10 +71,14 @@ class GameContainer extends Component {
         this.props.dispatch(inventoryToggleAction());
     }
 
-    render() {
+	logToggle(){
+		this.props.dispatch(logToggleAction());
+	}
 
+    render() {
         const {data} = this.props;
         const inventory = this.props.viewport.inventory;
+        const displayLogWindow = this.props.log.visible;
         return (
             <div>
                 <input className="command-input" onKeyDown={this.command}></input>
@@ -79,7 +87,12 @@ class GameContainer extends Component {
                   onInventoryClick= {this.inventoryToggle}
                 />
                 <MapComponent data={this.props} />
-                {inventory &&
+				{displayLogWindow &&
+				<Log
+					data={this.props.log}
+					onClose= {this.logToggle}
+				/>}
+				{inventory &&
                   <Inventory
                     data={this.props}
                     onDrop={this.inventoryDrop}
@@ -91,7 +104,7 @@ class GameContainer extends Component {
 }
 
 const mapStateToProps = (store) => {
-    return {player: store.player, map: store.map, viewport: store.viewport};
+    return {player: store.player, map: store.map, viewport: store.viewport, log: store.log};
 }
 
 export default connect(mapStateToProps)(GameContainer)

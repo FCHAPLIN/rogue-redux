@@ -2,6 +2,7 @@ export const SCREEN_RESIZE = 'SCREEN_RESIZE';
 export const SCREEN_INIT = 'SCREEN_INIT';
 export const INVENTORY_DROP = 'INVENTORY_DROP';
 export const INVENTORY_TOGGLE = 'INVENTORY_TOGGLE';
+export const LOG_TOGGLE = 'LOG_TOGGLE';
 
 export const screenResizeAction = (width, height, playerPosX, playerPosY, mapWidth, mapHeight, cellSize) => {
     const processedWidth = Math.floor(width/cellSize);
@@ -33,4 +34,10 @@ export const inventoryToggleAction = () => {
     return {
         type: INVENTORY_TOGGLE
     }
+}
+
+export const logToggleAction = () => {
+	return {
+		type: LOG_TOGGLE
+	}
 }
