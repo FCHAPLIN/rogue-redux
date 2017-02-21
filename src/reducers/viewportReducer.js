@@ -68,6 +68,10 @@ const viewport = (state = {}, action) => {
             return Object.assign({}, state, {
                 infoModal: {
                     isOpen: true,
+                    title: action.payload.title,
+                    content: action.payload.content,
+                    buttons: action.payload.buttons,
+                    type: action.payload.type,
                 }
             })
         default:

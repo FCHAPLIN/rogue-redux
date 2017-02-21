@@ -43,8 +43,14 @@ export const infoModalCloseAction = () => {
     }
 }
 
-export const infoModalOpenAction = () => {
+export const infoModalOpenAction = (data) => {
     return {
         type: INFOMODAL_OPEN,
+        payload: {
+            title: data.title,
+            content: data.content,
+            buttons: data.buttons,
+            type: data.type,
+        }
     }
 }

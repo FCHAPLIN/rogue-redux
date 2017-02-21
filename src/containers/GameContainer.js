@@ -8,7 +8,8 @@ import shallowCompare from 'react-addons-shallow-compare';
 import MapComponent from 'components/game/map/MapComponent';
 import Interface from 'components/game/interface/Interface';
 import Inventory from 'components/game/interface/Inventory';
-import Modal from 'react-modal';
+import InfoModal from 'components/game/interface/modals/InfoModal';
+import { Modal } from 'react-modal';
 
 class GameContainer extends Component {
     constructor(props) {
@@ -16,8 +17,8 @@ class GameContainer extends Component {
         this.command = this.command.bind(this);
         this.inventoryDrop = this.inventoryDrop.bind(this);
         this.inventoryToggle = this.inventoryToggle.bind(this);
-        this.infoModalClose = this.infoModalClose.bind(this);
         this.infoModalOpen = this.infoModalOpen.bind(this);
+        this.infoModalClose = this.infoModalClose.bind(this);
     }
     shouldComponentUpdate(nextProps, nextState){
       return shallowCompare(this, nextProps, nextState);
@@ -70,19 +71,22 @@ class GameContainer extends Component {
         this.props.dispatch(inventoryToggleAction());
     }
 
+    infoModalOpen(){
+        let modalData= {
+            title: 'My Title',
+            content: 'Welcome to Rogue Redux !',
+            buttons: ['ok'],
+            type: 'notify',
+        }
+        this.props.dispatch(infoModalOpenAction(modalData));
+    }
     infoModalClose(){
         this.props.dispatch(infoModalCloseAction());
     }
-
-    infoModalOpen(){
-        this.props.dispatch(infoModalOpenAction());
-    }
-
     render() {
 
         const {data} = this.props;
         const inventory = this.props.viewport.inventory;
-        const infoModal = this.props.viewport.infoModal;
         return (
             <div>
                 <input className="command-input" onKeyDown={this.command}></input>
@@ -98,23 +102,11 @@ class GameContainer extends Component {
                     onDrop={this.inventoryDrop}
                     onClose= {this.inventoryToggle}
                   />}
-                <Modal
-                    isOpen={infoModal.isOpen}
-                    //onModalClose={this.infoModalClose}
-                    contentLabel="Example Modal"
-                >
+                <InfoModal
+                    data={this.props}
+                    infoModalClose = {this.infoModalClose}
+                />
 
-                    <h2 ref="subtitle">Hello</h2>
-                    <button onClick={this.infoModalClose}>ok</button>
-                    <div>I am a modal</div>
-                    <form>
-                        <input />
-                        <button>tab navigation</button>
-                        <button>stays</button>
-                        <button>inside</button>
-                        <button>the modal</button>
-                    </form>
-                </Modal>
             </div>
         )
     }

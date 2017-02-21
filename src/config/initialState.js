@@ -84,8 +84,14 @@ export const initialState = {
         attributesWindow: false,
         infoModal: {
             isOpen: false,
+          },
+        interlevel: {
+            isOpen: false,
         },
-      },
+    },
+    game: {
+        level:1,
+    },
     config: {
         mapWidth: config.mapWidth,
         mapHeight: config.mapHeight,

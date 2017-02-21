@@ -3,13 +3,15 @@ import player from 'reducers/playerReducer'
 import map from 'reducers/mapReducer'
 import viewport from 'reducers/viewportReducer'
 import config from 'reducers/configReducer'
+import game from 'reducers/gameReducer'
 
 
 const rootReducer = combineReducers({
   config,
   player,
   map,
-  viewport
+  viewport,
+  game
 })
 
 export default rootReducer
