@@ -58,6 +58,18 @@ const viewport = (state = {}, action) => {
             return Object.assign({}, state, {
                 inventory: !state.inventory
             })
+		case 'STARTMODAL_TOGGLE':
+			return Object.assign({}, state, {
+				startmodal: {
+					isOpen: !state.startmodal.isOpen,
+				}
+			})
+		case 'ENDMODAL_TOGGLE':
+			return Object.assign({}, state, {
+				endmodal: {
+					isOpen: !state.endmodal.isOpen,
+				}
+			})
         case 'INFOMODAL_CLOSE':
             return Object.assign({}, state, {
                 infoModal: {

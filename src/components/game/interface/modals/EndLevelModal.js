@@ -3,14 +3,12 @@ import Modal from 'react-modal';
 import {infoModalCloseAction} from 'actions/UIActions';
 import {dispatch} from 'redux';
 
-class InfoModal extends Component {
+class EndLevelModal extends Component {
     constructor(props) {
         super(props);
         this.props = props;
     }
-	componentDidMount() {
-    	console.log('test');
-	}
+
     render() {
         const infoModal = this.props.data.viewport.infoModal;
 
@@ -31,4 +29,4 @@ class InfoModal extends Component {
     }
 }
 
-export default InfoModal;
+export default EndLevelModal;

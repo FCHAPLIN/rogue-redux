@@ -1,14 +1,21 @@
 import React, {Component, PropTypes} from 'react'
-import {connect} from 'react-redux'
-import {dispatch} from 'redux'
-import {mapRequestStartAction} from 'actions/MapActions'
-import {inputKeyAction} from 'actions/PlayerActions'
-import {inventoryDropAction, inventoryToggleAction, infoModalOpenAction, infoModalCloseAction} from 'actions/UIActions'
+import { connect } from 'react-redux'
+import { dispatch } from 'redux'
+import { mapRequestStartAction } from 'actions/MapActions'
+import { inputKeyAction } from 'actions/PlayerActions'
+import { inventoryDropAction,
+		 inventoryToggleAction,
+		 infoModalOpenAction,
+		 infoModalCloseAction,
+		 endModalToggleAction,
+		 startModalToggleAction } from 'actions/UIActions'
 import shallowCompare from 'react-addons-shallow-compare';
 import MapComponent from 'components/game/map/MapComponent';
 import Interface from 'components/game/interface/Interface';
 import Inventory from 'components/game/interface/Inventory';
 import InfoModal from 'components/game/interface/modals/InfoModal';
+import StartLevelModal from 'components/game/interface/modals/StartLevelModal';
+import EndLevelModal from 'components/game/interface/modals/EndLevelModal';
 import { Modal } from 'react-modal';
 
 class GameContainer extends Component {
@@ -19,6 +26,8 @@ class GameContainer extends Component {
         this.inventoryToggle = this.inventoryToggle.bind(this);
         this.infoModalOpen = this.infoModalOpen.bind(this);
         this.infoModalClose = this.infoModalClose.bind(this);
+        this.startModalToggle = this.startModalToggle.bind(this);
+        this.endModalToggle = this.endModalToggle.bind(this);
     }
     shouldComponentUpdate(nextProps, nextState){
       return shallowCompare(this, nextProps, nextState);
@@ -83,6 +92,12 @@ class GameContainer extends Component {
     infoModalClose(){
         this.props.dispatch(infoModalCloseAction());
     }
+	startModalToggle(){
+		this.props.dispatch(infoModalToggleAction());
+	}
+	endModalToggle(){
+		this.props.dispatch(infoModalToggleAction());
+	}
     render() {
 
         const {data} = this.props;
@@ -106,6 +121,14 @@ class GameContainer extends Component {
                     data={this.props}
                     infoModalClose = {this.infoModalClose}
                 />
+				<StartLevelModal
+					data={this.props}
+					startModalClose = {this.startModalClose}
+				/>
+				<EndLevelModal
+					data={this.props}
+					endModalClose = {this.endModalClose}
+				/>
 
             </div>
         )

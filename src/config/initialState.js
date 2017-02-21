@@ -85,9 +85,12 @@ export const initialState = {
         infoModal: {
             isOpen: false,
           },
-        interlevel: {
+        startmodal: {
             isOpen: false,
         },
+		endmodal: {
+			isOpen: false,
+		},
     },
     game: {
         level:1,

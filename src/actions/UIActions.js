@@ -4,6 +4,8 @@ export const INVENTORY_DROP = 'INVENTORY_DROP';
 export const INVENTORY_TOGGLE = 'INVENTORY_TOGGLE';
 export const INFOMODAL_CLOSE = 'INFOMODAL_CLOSE';
 export const INFOMODAL_OPEN = 'INFOMODAL_OPEN';
+export const ENDMODAL_TOGGLE = 'ENDMODAL_TOGGLE';
+export const STARTMODAL_TOGGLE = 'STARTMODAL_TOGGLE';
 
 export const screenResizeAction = (width, height, playerPosX, playerPosY, mapWidth, mapHeight, cellSize) => {
     const processedWidth = Math.floor(width/cellSize);
@@ -41,6 +43,18 @@ export const infoModalCloseAction = () => {
     return {
         type: INFOMODAL_CLOSE,
     }
+}
+
+export const startModalToggleAction = () => {
+	return {
+		type: STARTMODAL_TOGGLE,
+	}
+}
+
+export const endModalTogleAction = () => {
+	return {
+		type: ENDMODAL_TOGGLE,
+	}
 }
 
 export const infoModalOpenAction = (data) => {
