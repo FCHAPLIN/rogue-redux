@@ -82,15 +82,17 @@ export const initialState = {
         notificationWindow: false,
         characterWindow: false,
         attributesWindow: false,
+    },
+    modals: {
         infoModal: {
             isOpen: false,
-          },
-        startmodal: {
+        },
+        startModal: {
             isOpen: false,
         },
-		endmodal: {
-			isOpen: false,
-		},
+        endModal: {
+            isOpen: false,
+        },
     },
     game: {
         level:1,

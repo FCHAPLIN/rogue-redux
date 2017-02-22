@@ -45,15 +45,27 @@ export const infoModalCloseAction = () => {
     }
 }
 
-export const startModalToggleAction = () => {
+export const startModalToggleAction = (data) => {
 	return {
 		type: STARTMODAL_TOGGLE,
+        payload: {
+            title: data.title,
+            content: data.content,
+            buttons: data.buttons,
+            type: data.type,
+        }
 	}
 }
 
-export const endModalTogleAction = () => {
+export const endModalToggleAction = (data) => {
 	return {
 		type: ENDMODAL_TOGGLE,
+        payload: {
+            title: data.title,
+            content: data.content,
+            buttons: data.buttons,
+            type: data.type,
+        }
 	}
 }
 

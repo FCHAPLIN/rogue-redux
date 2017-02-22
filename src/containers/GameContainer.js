@@ -93,21 +93,30 @@ class GameContainer extends Component {
         this.props.dispatch(infoModalCloseAction());
     }
 	startModalToggle(){
-		this.props.dispatch(infoModalToggleAction());
+        let modalData= {
+            title: 'Start Modal',
+            content: 'Level 1',
+            buttons: ['ok'],
+            type: 'fullbrick',
+        }
+		this.props.dispatch(startModalToggleAction(modalData));
 	}
 	endModalToggle(){
-		this.props.dispatch(infoModalToggleAction());
+		this.props.dispatch(endModalToggleAction());
 	}
     render() {
 
         const {data} = this.props;
         const inventory = this.props.viewport.inventory;
+        console.log(this.props);
+        const modals = this.props.modals;
         return (
             <div>
                 <input className="command-input" onKeyDown={this.command}></input>
                 <Interface
                   data={this.props}
                   onInventoryClick= {this.inventoryToggle}
+                  onStartClick= {this.startModalToggle}
                   onInfoClick= {this.infoModalOpen}
                 />
                 <MapComponent data={this.props} />
@@ -117,18 +126,21 @@ class GameContainer extends Component {
                     onDrop={this.inventoryDrop}
                     onClose= {this.inventoryToggle}
                   />}
-                <InfoModal
+                {modals.infoModal.isOpen &&
+                  <InfoModal
                     data={this.props}
                     infoModalClose = {this.infoModalClose}
-                />
-				<StartLevelModal
-					data={this.props}
-					startModalClose = {this.startModalClose}
-				/>
+                />}
+                {modals.startModal.isOpen &&
+                <StartLevelModal
+                    data={this.props}
+                    startModalClose={this.startModalToggle}
+                />}
+                {modals.endModal.isOpen &&
 				<EndLevelModal
 					data={this.props}
-					endModalClose = {this.endModalClose}
-				/>
+					endModalClose = {this.endModalToggle}
+				/>}
 
             </div>
         )
@@ -136,7 +148,7 @@ class GameContainer extends Component {
 }
 
 const mapStateToProps = (store) => {
-    return {player: store.player, map: store.map, viewport: store.viewport};
+    return {player: store.player, map: store.map, viewport: store.viewport, modals: store.modals};
 }
 
 export default connect(mapStateToProps)(GameContainer)

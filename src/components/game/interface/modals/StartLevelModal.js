@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Modal from 'react-modal';
-import {infoModalCloseAction} from 'actions/UIActions';
-import {dispatch} from 'redux';
+import { startModalToggleAction } from 'actions/UIActions';
+import { dispatch } from 'redux';
 
 class StartLevelModal extends Component {
     constructor(props) {
@@ -10,19 +10,19 @@ class StartLevelModal extends Component {
     }
 
     render() {
-        const infoModal = this.props.data.viewport.infoModal;
+        const startModal = this.props.data.modals.startModal;
 
         return (
             <Modal
-                isOpen={infoModal.isOpen}
+                isOpen={startModal.isOpen}
                 //onModalClose={this.infoModalClose}
                 contentLabel="Example Modal"
-                className={`ReactModal__${infoModal.type}`}
+                className={`ReactModal__${startModal.type}`}
             >
-                <h2 ref="subtitle">{infoModal.title}</h2>
-                <div>{infoModal.content}</div>
+                <h2 ref="subtitle">{startModal.title}</h2>
+                <div>{startModal.content}</div>
                 <div className="ReactModal__buttons-bar">
-                    <button onClick={this.props.infoModalClose}>ok</button>
+                    <button onClick={this.props.startModalClose}>ok</button>
                 </div>
             </Modal>
         );

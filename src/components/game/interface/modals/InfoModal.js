@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import Modal from 'react-modal';
-import {infoModalCloseAction} from 'actions/UIActions';
-import {dispatch} from 'redux';
+import { infoModalCloseAction } from 'actions/UIActions';
+import { dispatch } from 'redux';
 
 class InfoModal extends Component {
     constructor(props) {
@@ -12,7 +12,7 @@ class InfoModal extends Component {
     	console.log('test');
 	}
     render() {
-        const infoModal = this.props.data.viewport.infoModal;
+        const infoModal = this.props.data.modals.infoModal;
 
         return (
             <Modal

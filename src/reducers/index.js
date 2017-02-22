@@ -4,6 +4,7 @@ import map from 'reducers/mapReducer'
 import viewport from 'reducers/viewportReducer'
 import config from 'reducers/configReducer'
 import game from 'reducers/gameReducer'
+import modals from 'reducers/modalsReducer'
 
 
 const rootReducer = combineReducers({
@@ -11,7 +12,8 @@ const rootReducer = combineReducers({
   player,
   map,
   viewport,
-  game
+  game,
+  modals,
 })
 
 export default rootReducer
