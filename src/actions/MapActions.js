@@ -12,12 +12,11 @@ const mapService = new MapService();
 export const mapRequestStartAction = () => {
     return (dispatch) => {
         let data = mapService.getNewMap();
-        let modalData= {
-            title: 'Start Modal',
-            content: 'Level 1',
-            buttons: ['ok'],
-            type: 'fullbrick',
-        }
+		let modalData= {
+			content: 'start',
+			//buttons: ['ok'],
+			type: 'fullbrick',
+		}
         dispatch(mapRequestSuccessAction(data));
         dispatch(setStartCellAction(data.start));
         window.dispatchEvent(new Event('resize'));

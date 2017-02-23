@@ -46,26 +46,17 @@ export const infoModalCloseAction = () => {
 }
 
 export const startModalToggleAction = (data) => {
+	console.log(data);
 	return {
 		type: STARTMODAL_TOGGLE,
-        payload: {
-            title: data.title,
-            content: data.content,
-            buttons: data.buttons,
-            type: data.type,
-        }
+
 	}
 }
 
 export const endModalToggleAction = (data) => {
 	return {
 		type: ENDMODAL_TOGGLE,
-        payload: {
-            title: data.title,
-            content: data.content,
-            buttons: data.buttons,
-            type: data.type,
-        }
+
 	}
 }
 

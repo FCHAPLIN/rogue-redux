@@ -20,13 +20,12 @@ class StartLevelModal extends Component {
                 isOpen={startModal.isOpen}
                 //onModalClose={this.infoModalClose}
                 contentLabel="Example Modal"
-                className={`ReactModal__${startModal.type}`}
+                className="ReactModal__fullbrick"
             >
-                <h2 className="{`ReactModal__${startModal.type}__title`}" ref="subtitle">{startModal.title}</h2>
-                <div className="{`ReactModal__${startModal.type}__text`}">{startModal.content}</div>
-                <div className="ReactModal__buttons-bar">
-                    <button onClick={this.props.startModalClose}>ok</button>
-                </div>
+                <h2 className="ReactModal__fullbrick__title"
+					ref="subtitle">Level {this.props.level}
+				</h2>
+                <div className={`ReactModal__fullbrick__text`}>{startModal.content}</div>
             </Modal>
         );
     }

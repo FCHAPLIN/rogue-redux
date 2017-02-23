@@ -93,13 +93,7 @@ class GameContainer extends Component {
         this.props.dispatch(infoModalCloseAction());
     }
 	startModalToggle(){
-        let modalData= {
-            title: 'Start Modal',
-            content: 'Level 1',
-            buttons: ['ok'],
-            type: 'fullbrick',
-        }
-		this.props.dispatch(startModalToggleAction(modalData));
+		this.props.dispatch(startModalToggleAction());
 	}
 	endModalToggle(){
 		this.props.dispatch(endModalToggleAction());
@@ -108,7 +102,7 @@ class GameContainer extends Component {
 
         const {data} = this.props;
         const inventory = this.props.viewport.inventory;
-        console.log(this.props);
+        console.log('game', this.props.game);
         const modals = this.props.modals;
         return (
             <div>
@@ -135,10 +129,12 @@ class GameContainer extends Component {
                 <StartLevelModal
                     data={this.props}
                     startModalClose={this.startModalToggle}
+                    level={this.props.game.level}
                 />}
                 {modals.endModal.isOpen &&
 				<EndLevelModal
 					data={this.props}
+					level={this.props.game.level}
 					endModalClose = {this.endModalToggle}
 				/>}
 
@@ -148,7 +144,13 @@ class GameContainer extends Component {
 }
 
 const mapStateToProps = (store) => {
-    return {player: store.player, map: store.map, viewport: store.viewport, modals: store.modals};
+    return {
+    	player: store.player,
+		map: store.map,
+		viewport: store.viewport,
+		modals: store.modals,
+		game: store.game
+    };
 }
 
 export default connect(mapStateToProps)(GameContainer)
