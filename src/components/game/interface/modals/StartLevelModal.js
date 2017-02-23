@@ -8,7 +8,10 @@ class StartLevelModal extends Component {
         super(props);
         this.props = props;
     }
+    componentDidMount(){
 
+        setTimeout(this.props.startModalClose,5000);
+    }
     render() {
         const startModal = this.props.data.modals.startModal;
 
@@ -19,8 +22,8 @@ class StartLevelModal extends Component {
                 contentLabel="Example Modal"
                 className={`ReactModal__${startModal.type}`}
             >
-                <h2 ref="subtitle">{startModal.title}</h2>
-                <div>{startModal.content}</div>
+                <h2 className="{`ReactModal__${startModal.type}__title`}" ref="subtitle">{startModal.title}</h2>
+                <div className="{`ReactModal__${startModal.type}__text`}">{startModal.content}</div>
                 <div className="ReactModal__buttons-bar">
                     <button onClick={this.props.startModalClose}>ok</button>
                 </div>
