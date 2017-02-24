@@ -30,6 +30,22 @@ const modals = (state = {}, action) => {
               type: action.payload.type,
             },
         });
+    case 'CONFIRM_MODAL_OPEN':
+        return Object.assign({}, state, {
+            confirmModal: {
+                isOpen: true,
+                deferedAction:action.payload.deferedAction,
+                question:action.payload.question,
+                content:action.payload.content,
+            },
+        });
+    case 'CONFIRM_MODAL_CLOSE':
+            return Object.assign({}, state, {
+                confirmModal: {
+                    isOpen: false,
+                    deferAction:null
+                },
+            });
     default:
       return state;
   }

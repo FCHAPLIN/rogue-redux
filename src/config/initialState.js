@@ -93,6 +93,12 @@ export const initialState = {
         endModal: {
             isOpen: false,
         },
+        confirmModal: {
+            isOpen: true,
+            question:'this is a test',
+            content:'yes, a test, a TEST !!!',
+            deferedAction:null,
+        },
     },
     game: {
         level:1,

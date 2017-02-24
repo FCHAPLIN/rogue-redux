@@ -60,7 +60,7 @@ export const inputKeyAction = (keycode, posX, posY) => {
                                 break;
                             case 'gold':
                                 dispatch(playerGetGoldAction(20));
-                                dispatch(playerMessageAction('I am soooo f..ng rich !'));
+                                dispatch(playerMessageAction('Gooooold !'));
                                 setTimeout(function() {
                                     dispatch(removeMessageAction());
                                 },3000);

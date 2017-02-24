@@ -6,6 +6,8 @@ export const INFOMODAL_CLOSE = 'INFOMODAL_CLOSE';
 export const INFOMODAL_OPEN = 'INFOMODAL_OPEN';
 export const ENDMODAL_TOGGLE = 'ENDMODAL_TOGGLE';
 export const STARTMODAL_TOGGLE = 'STARTMODAL_TOGGLE';
+export const CONFIRM_MODAL_OPEN = 'CONFIRM_MODAL_OPEN';
+export const CONFIRM_MODAL_CLOSE = 'CONFIRM_MODAL_CLOSE';
 
 export const screenResizeAction = (width, height, playerPosX, playerPosY, mapWidth, mapHeight, cellSize) => {
     const processedWidth = Math.floor(width/cellSize);
@@ -30,6 +32,37 @@ export const inventoryDropAction = (item, slot) => {
         type: INVENTORY_DROP,
         item,
         slot
+    }
+}
+
+export const confirmModalCloseAction = () => {
+    return {
+        type: CONFIRM_MODAL_CLOSE,
+    }
+}
+export const confirmModalOpenAction = (question, content, deferedAction) => {
+    return {
+        type: CONFIRM_MODAL_OPEN,
+        payload: { question, content, deferedAction }
+    }
+}
+export const confirmModalCancelAction = () => {
+    return (dispatch) => {
+        dispatch(confirmModalCloseAction());
+    }
+}
+export const confirmModalConfirmAction = (deferedAction) => {
+    return (dispatch) => {
+        dispatch(confirmModalCloseAction());
+        deferedAction.resolve();
+    }
+}
+export const confirmModalAction = (question,content, action) => {
+    return (dispatch) => {
+        dispatch(confirmModalOpenAction(question, content, deferedAction));
+        deferAction = new Promise(
+            resolve => dispatch(deferedAction)
+        )
     }
 }
 

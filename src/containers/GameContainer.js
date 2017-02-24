@@ -15,6 +15,7 @@ import Interface from 'components/game/interface/Interface';
 import Inventory from 'components/game/interface/Inventory';
 import InfoModal from 'components/game/interface/modals/InfoModal';
 import StartLevelModal from 'components/game/interface/modals/StartLevelModal';
+import ConfirmModal from 'components/game/interface/modals/ConfirmModal';
 import EndLevelModal from 'components/game/interface/modals/EndLevelModal';
 import { Modal } from 'react-modal';
 
@@ -28,6 +29,9 @@ class GameContainer extends Component {
         this.infoModalClose = this.infoModalClose.bind(this);
         this.startModalToggle = this.startModalToggle.bind(this);
         this.endModalToggle = this.endModalToggle.bind(this);
+        this.endModalToggle = this.endModalToggle.bind(this);
+        this.confirmModalCancel = this.confirmModalCancel.bind(this);
+        this.confirmModalConfirm = this.confirmModalConfirm.bind(this);
     }
     shouldComponentUpdate(nextProps, nextState){
       return shallowCompare(this, nextProps, nextState);
@@ -78,6 +82,14 @@ class GameContainer extends Component {
 
     inventoryToggle(){
         this.props.dispatch(inventoryToggleAction());
+    }
+
+    confirmModalConfirm(){
+        this.props.dispatch(confirmModalConfirmAction());
+    }
+
+    confirmModalCancel(){
+        this.props.dispatch(confirmModalCancelAction());
     }
 
     infoModalOpen(){
@@ -137,6 +149,12 @@ class GameContainer extends Component {
 					level={this.props.game.level}
 					endModalClose = {this.endModalToggle}
 				/>}
+                {modals.confirmModal.isOpen &&
+                <ConfirmModal
+                    data={this.props}
+                    confirmModalCancel = {this.confirmModalCancel}
+                    confirmModalConfirm = {this.confirmModalConfirm}
+                />}
 
             </div>
         )
