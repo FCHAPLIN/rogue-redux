@@ -8,9 +8,6 @@ class InfoModal extends Component {
         super(props);
         this.props = props;
     }
-	componentDidMount() {
-    	console.log('test');
-	}
     render() {
         const infoModal = this.props.data.modals.infoModal;
 

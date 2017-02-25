@@ -9,8 +9,6 @@ class ConfirmModal extends Component {
         super(props);
         this.props = props;
     }
-	componentDidMount() {
-	}
     render() {
         const confirmModal = this.props.data.modals.confirmModal;
         return (

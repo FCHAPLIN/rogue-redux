@@ -3,7 +3,6 @@ const modals = (state = {}, action) => {
     switch (action.type) {
     case 'STARTMODAL_TOGGLE':
       return Object.assign({}, state, {
-
           startModal: {
               isOpen: !state.startModal.isOpen,
             },
@@ -31,7 +30,6 @@ const modals = (state = {}, action) => {
             },
         });
     case 'CONFIRM_MODAL_OPEN':
-
         return Object.assign({}, state, {
             confirmModal: {
                 isOpen: true,

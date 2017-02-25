@@ -39,22 +39,11 @@ class GameContainer extends Component {
     shouldComponentUpdate(nextProps, nextState){
       return shallowCompare(this, nextProps, nextState);
     }
-
-    componentWillUpdate(nextProps, nextState){
-        //const {dispatch} = this.props;
-        //dispatch(mapRequestStartAction());
-    }
-    componentWillReceiveProps(nextProps) {
-
-    }
     componentDidMount() {
-        //get dispatch function
         const {dispatch} = this.props;
 
-        //request new map
         dispatch(mapRequestStartAction());
 
-        //cast resize action on resize viewport
         if (Event.prototype.initEvent) {
             var evt = window.document.createEvent('UIEvents');
             evt.initUIEvent('resize', true, false, window, 0);
@@ -84,10 +73,12 @@ class GameContainer extends Component {
     }
 
     inventoryToggle(){
-        this.props.dispatch(confirmModalAction('Open Inventory',
+        //Confirm modal example
+        /*this.props.dispatch(confirmModalAction('Open Inventory',
                 'Are your very sure about this ?',
-                inventoryToggleAction()));
-        //this.props.dispatch(inventoryToggleAction());
+                inventoryToggleAction()));*/
+
+        this.props.dispatch( inventoryToggleAction());
     }
 
     confirmModalConfirm(){
@@ -117,10 +108,8 @@ class GameContainer extends Component {
 		this.props.dispatch(endModalToggleAction());
 	}
     render() {
-
         const {data} = this.props;
         const inventory = this.props.viewport.inventory;
-        console.log('game', this.props.game);
         const modals = this.props.modals;
         return (
             <div>
