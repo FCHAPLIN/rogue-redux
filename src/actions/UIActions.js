@@ -40,29 +40,21 @@ export const confirmModalCloseAction = () => {
         type: CONFIRM_MODAL_CLOSE,
     }
 }
-export const confirmModalOpenAction = (question, content, deferedAction) => {
-    return {
-        type: CONFIRM_MODAL_OPEN,
-        payload: { question, content, deferedAction }
-    }
-}
 export const confirmModalCancelAction = () => {
     return (dispatch) => {
         dispatch(confirmModalCloseAction());
     }
 }
-export const confirmModalConfirmAction = (deferedAction) => {
+export const confirmModalConfirmAction = (action) => {
     return (dispatch) => {
         dispatch(confirmModalCloseAction());
-        deferedAction.resolve();
+        dispatch(action);
     }
 }
 export const confirmModalAction = (question,content, action) => {
-    return (dispatch) => {
-        dispatch(confirmModalOpenAction(question, content, deferedAction));
-        deferAction = new Promise(
-            resolve => dispatch(deferedAction)
-        )
+    return {
+        type: CONFIRM_MODAL_OPEN,
+        payload: { question, content, action }
     }
 }
 

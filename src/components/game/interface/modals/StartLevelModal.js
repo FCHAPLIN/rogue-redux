@@ -9,12 +9,10 @@ class StartLevelModal extends Component {
         this.props = props;
     }
     componentDidMount(){
-
         setTimeout(this.props.startModalClose,5000);
     }
     render() {
         const startModal = this.props.data.modals.startModal;
-
         return (
             <Modal
                 isOpen={startModal.isOpen}

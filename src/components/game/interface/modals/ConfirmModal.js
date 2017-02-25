@@ -10,23 +10,22 @@ class ConfirmModal extends Component {
         this.props = props;
     }
 	componentDidMount() {
-    	console.log('test');
 	}
     render() {
-        const confirmModal = this.props.modals.confirmModal;
-
+        const confirmModal = this.props.data.modals.confirmModal;
         return (
             <Modal
                 isOpen={confirmModal.isOpen}
                 confirmModalCancel={this.confirmModalCancel}
                 confirmModalValid={this.confirmModalValid}
+                contentLabel="Example Modal"
                 className="ReactModal__confirm"
             >
                 <h2 ref="subtitle">{confirmModal.question}</h2>
                 <div>{confirmModal.content}</div>
                 <div className="ReactModal__buttons-bar">
-                    <button onClick={this.props.infoModalConfirm}>Confirm</button>
-                    <button onClick={this.props.infoModalCancel}>Cancel</button>
+                    <button onClick={this.props.confirmModalConfirm}>Confirm</button>
+                    <button onClick={this.props.confirmModalCancel}>Cancel</button>
                 </div>
             </Modal>
         );

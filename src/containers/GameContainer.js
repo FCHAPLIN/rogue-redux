@@ -8,6 +8,9 @@ import { inventoryDropAction,
 		 infoModalOpenAction,
 		 infoModalCloseAction,
 		 endModalToggleAction,
+        confirmModalConfirmAction,
+        confirmModalCancelAction,
+        confirmModalAction,
 		 startModalToggleAction } from 'actions/UIActions'
 import shallowCompare from 'react-addons-shallow-compare';
 import MapComponent from 'components/game/map/MapComponent';
@@ -81,11 +84,14 @@ class GameContainer extends Component {
     }
 
     inventoryToggle(){
-        this.props.dispatch(inventoryToggleAction());
+        this.props.dispatch(confirmModalAction('Open Inventory',
+                'Are your very sure about this ?',
+                inventoryToggleAction()));
+        //this.props.dispatch(inventoryToggleAction());
     }
 
     confirmModalConfirm(){
-        this.props.dispatch(confirmModalConfirmAction());
+        this.props.dispatch(confirmModalConfirmAction(this.props.modals.confirmModal.action));
     }
 
     confirmModalCancel(){
