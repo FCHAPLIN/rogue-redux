@@ -1,7 +1,7 @@
 {
-  "name": "reactapp",
-  "version": "1.0.0",
-  "description": "Redux training",
+  "name": "Rogue Redux",
+  "version": "0.1.0",
+  "description": "A Rogue like made with React",
   "main": "main.js",
   "scripts": {
     "test": "jest",
