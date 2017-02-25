@@ -1,7 +1,6 @@
 import React, {Component, PropTypes} from 'react'
 import { Link } from 'react-router'
 import logo from 'assets/img/logobig.png';
-import Modal from 'react-modal';
 
 const HomeComponent = () => (
 	<div className="home">
@@ -18,9 +17,9 @@ const HomeComponent = () => (
 		<div className="social">
 			<nav>
 				<ul>
-					<li><i className="icon-twitter"></i></li>
-					<li><i className="icon-facebook"></i></li>
-					<li><i className="icon-github"></i></li>
+					<li><a href="https://twitter.com/fredchaplin" target="_BLANK" alt="FCHAPLIN on Twitter"><i className="icon-twitter"></i></a></li>
+					<li><a href="https://fb.me/RogueRedux" target="_BLANK" alt="Rogue Redux page on Facebook"><i className="icon-facebook"></i></a></li>
+					<li><a href="https://github.com/FCHAPLIN/rogue-redux" target="_BLANK" alt="Rogue Redux source on Github"><i className="icon-github"></i></a></li>
 				</ul>
 			</nav>
 		</div>
