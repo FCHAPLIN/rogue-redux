@@ -2,6 +2,7 @@ export const SCREEN_RESIZE = 'SCREEN_RESIZE';
 export const SCREEN_INIT = 'SCREEN_INIT';
 export const INVENTORY_DROP = 'INVENTORY_DROP';
 export const INVENTORY_TOGGLE = 'INVENTORY_TOGGLE';
+export const LOG_TOGGLE = 'LOG_TOGGLE';
 export const INFOMODAL_CLOSE = 'INFOMODAL_CLOSE';
 export const INFOMODAL_OPEN = 'INFOMODAL_OPEN';
 export const ENDMODAL_TOGGLE = 'ENDMODAL_TOGGLE';
@@ -62,6 +63,12 @@ export const inventoryToggleAction = () => {
     return {
         type: INVENTORY_TOGGLE,
     }
+}
+
+export const logToggleAction = () => {
+	return {
+		type: LOG_TOGGLE
+	}
 }
 
 export const infoModalCloseAction = () => {

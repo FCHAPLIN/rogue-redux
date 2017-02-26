@@ -1,11 +1,11 @@
 {
   "name": "RogueRedux",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "A Rogue like made with React",
   "main": "main.js",
   "scripts": {
     "test": "jest",
-    "start": "webpack-dev-server --hot --display-error-details ",
+    "start": "webpack-dev-server --hot --inline --display-error-details --content-base bin",
     "build": "webpack --config webpack.production.config.js --progress --profile --colors"
   },
   "jest": {
@@ -38,7 +38,9 @@
     "file-loader": "^0.9.0",
     "html-webpack-plugin": "^2.22.0",
     "http-server": "^0.8.5",
+    "moment": "^2.17.1",
     "node-sass": "^3.10.0",
+    "node-uuid": "^1.4.7",
     "raw-loader": "^0.5.1",
     "react": "^15.3.0",
     "react-addons-shallow-compare": "^15.3.2",

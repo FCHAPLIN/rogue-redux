@@ -5,6 +5,7 @@ import { mapRequestStartAction } from 'actions/MapActions'
 import { inputKeyAction } from 'actions/PlayerActions'
 import { inventoryDropAction,
 		 inventoryToggleAction,
+		logToggleAction,
 		 infoModalOpenAction,
 		 infoModalCloseAction,
 		 endModalToggleAction,
@@ -15,6 +16,7 @@ import { inventoryDropAction,
 import shallowCompare from 'react-addons-shallow-compare';
 import MapComponent from 'components/game/map/MapComponent';
 import Interface from 'components/game/interface/Interface';
+import Log from 'components/game/interface/Log';
 import Inventory from 'components/game/interface/Inventory';
 import InfoModal from 'components/game/interface/modals/InfoModal';
 import StartLevelModal from 'components/game/interface/modals/StartLevelModal';
@@ -28,6 +30,7 @@ class GameContainer extends Component {
         this.command = this.command.bind(this);
         this.inventoryDrop = this.inventoryDrop.bind(this);
         this.inventoryToggle = this.inventoryToggle.bind(this);
+        this.logWindowToggle = this.logWindowToggle.bind(this);
         this.infoModalOpen = this.infoModalOpen.bind(this);
         this.infoModalClose = this.infoModalClose.bind(this);
         this.startModalToggle = this.startModalToggle.bind(this);
@@ -81,6 +84,9 @@ class GameContainer extends Component {
         this.props.dispatch( inventoryToggleAction());
     }
 
+    logWindowToggle(){
+		this.props.dispatch(logToggleAction());
+	}
     confirmModalConfirm(){
         this.props.dispatch(confirmModalConfirmAction(this.props.modals.confirmModal.action));
     }
@@ -121,7 +127,11 @@ class GameContainer extends Component {
                   onInfoClick= {this.infoModalOpen}
                 />
                 <MapComponent data={this.props} />
-                {inventory &&
+				<Log
+					data={this.props.log}
+                    logWindowToggle= {this.logWindowToggle}
+				/>
+				{inventory &&
                   <Inventory
                     data={this.props}
                     onDrop={this.inventoryDrop}
@@ -162,7 +172,8 @@ const mapStateToProps = (store) => {
 		map: store.map,
 		viewport: store.viewport,
 		modals: store.modals,
-		game: store.game
+		game: store.game,
+		log: store.log
     };
 }
 

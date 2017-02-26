@@ -5,7 +5,7 @@ While it may seem trivial to code a game with React, it's not. Coding games for 
 React proved to be finally a relative good choice for a game like this.  
 
 The goal here is to push React/Redux to it's limits speaking of memory usage, actions/reducers architecture hell, display speed, and testing.
-I'll eventually push it to become a fully progressive webApp, with a 100% lighthouse rate.
+I'll eventually push it to become a fully progressive webApp, with a 100% lighthouse rate (Ok, in my dreams...).
 
 Maybe some parts of this work will serve one of your projects. You can use it the way you want. If you want to contribute to this project, just ask.
 I'll soon write an articles series about this project.

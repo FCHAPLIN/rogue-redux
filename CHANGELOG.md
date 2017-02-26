@@ -1,4 +1,13 @@
-# Rogue Redux is now in version 0.1.0 !
+# Rogue Redux is now in version 0.1.1 !
+
+## [0.1.1] - 2017-02-26
+### Interface
+- Cleaned up interface from test buttons
+- Social buttons on home are functionnal
+- Log window functionnal, with basic messages
+- Changed some player fu...ing quotes
+- Log window is now minimizable
+
 
 ## [0.1.0] - 2017-02-25
 ### Added

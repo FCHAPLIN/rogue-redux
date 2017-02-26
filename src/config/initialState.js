@@ -83,6 +83,12 @@ export const initialState = {
         characterWindow: false,
         attributesWindow: false,
     },
+    
+	log: {
+    	visible:true,
+		entries:[
+		]
+	},
     modals: {
         infoModal: {
             isOpen: false,
