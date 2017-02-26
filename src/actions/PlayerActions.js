@@ -20,22 +20,25 @@ export const REMOVE_MESSAGE = 'REMOVE_MESSAGE';
 let mapService = new MapService();
 
 export const inputKeyAction = (keycode, posX, posY) => {
-    console.log(keycode);
     return (dispatch) => {
         let targetCell;
         let originCell = mapService.getCell(posX, posY);
         switch (keycode) {
             case 'ArrowDown':
                 targetCell = mapService.getCell(posX, posY + 1);
+                dispatch(log.logEntryAction('You walked south', 'info'));
                 break;
             case 'ArrowUp':
                 targetCell = mapService.getCell(posX, posY - 1);
+                dispatch(log.logEntryAction('You walked north', 'info'));
                 break;
             case 'ArrowLeft':
                 targetCell = mapService.getCell(posX - 1, posY);
+                dispatch(log.logEntryAction('You walked west', 'info'));
                 break;
             case 'ArrowRight':
                 targetCell = mapService.getCell(posX + 1, posY);
+                dispatch(log.logEntryAction('You walked east', 'info'));
                 break;
             default:
                 break;
@@ -57,6 +60,7 @@ export const inputKeyAction = (keycode, posX, posY) => {
                             case 'potion':
                                 dispatch(playerGetPotionAction(5));
                                 dispatch(playerMessageAction('Let\'s drink !'));
+                                dispatch(log.logEntryAction(`You drank a minor health potion and gained ${5} life points`, 'notify'));
                                 setTimeout(function() {
                                     dispatch(removeMessageAction());
                                 },3000);
@@ -64,6 +68,7 @@ export const inputKeyAction = (keycode, posX, posY) => {
                             case 'gold':
                                 dispatch(playerGetGoldAction(20));
                                 dispatch(playerMessageAction('Gooooold !'));
+                                dispatch(log.logEntryAction(`You found ${20} gold pieces`, 'notify'));
                                 setTimeout(function() {
                                     dispatch(removeMessageAction());
                                 },3000);
@@ -71,6 +76,7 @@ export const inputKeyAction = (keycode, posX, posY) => {
                             case 'chest':
                                 dispatch(playerGetGoldAction(100));
                                 dispatch(playerMessageAction('Mmmmh... What\s \n inside this thing ?'));
+                                dispatch(log.logEntryAction(`You found ${100} gold pieces`, 'notify'));
                                 setTimeout(function() {
                                     dispatch(removeMessageAction());
                                 },3000);
@@ -88,7 +94,7 @@ export const inputKeyAction = (keycode, posX, posY) => {
             }
             dispatch(monstersTurnAction(targetCell));
         }else{
-            dispatch(playerMessageAction('OMAGAD !!! \n I FU..ING SPEAK !!!'));
+            dispatch(playerMessageAction('Ouch ! Hey !!! It\'s no so dark !'));
             setTimeout(function() {
                 dispatch(removeMessageAction());
             },3000);
@@ -136,10 +142,18 @@ export const playerMoveProcessAction = (keycode) => {
 }
 
 export const turnResultsAction = (results) => {
-    let totalDamage = 0;
-    for (let damage of results[1]) {
-        totalDamage += damage;
+    return (dispatch) => {
+        let totalDamage = 0;
+        for (let damage of results[1]) {
+            totalDamage += damage;
+        }
+        if (totalDamage>0){
+            dispatch(log.logEntryAction(`You got hit for ${totalDamage}`, 'alert'));
+        }
+        dispatch(turnResultsDamageAction(totalDamage));
     }
+}
+export const turnResultsDamageAction = (totalDamage) => {
     return {
         type: TURN_RESULT,
         totalDamage
@@ -148,7 +162,7 @@ export const turnResultsAction = (results) => {
 
 export const mapRequestErrorAction = (error) => {
     return {
-        type: MAP_REQUEST_ERROR,
+        type: 'MAP_REQUEST_ERROR',
         error
     }
 }

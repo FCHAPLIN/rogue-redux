@@ -12,7 +12,7 @@ const log = (state = {}, action) => {
         case LOG_ENTRY:
             console.log(moment);
             const id = uuid.v4();
-            const time = moment().format('dd/MM, h:mm:ss a')
+            const time = moment().format('DD/MM, hh:mm:ss')
             const newEntry = action.payload;
             newEntry.time = time;
             newEntry.id = id;
