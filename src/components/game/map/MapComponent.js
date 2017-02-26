@@ -70,7 +70,6 @@ class MapComponent extends Component {
         }
         return (
           <div>
-
             <div className="map-wrapper">
                 <div className="map-container" style={mapStyle}>
                   {cellsElements}

@@ -63,17 +63,4 @@ const viewport = (state = {}, action) => {
     }
 }
 
-//Todo :
-//
-//Init the viewport :
-//number of cell shown :
-//  width in pixel / cellSize (rounded up)
-//  height in pixel / cellSize (rounded up)
-//  ajouter 3 ou 4 row ou columns pour securiser le scroll
-//
-//  prendre le nombre de case restante* cellSize en padding
-//
-//  En divisant par deux, on a le milieu
-
-
 export default viewport;

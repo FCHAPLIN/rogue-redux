@@ -19,18 +19,18 @@ loaders.push({
 
 module.exports = {
     entry: './src/main.js',
-
+    watch:true,
     output: {
         path: "./bin",
-        publicPath: "/assets/",
+        publicPath: "/",
         filename: "bundle.js"
     },
 
     devServer: {
         contentBase: "./bin",
         inline: true,
+        watch:true,
         historyApiFallback: true,
-        hot: true,
         port: 8080
     },
 

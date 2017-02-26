@@ -3,6 +3,9 @@ import {
     SET_START_CELL,
     mapRequestStartAction
 } from 'actions/MapActions';
+import * as log from 'actions/LogActions';
+
+import { levelCompleteAction} from 'actions/GameActions';
 
 export const PLAYER_DIED = 'PLAYER_DIED';
 export const PLAYER_MOVE = 'PLAYER_MOVE';
@@ -42,6 +45,7 @@ export const inputKeyAction = (keycode, posX, posY) => {
             if (targetCell.occupant) {
                 mapService.playerAttack(targetCell.occupant);
                 targetCell = originCell;
+                dispatch(log.logEntryAction('You attacked a monster', 'notify'));
                 dispatch(playerMessageAction('YOU\'RE GOING TO DIIIIIE !'));
                 setTimeout(function() {
                     dispatch(removeMessageAction());
@@ -59,7 +63,7 @@ export const inputKeyAction = (keycode, posX, posY) => {
                                 break;
                             case 'gold':
                                 dispatch(playerGetGoldAction(20));
-                                dispatch(playerMessageAction('I am soooo f..ng rich !'));
+                                dispatch(playerMessageAction('Gooooold !'));
                                 setTimeout(function() {
                                     dispatch(removeMessageAction());
                                 },3000);
@@ -78,6 +82,7 @@ export const inputKeyAction = (keycode, posX, posY) => {
                 dispatch(playerMoveProcessAction(keycode));
 
                 if (targetCell.cellType == 'exit') {
+                	dispatch(levelCompleteAction());
                     dispatch(mapRequestStartAction());
                 }
             }

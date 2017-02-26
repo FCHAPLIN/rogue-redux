@@ -8,4 +8,38 @@
   background:$color2;
   padding:10px;
   color:$color1;
+  .title-bar{
+    height:20px;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__entries{
+    max-height: 80px;
+    overflow-y: auto;
+
+  }
+}
+.log-entry{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  border-bottom:1px solid lighten($color2,10%);
+
+  &__time{
+    padding-left: 5px;
+  }
+  &__text{
+    padding-left: 5px;
+  }
+  &.alert{
+    color:#aa3333;
+  }
+  &.notify{
+    color:#aaaa33;
+  }
+  &.info{
+    color:#aaaaaa;
+  }
 }

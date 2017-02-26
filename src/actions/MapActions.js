@@ -1,4 +1,5 @@
 import MapService from 'services/MapService'
+import { startModalToggleAction } from 'actions/UIActions';
 
 export const MAP_REQUEST_START = 'MAP_REQUEST_START';
 export const MAP_REQUEST_SUCCESS = 'MAP_REQUEST_SUCCESS';
@@ -11,9 +12,15 @@ const mapService = new MapService();
 export const mapRequestStartAction = () => {
     return (dispatch) => {
         let data = mapService.getNewMap();
+		let modalData= {
+			content: 'start',
+			//buttons: ['ok'],
+			type: 'fullbrick',
+		}
         dispatch(mapRequestSuccessAction(data));
         dispatch(setStartCellAction(data.start));
         window.dispatchEvent(new Event('resize'));
+        dispatch(startModalToggleAction(modalData));
     }
 }
 
@@ -22,6 +29,8 @@ export const setStartCellAction = (startCell) => {
     type: SET_START_CELL,
     startCell
   }
+
+  dispatch(startModalToggleAction());
 }
 
 export const mapRequestSuccessAction = (mapData) => {
