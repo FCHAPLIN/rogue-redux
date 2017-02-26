@@ -56,9 +56,9 @@ class Interface extends Component {
           </div>
             <ul>
                 <li><div><Link className="back-menu" to='Home'><i className="icon-library"></i></Link></div></li>
-                <li><div onClick={inventoryToggle}>inventory</div></li>
-                <li><div onClick={infoModalToggle}>info</div></li>
-                <li><div onClick={startToggle}>start</div></li>
+                //<li><div onClick={inventoryToggle}>inventory</div></li>
+                //<li><div onClick={infoModalToggle}>info</div></li>
+                //<li><div onClick={startToggle}>start</div></li>
             </ul>
         </div>
       )

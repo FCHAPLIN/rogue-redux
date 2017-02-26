@@ -17,20 +17,24 @@ class Log extends Component {
 
     render() {
         const log = this.props.data;
+        const visible = log.visible;
+        const logWindowToggle = this.props.logWindowToggle;
+        const visibleClass = visible ? 'log-panel' : 'log-panel-reduced';
         let logEntries = [];
         let entries = log.entries;
         logEntries = entries.map(logEntry => getLogEntry(logEntry));
         return(
-        <div className="log-panel">
-            <div className="title-bar">
-                <div className="title">LOG PANEL</div>
-                <div className="reduce-button">-</div>
+            <div className={visibleClass}>
+                <div className="title-bar">
+                    <div className="title">LOG PANEL</div>
+                    <div className="reduce-button" onClick={logWindowToggle}>-</div>
+                </div>
+                <div className="entries">
+                    {logEntries}
+                </div>
+                <div className="deploy-button" onClick={logWindowToggle}>+</div>
             </div>
-			<div className="log-panel__entries">
-				{logEntries}
-			</div>
-        </div>
-      )
+        )
     }
 }
 export default Log;

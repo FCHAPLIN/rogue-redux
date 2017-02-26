@@ -87,27 +87,6 @@ export const initialState = {
 	log: {
     	visible:true,
 		entries:[
-			{
-				id: "3879-5464546-5464564654",
-                type: "info",
-				time: "12h35",
-				text: "You walked north",
-			},{
-				id: "3454-5464546-5464564655",
-                type: "info",
-                time: "12h35",
-				text: "You walked north",
-			},{
-				id: "35535-5464546-5464564656",
-                type: "notify",
-                time: "12h35",
-				text: "You walked north, an	orc has seen you and walks toward you",
-			},{
-				id: "1254-5464546-5464564657",
-                type: "alert",
-                time: "12h36",
-				text: "You walked north, an	orc attacked you with a blow, dealing 4 damages",
-			}
 		]
 	},
     modals: {

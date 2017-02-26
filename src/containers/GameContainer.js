@@ -30,7 +30,7 @@ class GameContainer extends Component {
         this.command = this.command.bind(this);
         this.inventoryDrop = this.inventoryDrop.bind(this);
         this.inventoryToggle = this.inventoryToggle.bind(this);
-        this.logToggle = this.logToggle.bind(this);
+        this.logWindowToggle = this.logWindowToggle.bind(this);
         this.infoModalOpen = this.infoModalOpen.bind(this);
         this.infoModalClose = this.infoModalClose.bind(this);
         this.startModalToggle = this.startModalToggle.bind(this);
@@ -84,7 +84,7 @@ class GameContainer extends Component {
         this.props.dispatch( inventoryToggleAction());
     }
 
-	logToggle(){
+    logWindowToggle(){
 		this.props.dispatch(logToggleAction());
 	}
     confirmModalConfirm(){
@@ -116,7 +116,6 @@ class GameContainer extends Component {
     render() {
         const {data} = this.props;
         const inventory = this.props.viewport.inventory;
-        const displayLogWindow = this.props.log.visible;
         const modals = this.props.modals;
         return (
             <div>
@@ -128,11 +127,10 @@ class GameContainer extends Component {
                   onInfoClick= {this.infoModalOpen}
                 />
                 <MapComponent data={this.props} />
-				{displayLogWindow &&
 				<Log
 					data={this.props.log}
-					onClose= {this.logToggle}
-				/>}
+                    logWindowToggle= {this.logWindowToggle}
+				/>
 				{inventory &&
                   <Inventory
                     data={this.props}
