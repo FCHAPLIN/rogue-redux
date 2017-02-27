@@ -2,6 +2,7 @@ import React, {Component, PropTypes} from 'react'
 import { connect } from 'react-redux'
 import { dispatch } from 'redux'
 import { mapRequestStartAction } from 'actions/MapActions'
+import { saveGameAction } from 'actions/GameActions'
 import { inputKeyAction } from 'actions/PlayerActions'
 import { inventoryDropAction,
 		 inventoryToggleAction,
@@ -38,6 +39,7 @@ class GameContainer extends Component {
         this.endModalToggle = this.endModalToggle.bind(this);
         this.confirmModalCancel = this.confirmModalCancel.bind(this);
         this.confirmModalConfirm = this.confirmModalConfirm.bind(this);
+        this.onSaveGame = this.onSaveGame.bind(this);
     }
     shouldComponentUpdate(nextProps, nextState){
       return shallowCompare(this, nextProps, nextState);
@@ -107,6 +109,9 @@ class GameContainer extends Component {
     infoModalClose(){
         this.props.dispatch(infoModalCloseAction());
     }
+    onSaveGame(){
+        this.props.dispatch(saveGameAction());
+    }
 	startModalToggle(){
 		this.props.dispatch(startModalToggleAction());
 	}
@@ -125,6 +130,7 @@ class GameContainer extends Component {
                   onInventoryClick= {this.inventoryToggle}
                   onStartClick= {this.startModalToggle}
                   onInfoClick= {this.infoModalOpen}
+                  onSaveGame= {this.onSaveGame}
                 />
                 <MapComponent data={this.props} />
 				<Log

@@ -1,5 +1,5 @@
-import { LOG_TOGGLE } from 'actions/UIActions'
-import { LOG_ENTRY } from 'actions/LogActions'
+import { LOG_TOGGLE } from 'actions/UIActions';
+import { LOG_ENTRY } from 'actions/LogActions';
 import * as uuid from 'node-uuid';
 import moment from 'moment';
 
