@@ -110,7 +110,13 @@ class GameContainer extends Component {
         this.props.dispatch(infoModalCloseAction());
     }
     onSaveGame(){
-        this.props.dispatch(saveGameAction());
+		var saveGame = {
+			player : this.props.player,
+			viewport : this.props.viewport,
+			game: this.props.game
+		}
+        this.props.dispatch(saveGameAction(saveGame));
+
     }
 	startModalToggle(){
 		this.props.dispatch(startModalToggleAction());

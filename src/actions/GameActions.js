@@ -1,5 +1,5 @@
 import SavedGameService from 'services/SavedGameService';
-import store from '';
+import { store } from 'react-redux';
 export const LEVEL_COMPLETE = 'LEVEL_COMPLETE';
 export const SAVE_GAME = 'SAVE_GAME';
 export const LOAD_GAME = 'LOAD_GAME';
@@ -8,24 +8,18 @@ const savedGameService = new SavedGameService();
 
 export const levelCompleteAction = () => {
     return {
-        type: LEVEL_COMPLETE,
-    };
-};
-export const saveGameAction = () => {
-    try {
-        savedGameService.saveGame(JSON.stringify(store.getState()));
-    } catch(error) {
-        throw new Error(error);
+        type: LEVEL_COMPLETE
     }
+}
+export const saveGameAction = (store) => {
+	savedGameService.saveGame(JSON.stringify(store));
     return {
-        type: SAVE_GAME,
-        name,
-    };
-};
+        type: SAVE_GAME
+    }
+}
 export const loadGameAction = () => {
     console.log(savedGameService.getSavedGame());
     return {
-        type: LOAD_GAME,
-        name,
-    };
-};
+        type: LOAD_GAME
+    }
+}
