@@ -1,9 +1,9 @@
-import React, {Component, PropTypes} from 'react'
-import { connect } from 'react-redux'
-import { dispatch } from 'redux'
-import { mapRequestStartAction } from 'actions/MapActions'
-import { saveGameAction } from 'actions/GameActions'
-import { inputKeyAction } from 'actions/PlayerActions'
+import React, {Component, PropTypes} from 'react';
+import { connect } from 'react-redux';
+import { dispatch } from 'redux';
+import { mapRequestStartAction } from 'actions/MapActions';
+import { saveGameAction } from 'actions/GameActions';
+import { inputKeyAction } from 'actions/PlayerActions';
 import { inventoryDropAction,
 		 inventoryToggleAction,
 		logToggleAction,
@@ -13,7 +13,7 @@ import { inventoryDropAction,
         confirmModalConfirmAction,
         confirmModalCancelAction,
         confirmModalAction,
-		 startModalToggleAction } from 'actions/UIActions'
+		 startModalToggleAction } from 'actions/UIActions';
 import shallowCompare from 'react-addons-shallow-compare';
 import MapComponent from 'components/game/map/MapComponent';
 import Interface from 'components/game/interface/Interface';

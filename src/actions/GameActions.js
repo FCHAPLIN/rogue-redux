@@ -17,9 +17,9 @@ export const saveGameAction = (store) => {
         type: SAVE_GAME
     }
 }
-export const loadGameAction = () => {
-    console.log(savedGameService.getSavedGame());
+export const loadGameAction = (store) => {
     return {
-        type: LOAD_GAME
+        type: LOAD_GAME,
+        payload: store,
     }
 }

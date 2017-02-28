@@ -1,5 +1,6 @@
 import { LOG_TOGGLE } from 'actions/UIActions';
 import { LOG_ENTRY } from 'actions/LogActions';
+import { LOAD_GAME } from 'actions/GameActions';
 import * as uuid from 'node-uuid';
 import moment from 'moment';
 
@@ -9,6 +10,8 @@ const log = (state = {}, action) => {
             return Object.assign({}, state, {
 				visible: !state.visible
             })
+        case LOAD_GAME:
+            return Object.assign({}, state, action.payload.log);
         case LOG_ENTRY:
             console.log(moment);
             const id = uuid.v4();

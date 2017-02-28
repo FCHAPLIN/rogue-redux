@@ -5,7 +5,7 @@ class SavedGameService {
     }
 
     getSavedGame(){
-        return localStorage.getItem('rogueredux');
+        return JSON.parse(localStorage.getItem('rogueredux'));
     }
 
     saveGame(game){

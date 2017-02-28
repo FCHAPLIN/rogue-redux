@@ -1,6 +1,7 @@
 import { SET_START_CELL} from 'actions/MapActions'
 import { PLAYER_MOVE, PLAYER_MESSAGE } from 'actions/PlayerActions'
 import { SCREEN_RESIZE } from 'actions/UIActions'
+import { LOAD_GAME } from 'actions/GameActions';
 
 const viewport = (state = {}, action) => {
     switch (action.type) {
@@ -58,6 +59,8 @@ const viewport = (state = {}, action) => {
             return Object.assign({}, state, {
                 inventory: !state.inventory
             })
+        case LOAD_GAME:
+            return Object.assign({}, state, action.payload.viewPort)
         default:
             return state
     }

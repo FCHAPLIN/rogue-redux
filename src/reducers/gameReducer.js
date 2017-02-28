@@ -9,7 +9,7 @@ const game = (state = {}, action) => {
                 level: state.level + 1,
             });
         case LOAD_GAME:
-            console.log(SavedGameService.getSavedGame());
+            return Object.assign({}, state, action.payload.game);
         case SAVE_GAME:
             console.log('save');
 
