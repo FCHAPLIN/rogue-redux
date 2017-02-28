@@ -46,8 +46,9 @@ class GameContainer extends Component {
     }
     componentDidMount() {
         const {dispatch} = this.props;
-
-        dispatch(mapRequestStartAction());
+		if (!this.props.game.isLoadingSavedGame){
+			dispatch(mapRequestStartAction());
+		}
 
         if (Event.prototype.initEvent) {
             var evt = window.document.createEvent('UIEvents');
@@ -113,7 +114,9 @@ class GameContainer extends Component {
 		var saveGame = {
 			player : this.props.player,
 			viewport : this.props.viewport,
-			game: this.props.game
+			map: this.props.map,
+			game: this.props.game,
+			log: this.props.log,
 		}
         this.props.dispatch(saveGameAction(saveGame));
 

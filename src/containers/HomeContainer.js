@@ -5,6 +5,7 @@ import { Link } from 'react-router';
 import logo from 'assets/img/logobig.png';
 import {loadGameAction} from 'actions/GameActions'
 import SavedGameService from 'services/SavedGameService';
+import { browserHistory } from 'react-router';
 
 class HomeContainer extends Component {
     constructor(props) {
@@ -12,7 +13,9 @@ class HomeContainer extends Component {
         this.loadGame = this.loadGame.bind(this);
     }
     loadGame(){
+    	debugger;
         this.props.dispatch(loadGameAction(this.savedGame));
+		browserHistory.push('/game');
     }
     componentWillMount(){
         this.loadButtonClass = "inactive";

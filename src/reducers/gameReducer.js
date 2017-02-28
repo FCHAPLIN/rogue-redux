@@ -10,6 +10,7 @@ const game = (state = {}, action) => {
             });
         case LOAD_GAME:
             return Object.assign({}, state, action.payload.game);
+
         case SAVE_GAME:
             console.log('save');
 

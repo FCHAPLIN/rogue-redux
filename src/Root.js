@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { Router, Route, hashHistory, Redirect } from 'react-router';
+import { Router, Route, browserHistory, Redirect } from 'react-router';
 import PlayerContainer from 'containers/PlayerContainer'
 import GameContainer from 'containers/GameContainer'
 import StatsContainer from 'containers/StatsContainer'
@@ -9,7 +9,7 @@ import AboutComponent from 'components/pages/AboutComponent'
 class Root extends Component {
 	render() {
 		return(
-			<Router history={hashHistory}>
+			<Router history={browserHistory}>
 				<Redirect from="/" to="Home" />
               	<Route name="Player" path="/player" component={PlayerContainer} />
               	<Route name="Game" path="/game" component={GameContainer} />

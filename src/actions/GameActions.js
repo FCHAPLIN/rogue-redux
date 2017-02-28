@@ -18,7 +18,8 @@ export const saveGameAction = (store) => {
     }
 }
 export const loadGameAction = (store) => {
-    return {
+    store.game.isLoadingSavedGame = true;
+	return {
         type: LOAD_GAME,
         payload: store,
     }
