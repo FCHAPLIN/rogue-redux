@@ -1,5 +1,5 @@
 import SavedGameService from 'services/SavedGameService';
-import { store } from 'react-redux';
+import stringify from 'json-stringify-safe';
 export const LEVEL_COMPLETE = 'LEVEL_COMPLETE';
 export const SAVE_GAME = 'SAVE_GAME';
 export const LOAD_GAME = 'LOAD_GAME';
@@ -12,7 +12,9 @@ export const levelCompleteAction = () => {
     }
 }
 export const saveGameAction = (store) => {
-	savedGameService.saveGame(JSON.stringify(store));
+	let test = stringify(store);
+	console.log(test.length)
+	savedGameService.saveGame(test);
     return {
         type: SAVE_GAME
     }

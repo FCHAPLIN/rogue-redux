@@ -6,7 +6,7 @@ class MapService {
     constructor() {
         if (!mapServiceInstance) {
             mapServiceInstance = this;
-            this.map = new Map(80, 80);
+            this.map = new Map(50, 50);
         }
         return mapServiceInstance;
     }
