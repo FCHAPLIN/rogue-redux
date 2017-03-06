@@ -10,9 +10,9 @@ export const SET_START_CELL = 'SET_START_CELL';
 
 const mapService = new MapService();
 
-export const mapRequestStartAction = () => {
+export const mapRequestStartAction = (level) => {
     return (dispatch) => {
-        let data = mapService.getNewMap();
+        let data = mapService.getNewMap(level);
 		let modalData= {
 			content: 'start',
 			//buttons: ['ok'],

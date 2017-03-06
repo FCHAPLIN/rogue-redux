@@ -4,7 +4,8 @@ import PartState from 'utils/rogue/map/PartState';
 
 
 class Monster {
-    constructor(cell, monsterType, monsterLevel) {
+    constructor(cell, monsterType, monsterValues) {
+    	console.log(monsterValues);
         this.cell = cell;
         this.posX = cell.posX;
         this.posY = cell.posY;

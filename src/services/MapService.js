@@ -12,7 +12,7 @@ class MapService {
     }
 
     getNewMap(param) {
-        return this.map.generateMap();
+        return this.map.generateMap(param);
     }
 
     setCellContent(cell, content) {

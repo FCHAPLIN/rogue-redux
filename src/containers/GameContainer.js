@@ -47,7 +47,7 @@ class GameContainer extends Component {
     componentDidMount() {
         const {dispatch} = this.props;
 
-        dispatch(mapRequestStartAction());
+        dispatch(mapRequestStartAction(1));
 
 
         if (Event.prototype.initEvent) {

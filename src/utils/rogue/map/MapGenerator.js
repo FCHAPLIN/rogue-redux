@@ -1,5 +1,6 @@
 import CellConstants from 'utils/rogue/map/CellConstants';
 import MonsterConstants from 'utils/rogue/map/MonsterConstants';
+import MonsterListing from 'utils/rogue/map/MonsterListing';
 import TreasureConstants from 'utils/rogue/map/TreasureConstants';
 import Monster from 'utils/rogue/map/Monster';
 import Treasure from 'utils/rogue/map/Treasure';
@@ -21,7 +22,7 @@ class MapGenerator {
         this.corridors = [];
     }
 
-    generateMap() {
+    generateMap(level) {
         this.createMap();
         this.setContiguousCells(false);
         this.generateRooms();
@@ -32,7 +33,7 @@ class MapGenerator {
         this.generateTreasures();
         this.startCell = this.setStartCell(true);
         this.exitCell = this.setExitCell();
-        this.generatePopulation();
+        this.generatePopulation(level);
         this.data = {
             cells: this.cells,
             openCells: this.openCells,
@@ -366,7 +367,7 @@ class MapGenerator {
     }
 
     generatePopulation(level) {
-        let livingsLevel = 40;
+        let livingsLevel = 20;
         while (livingsLevel > 0) {
             let goodCell;
             let cell;
@@ -380,30 +381,36 @@ class MapGenerator {
 
             }
             let monster;
+            let hunger = this.randomize(1, 100);
+			let courage = this.randomize(1, 100);
+			let fatigue = this.randomize(1, 100);
+			let faith = this.randomize(1, 100);
+            let monsterRace;
             let monsterType;
-            let monsterLevel = 1;
-            let rnd = this.randomize(1, 3);
-            switch (rnd) {
+            let monsterLevel = Math.max(1, this.randomize(level, level-2));
+
+            switch (this.randomize(1, 3)) {
             case 1:
-                monsterType = MonsterConstants.ORC;
+				monsterRace = MonsterConstants.ORC;
                 break;
             case 2:
-                monsterType = MonsterConstants.CYCLOP;
+				monsterRace = MonsterConstants.CYCLOP;
                 break;
             case 3:
-                monsterType = MonsterConstants.GOBLIN;
+				monsterRace = MonsterConstants.GOBLIN;
                 break;
             }
-            monster = new Monster(cell, monsterType, monsterLevel);
+
+            monster = new Monster(cell, monsterRace, MonsterListing[monsterRace], monsterLevel);
             cell.occupant=monster.key;
             //cell.content = monster;
             this.livings.push(monster);
-            livingsLevel -= monsterLevel;
+            livingsLevel -= MonsterListing[monsterRace].indice;
         }
     }
 
     generateTreasures() {
-        let treasureLevel = 40;
+        let treasureLevel = 20;
         while (treasureLevel > 0) {
             let cell = this.setStartCell();
             let treasure;

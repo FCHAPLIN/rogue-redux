@@ -1,0 +1,53 @@
+export default {
+    'ORC': {
+    	'indice': 1,
+		'description':'A massive humanoïd with green skin and boar tusks.',
+		'strength': {'min':8, 'max':14},
+		'dexterity': {'min':4, 'max':12},
+		'intelect': {'min':2, 'max':10},
+		'life': {'min':8, 'max':14},
+		'view': 4,
+		'smell': 6,
+		'hunger': {'min':5, 'max':20},
+		'faith': {'min':0, 'max':5},
+		'patience': {'min':0, 'max':5},
+		'courage': {'min':5, 'max':10},
+		'fatigue': {'min':0, 'max':10},
+		'weapon' : [''],
+		'armor' : ['']
+    },
+    'GOBLIN': {
+		'indice': 1,
+		'description':'A small humanoïd with green skin and a big head',
+		'strength': {'min':6, 'max':12},
+		'dexterity': {'min':6, 'max':14},
+		'intelect': {'min':2, 'max':8},
+		'view': 4,
+		'smell': 4,
+		'life': {'min':4, 'max':10},
+		'hunger': {'min':5, 'max':20},
+		'faith': {'min':0, 'max':5},
+		'patience': {'min':0, 'max':5},
+		'courage': {'min':5, 'max':10},
+		'fatigue': {'min':0, 'max':10},
+		'weapon' : [''],
+		'armor' : ['']
+    },
+    'CYCLOP': {
+		'indice': 2,
+		'description':'A very big humanoïd with dark skin. He has only one big eye on his face.',
+		'strength': {'min':12, 'max':16},
+		'dexterity': {'min':6, 'max':10},
+		'intelect': {'min':3, 'max':10},
+		'life': {'min':9, 'max':20},
+		'view': 6,
+		'smell': 2,
+		'hunger': {'min':10, 'max':30},
+		'faith': {'min':0, 'max':5},
+		'patience': {'min':0, 'max':5},
+		'courage': {'min':15, 'max':25},
+		'fatigue': {'min':15, 'max':25},
+		'weapon' : ['Club'],
+		'armor' : ['None', 'Leather Jacket']
+    }
+};

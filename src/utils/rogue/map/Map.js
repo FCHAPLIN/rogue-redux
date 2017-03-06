@@ -12,9 +12,9 @@ class Map {
         this.data = {}
     }
 
-    generateMap() {
+    generateMap(level) {
         let generator = new MapGenerator(this.width, this.height);
-        this.data = generator.generateMap();
+        this.data = generator.generateMap(level);
         return this.data;
     }
 

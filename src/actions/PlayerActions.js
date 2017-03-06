@@ -89,7 +89,7 @@ export const inputKeyAction = (keycode, posX, posY) => {
 
                 if (targetCell.cellType == 'exit') {
                 	dispatch(levelCompleteAction());
-                    dispatch(mapRequestStartAction());
+                    dispatch(mapRequestStartAction(1));
                 }
             }
             dispatch(monstersTurnAction(targetCell));
