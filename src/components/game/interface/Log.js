@@ -2,7 +2,7 @@ import React, {Component, PropTypes} from 'react';
 
 function getLogEntry(entry) {
 	return (
-        <div key={entry.id} className={`log-entry ${entry.type}`}>
+	    <div key={entry.id} className={`log-entry ${entry.type}`}>
 			<div className="log-entry__time">{entry.time}</div>
 			<div className="log-entry__text">{entry.text}</div>
 		</div>

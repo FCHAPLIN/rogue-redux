@@ -108,6 +108,7 @@ export const initialState = {
     },
     game: {
         level:1,
+		isLoadingSavedGame:false,
     },
     config: {
         mapWidth: config.mapWidth,

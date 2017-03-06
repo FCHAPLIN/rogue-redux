@@ -3,11 +3,14 @@ import {  PLAYER_NAME_CHANGE,
           PLAYER_SUBMIT } from 'actions'
 import { SET_START_CELL } from 'actions/MapActions'
 import { INVENTORY_DROP } from 'actions/UIActions'
-
+import { LOAD_GAME } from 'actions/GameActions';
 
 const player = (state = {}, action) => {
   switch (action.type) {
-    case SET_START_CELL :
+      case LOAD_GAME:
+          return Object.assign({}, state, action.payload.player)
+
+      case SET_START_CELL :
       return Object.assign({}, state, {
         posX: action.startCell.posX,
         posY: action.startCell.posY
@@ -21,7 +24,7 @@ const player = (state = {}, action) => {
         console.log(action.item, action.slot);
 
         return Object.assign({}, state, {
-            
+
         })
     }
     case 'PLAYER_GET_POTION':

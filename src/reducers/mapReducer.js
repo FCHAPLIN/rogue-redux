@@ -1,4 +1,4 @@
-
+import { LOAD_GAME } from 'actions/GameActions';
 
 const map = (state = {}, action) => {
   switch (action.type) {
@@ -6,7 +6,6 @@ const map = (state = {}, action) => {
         return Object.assign({}, state, {
             mapData: action.mapData
         })
-
     case 'MAP_REQUEST_ERROR':
         return Object.assign({}, state, {
             error: 'Errorrrrrrr !'

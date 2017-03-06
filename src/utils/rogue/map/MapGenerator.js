@@ -214,13 +214,16 @@ class MapGenerator {
 
             let path = new CorridorMaker(this.map, this.width, this.height);
             let newCorridor = path.getPath(d, e);
+            let corridorRef = [];
             for (let c of newCorridor) {
                 if (c.cellType != CellConstants.DOOR) {
                     c.obst = false;
                     c.cellType = CellConstants.FLOOR;
                 }
+                corridorRef.push(c.key);
             }
-            this.corridors.push(newCorridor);
+
+            this.corridors.push(corridorRef);
 
         }
         this.openCells = this.getOpenCells();

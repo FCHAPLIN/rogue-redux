@@ -1,8 +1,9 @@
-import React, {Component, PropTypes} from 'react'
-import { connect } from 'react-redux'
-import { dispatch } from 'redux'
-import { mapRequestStartAction } from 'actions/MapActions'
-import { inputKeyAction } from 'actions/PlayerActions'
+import React, {Component, PropTypes} from 'react';
+import { connect } from 'react-redux';
+import { dispatch } from 'redux';
+import { mapRequestStartAction } from 'actions/MapActions';
+import { saveGameAction } from 'actions/GameActions';
+import { inputKeyAction } from 'actions/PlayerActions';
 import { inventoryDropAction,
 		 inventoryToggleAction,
 		logToggleAction,
@@ -12,7 +13,7 @@ import { inventoryDropAction,
         confirmModalConfirmAction,
         confirmModalCancelAction,
         confirmModalAction,
-		 startModalToggleAction } from 'actions/UIActions'
+		 startModalToggleAction } from 'actions/UIActions';
 import shallowCompare from 'react-addons-shallow-compare';
 import MapComponent from 'components/game/map/MapComponent';
 import Interface from 'components/game/interface/Interface';
@@ -38,6 +39,7 @@ class GameContainer extends Component {
         this.endModalToggle = this.endModalToggle.bind(this);
         this.confirmModalCancel = this.confirmModalCancel.bind(this);
         this.confirmModalConfirm = this.confirmModalConfirm.bind(this);
+        this.onSaveGame = this.onSaveGame.bind(this);
     }
     shouldComponentUpdate(nextProps, nextState){
       return shallowCompare(this, nextProps, nextState);
@@ -46,6 +48,7 @@ class GameContainer extends Component {
         const {dispatch} = this.props;
 
         dispatch(mapRequestStartAction());
+
 
         if (Event.prototype.initEvent) {
             var evt = window.document.createEvent('UIEvents');
@@ -107,6 +110,14 @@ class GameContainer extends Component {
     infoModalClose(){
         this.props.dispatch(infoModalCloseAction());
     }
+    onSaveGame(){
+		var saveGame = {
+			player : this.props.player,
+			game: this.props.game,
+		}
+        this.props.dispatch(saveGameAction(saveGame));
+
+    }
 	startModalToggle(){
 		this.props.dispatch(startModalToggleAction());
 	}
@@ -125,6 +136,7 @@ class GameContainer extends Component {
                   onInventoryClick= {this.inventoryToggle}
                   onStartClick= {this.startModalToggle}
                   onInfoClick= {this.infoModalOpen}
+                  onSaveGame= {this.onSaveGame}
                 />
                 <MapComponent data={this.props} />
 				<Log

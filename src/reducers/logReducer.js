@@ -1,5 +1,6 @@
-import { LOG_TOGGLE } from 'actions/UIActions'
-import { LOG_ENTRY } from 'actions/LogActions'
+import { LOG_TOGGLE } from 'actions/UIActions';
+import { LOG_ENTRY } from 'actions/LogActions';
+import { LOAD_GAME } from 'actions/GameActions';
 import * as uuid from 'node-uuid';
 import moment from 'moment';
 

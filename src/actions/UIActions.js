@@ -25,72 +25,74 @@ export const screenResizeAction = (width, height, playerPosX, playerPosY, mapWid
         originTop,
         posX,
         posY,
-        cellSize
-    }
-}
+        cellSize,
+    };
+};
+
 export const inventoryDropAction = (item, slot) => {
     return {
         type: INVENTORY_DROP,
         item,
-        slot
-    }
-}
+        slot,
+    };
+};
 
 export const confirmModalCloseAction = () => {
     return {
         type: CONFIRM_MODAL_CLOSE,
-    }
-}
+    };
+};
+
 export const confirmModalCancelAction = () => {
     return (dispatch) => {
         dispatch(confirmModalCloseAction());
-    }
-}
+    };
+};
+
 export const confirmModalConfirmAction = (action) => {
     return (dispatch) => {
         dispatch(confirmModalCloseAction());
         dispatch(action);
-    }
-}
+    };
+};
+
 export const confirmModalAction = (question,content, action) => {
     return {
         type: CONFIRM_MODAL_OPEN,
         payload: { question, content, action }
-    }
-}
+    };
+};
 
 export const inventoryToggleAction = () => {
     return {
         type: INVENTORY_TOGGLE,
-    }
-}
+    };
+};
 
 export const logToggleAction = () => {
 	return {
-		type: LOG_TOGGLE
-	}
-}
+		type: LOG_TOGGLE,
+	};
+};
 
 export const infoModalCloseAction = () => {
     return {
         type: INFOMODAL_CLOSE,
-    }
-}
+    };
+};
 
 export const startModalToggleAction = (data) => {
 	console.log(data);
 	return {
 		type: STARTMODAL_TOGGLE,
-
-	}
-}
+	};
+};
 
 export const endModalToggleAction = (data) => {
 	return {
 		type: ENDMODAL_TOGGLE,
-
-	}
-}
+	};
+};
 
 export const infoModalOpenAction = (data) => {
     return {
@@ -100,6 +102,6 @@ export const infoModalOpenAction = (data) => {
             content: data.content,
             buttons: data.buttons,
             type: data.type,
-        }
-    }
-}
+        },
+    };
+};
