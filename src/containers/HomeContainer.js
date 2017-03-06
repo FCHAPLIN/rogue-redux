@@ -13,7 +13,6 @@ class HomeContainer extends Component {
         this.loadGame = this.loadGame.bind(this);
     }
     loadGame(){
-    	debugger;
         this.props.dispatch(loadGameAction(this.savedGame));
 		browserHistory.push('/game');
     }
@@ -25,7 +24,6 @@ class HomeContainer extends Component {
         if (this.savedGame){
             this.loadButtonClass = "active";
         }
-        debugger;
     }
     render() {
         return (
@@ -35,8 +33,8 @@ class HomeContainer extends Component {
                     <nav>
                         <ul>
                             <li><Link to='Game'>Start New Game</Link></li>
-                            <li className="{`load-game-button ${loadButtonClass}`}"
-                                onClick={this.loadGame}>Continue game</li>
+                            <li><a href="" className="{`load-game-button ${loadButtonClass}`}"
+                                onClick={this.loadGame}>Continue game</a></li>
                             <li><Link to='About'>About</Link></li>
                         </ul>
                     </nav>

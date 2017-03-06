@@ -6,8 +6,6 @@ const map = (state = {}, action) => {
         return Object.assign({}, state, {
             mapData: action.mapData
         })
-      case LOAD_GAME:
-          return Object.assign({}, state, action.payload.map);
     case 'MAP_REQUEST_ERROR':
         return Object.assign({}, state, {
             error: 'Errorrrrrrr !'

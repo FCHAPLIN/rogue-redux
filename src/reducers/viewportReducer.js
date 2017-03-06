@@ -59,8 +59,6 @@ const viewport = (state = {}, action) => {
             return Object.assign({}, state, {
                 inventory: !state.inventory
             })
-        case LOAD_GAME:
-            return Object.assign({}, state, action.payload.viewPort)
         default:
             return state
     }
