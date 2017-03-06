@@ -7,15 +7,13 @@ import Room from 'utils/rogue/map/Room';
 import Cell from 'utils/rogue/map/Cell';
 import CorridorMaker from 'utils/rogue/map/CorridorMaker';
 
-
-
 class MapGenerator {
     constructor(height, width) {
         this.height = height;
         this.width = width;
         this.cells = [];
         this.openCells = [];
-        this.map = []
+        this.map = [];
         this.rooms = [];
         this.doors = [];
         this.player = {};
@@ -52,7 +50,7 @@ class MapGenerator {
                 posX: this.startCell.posX,
                 posY: this.startCell.posY
             }
-        }
+        };
         return this.data;
     }
 
@@ -117,8 +115,7 @@ class MapGenerator {
 
     getCellByKey(key) {
         let pos = key.split('-');
-        let c = this.getCell(pos[0], pos[1]);
-        return c;
+        return this.getCell(pos[0], pos[1]);
     }
 
     generateRooms() {
@@ -181,9 +178,7 @@ class MapGenerator {
     }
     generateCorridors() {
         //S'assurer que toutes les rooms sont connectées
-        let cellsToCompute = [];
-        let doorsToConnect = [];
-        doorsToConnect = this.doors.slice();
+        let doorsToConnect = this.doors.slice();
 
         while (doorsToConnect.length > 0) {
             let d = doorsToConnect.pop();
@@ -316,7 +311,7 @@ class MapGenerator {
                 goodCell = false;
             }
         }
-        exitCell.cellType = CellConstants.EXIT
+        exitCell.cellType = CellConstants.EXIT;
         return exitCell;
     }
 
@@ -348,9 +343,9 @@ class MapGenerator {
     }
 
     getCellInfo(posX, posY) {
-        var info = '';
+        let info = '';
         if (posX >= 0 && posX < this.width && posY >= 0 && posY < this.height) {
-            var c: Cell = map[posX][posY];
+            let c = map[posX][posY];
             info = "Type : " + c.cellType + "<br>";
             info += "posX : " + c.x + "<br>";
             info += "posY : " + c.y + "<br>";
@@ -374,7 +369,7 @@ class MapGenerator {
         let livingsLevel = 40;
         while (livingsLevel > 0) {
             let goodCell;
-            let cell
+            let cell;
             while (!goodCell) {
                 goodCell = true;
                 cell = this.setStartCell();

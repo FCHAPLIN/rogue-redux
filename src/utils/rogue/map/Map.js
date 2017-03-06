@@ -2,8 +2,6 @@
 
 import CellConstants from 'utils/rogue/map/CellConstants';
 import MonsterConstants from 'utils/rogue/map/MonsterConstants';
-import Room from 'utils/rogue/map/Room';
-import Cell from 'utils/rogue/map/Cell';
 import MapGenerator from 'utils/rogue/map/MapGenerator';
 import AStar from 'utils/rogue/pathfinding/AStar';
 
@@ -46,20 +44,11 @@ class Map {
         }
         return cell;
     }
-    getCells(cellKeys) {
-        let cells = [];
-        return cells;
-    }
 
     setCellContent(cell, content) {
         let targetCell = this.getCell(cell.posX, cell.posY);
         targetCell.cellContent = content;
         return targetCell;
-    }
-
-    getPath(posX, posY, targetX, targetY) {
-        let cells = [];
-        return cells;
     }
 
     getCell(posX, posY) {
@@ -102,8 +91,8 @@ class Map {
         monster.cell.occupant = false;
         this.data.livings.splice(this.data.livings.indexOf(monster), 1);
     }
+
     moveMonster(monster) {
-        let distanceToGoal;
         let attack;
         if (monster.goalType == MonsterConstants.WANDERING) {
             if (monster.path.length > 0) {
@@ -126,7 +115,7 @@ class Map {
         }
         return attack;
     }
-    monstersTurn(playerCell: Cell) {
+    monstersTurn(playerCell) {
         this.data.attacks = [];
         for (let monster of this.data.livings) {
             let attack;

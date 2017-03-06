@@ -58,7 +58,7 @@ class AStar {
             if (iter++ > this.MAX_ITERATIONS) return null;
         }
         let solutionPath = [];
-        let count: int = 0;
+        let count = 0;
         let cellPointer = this.closedList[this.closedList.length - 1];
 
         while (cellPointer != this.originCell) {
