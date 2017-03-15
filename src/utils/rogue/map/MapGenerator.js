@@ -1,8 +1,9 @@
 import CellConstants from 'utils/rogue/map/CellConstants';
-import MonsterConstants from 'utils/rogue/map/MonsterConstants';
-import MonsterListing from 'utils/rogue/map/MonsterListing';
+import MonsterConstants from 'utils/rogue/map/monsters/MonsterConstants';
+import MonsterListing from 'utils/rogue/map/monsters/MonsterValues';
 import TreasureConstants from 'utils/rogue/map/TreasureConstants';
-import Monster from 'utils/rogue/map/Monster';
+import Monster from 'utils/rogue/map/monsters/Monster';
+import MonsterFactory from 'utils/rogue/map/monsters/MonsterFactory';
 import Treasure from 'utils/rogue/map/Treasure';
 import Room from 'utils/rogue/map/Room';
 import Cell from 'utils/rogue/map/Cell';
@@ -367,6 +368,7 @@ class MapGenerator {
     }
 
     generatePopulation(level) {
+        console.log( MonsterFactory.getMonster(this.cells[0], 'ORC', 'test'));
         let livingsLevel = 20;
         while (livingsLevel > 0) {
             let goodCell;

@@ -1,15 +1,16 @@
 'use strict';
 
 import CellConstants from 'utils/rogue/map/CellConstants';
-import MonsterConstants from 'utils/rogue/map/MonsterConstants';
+import MonsterConstants from 'utils/rogue/map/monsters/MonsterConstants';
 import MapGenerator from 'utils/rogue/map/MapGenerator';
+import MonsterUtils from 'utils/rogue/map/monsters/MonsterUtils';
 import AStar from 'utils/rogue/pathfinding/AStar';
 
 class Map {
     constructor(height, width) {
         this.height = height;
         this.width = width;
-        this.data = {}
+        this.data = {};
     }
 
     generateMap(level) {
@@ -58,11 +59,8 @@ class Map {
     cellIsOccupied(cell) {
         let result = false;
         if (cell) {
-
             for (let i = 0; i < this.data.livings.length; i++) {
-
                 let monst = this.data.livings[i];
-
                 if (monst.cell.posX == cell.posX && monst.cell.posY == cell.posY) {
                     result = true;
                     break;
@@ -71,50 +69,11 @@ class Map {
             return result;
         }
     }
-    getMonsterByKey(key) {
-        for (let monster of this.data.livings) {
-            if (monster.key == key) {
-                return monster;
-            }
-        }
+
+    playerAttack(monsterKey){
+        MonsterUtils.playerAttack(this.data.livings, monsterKey);
     }
 
-    playerAttack(key) {
-        let monster = this.getMonsterByKey(key);
-        monster.life = monster.life - 5;
-        if (monster.life <= 0) {
-            this.killMonster(monster);
-        }
-    }
-
-    killMonster(monster) {
-        monster.cell.occupant = false;
-        this.data.livings.splice(this.data.livings.indexOf(monster), 1);
-    }
-
-    moveMonster(monster) {
-        let attack;
-        if (monster.goalType == MonsterConstants.WANDERING) {
-            if (monster.path.length > 0) {
-                monster.cell.occupant = false;
-                monster.cell = monster.path.pop();
-                monster.posX = monster.cell.posX;
-                monster.posY = monster.cell.posY;
-                monster.cell.occupant = monster.key;
-            }
-        } else if (monster.goalType == MonsterConstants.ATTACK) {
-            if (monster.path.length > 1) {
-                monster.cell.occupant = false;
-                monster.cell = monster.path.pop();
-                monster.posX = monster.cell.posX;
-                monster.posY = monster.cell.posY;
-                monster.cell.occupant = monster.key;
-            } else {
-                attack = monster.attack();
-            }
-        }
-        return attack;
-    }
     monstersTurn(playerCell) {
         this.data.attacks = [];
         for (let monster of this.data.livings) {
@@ -131,10 +90,9 @@ class Map {
                 let aStar = new AStar(this.data.map2d, this.width, this.height);
                 monster.path = aStar.getPath(monster.cell, monster.goal);
                 if (!this.cellIsOccupied(monster.path[monster.path.length - 1])) {
-                    attack = this.moveMonster(monster);
+                    attack = MonsterUtils.moveMonster(monster);
                 } else {
                     monster.wait();
-
                 }
             } else {
                 if (!monster.path.length || monster.goalType == MonsterConstants.ATTACK) {
@@ -144,7 +102,7 @@ class Map {
                     monster.path = aStar.getPath(monster.cell, monster.goal);
                 } else {
                     if (!this.cellIsOccupied(monster.path[monster.path.length - 1])) {
-                        attack = this.moveMonster(monster);
+                        attack = MonsterUtils.moveMonster(monster);
                     } else {
                         monster.wait();
                     }

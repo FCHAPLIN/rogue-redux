@@ -1,11 +1,8 @@
-import CellConstants from 'utils/rogue/map/CellConstants';
-import MonsterConstants from 'utils/rogue/map/MonsterConstants';
-import PartState from 'utils/rogue/map/PartState';
-
+import MonsterConstants from 'utils/rogue/map/monsters/MonsterConstants';
+import Parts from 'utils/rogue/map/monsters/Parts';
 
 class Monster {
     constructor(cell, monsterType, monsterValues) {
-    	console.log(monsterValues);
         this.cell = cell;
         this.posX = cell.posX;
         this.posY = cell.posY;
@@ -15,19 +12,19 @@ class Monster {
         this.goalType = 'none';
         this.path = [];
         this.body= {
-            leftArm: PartState.OK,
-            rightArm: PartState.OK,
-            head: PartState.OK,
-            leftLeg : PartState.OK,
-            rightLeg: PartState.OK,
-            torso : PartState.OK,
-            abdomen: PartState.OK
+            leftArm: Parts.OK,
+            rightArm: Parts.OK,
+            head: Parts.OK,
+            leftLeg : Parts.OK,
+            rightLeg: Parts.OK,
+            torso : Parts.OK,
+            abdomen: Parts.OK,
         };
         this.life = 10;
         this.dexterity = 5;
         this.strength = 2;
         this.intelect = 5;
-        this.patience=0;
+        this.patience = 0;
         this.hunger = 0;
         this.faith = 0;
         this.courage = 0;
@@ -38,11 +35,11 @@ class Monster {
         this.armor = {
         };
     }
-    wait(){
+    wait() {
         this.patience++;
     }
+
     advance() {
-        let distanceToGoal;
         if (this.goalType == MonsterConstants.WANDERING) {
             if (this.path.length > 0) {
                 this.cell.occupant = false;

@@ -70,7 +70,6 @@ class GameContainer extends Component {
 
     //catch user keyboard entry in hidden input
     command(event) {
-        console.log(this.props)
         this.props.dispatch(inputKeyAction(event.key,this.props.viewport.posX, this.props.viewport.posY));
     }
 
