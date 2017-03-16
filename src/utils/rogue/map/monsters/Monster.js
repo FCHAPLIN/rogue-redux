@@ -11,30 +11,24 @@ class Monster {
         this.goal = {};
         this.goalType = 'none';
         this.path = [];
-        this.body= {
-            leftArm: Parts.OK,
-            rightArm: Parts.OK,
-            head: Parts.OK,
-            leftLeg : Parts.OK,
-            rightLeg: Parts.OK,
-            torso : Parts.OK,
-            abdomen: Parts.OK,
-        };
-        this.life = 10;
-        this.dexterity = 5;
-        this.strength = 2;
-        this.intelect = 5;
-        this.patience = 0;
-        this.hunger = 0;
-        this.faith = 0;
-        this.courage = 0;
-        this.fatigue = 0;
-        this.difficulty = 0;
-        this.weapon = {
-        };
-        this.armor = {
-        };
+        this.body = monsterValues.parts;
+        this.description = monsterValues.description;
+        this.life = monsterValues.life;
+        this.dexterity = monsterValues.dexterity;
+        this.strength = monsterValues.strength;
+        this.intellect = monsterValues.intellect;
+        this.patience = monsterValues.patience;
+        this.hunger = monsterValues.hunger;
+        this.faith = monsterValues.faith;
+        this.smell = monsterValues.smell;
+        this.view = monsterValues.view;
+        this.courage = monsterValues.courage;
+        this.fatigue = monsterValues.fatigue;
+        this.difficulty = monsterValues.difficulty;
+        this.weapon = monsterValues.weapon;
+        this.armor = monsterValues.armor;
     }
+
     wait() {
         this.patience++;
     }
@@ -66,12 +60,8 @@ class Monster {
     }
 
     detectPlayer(playerCell) {
-        if (Math.abs(this.cell.posX - playerCell.posX) < 3 &&
-            Math.abs(this.cell.posY - playerCell.posY) < 3) {
-            return true;
-        } else {
-            return false;
-        }
+        return (Math.abs(this.cell.posX - playerCell.posX) < 3 &&
+            Math.abs(this.cell.posY - playerCell.posY) < 3)
     }
 }
 export default Monster;

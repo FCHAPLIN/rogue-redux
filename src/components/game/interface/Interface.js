@@ -35,7 +35,7 @@ class Interface extends Component {
                         <span className="item">Strength: {props.data.player.traits.strength}</span>
                     </li>
                     <li>
-                        <span className="item">Intelect: {props.data.player.traits.intelect}</span>
+                        <span className="item">Intelect: {props.data.player.traits.intellect}</span>
                     </li>
                     <li>
                         <span className="item">Dexterity: {props.data.player.traits.dexterity}</span>

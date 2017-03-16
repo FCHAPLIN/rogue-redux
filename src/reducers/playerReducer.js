@@ -47,7 +47,7 @@ const player = (state = {}, action) => {
               class: action.value,
               traits : {
                 strength:15,
-                intelect:5,
+                intellect:5,
                 dexterity:10
               },
               gold:0,
@@ -76,7 +76,7 @@ const player = (state = {}, action) => {
               class: action.value,
               traits : {
                 strength:7,
-                intelect:7,
+                intellect:7,
                 dexterity:15
               },
               armor : {

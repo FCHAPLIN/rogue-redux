@@ -15,18 +15,19 @@ export default class MonsterFactory {
     static createMonster(cell, type, values) {
         for (const key of Object.keys(values)) {
             const val = values[key];
-            console.log(key, val);
-
-            switch (typeof val){
-                case('number'):
+            switch (val.type){
+                case('value'):
+                    values[key] = val.value;
                     break;
-                case('string'):
-                    break;
-                case('object'):
+                case('randomize'):
                     values[key] = utils.randomize(val.min, val.max);
+                    break;
+                case('pickone'):
+                    console.log(Math.floor(Math.random() * val.value.length));
+                    values[key] = val.value[Math.floor(Math.random() * val.value.length)];
+                    break;
             }
         }
-        console.log(values);
         let monster = new Monster(cell, type, values);
         return monster;
     }
