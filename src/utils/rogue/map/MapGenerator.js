@@ -368,7 +368,6 @@ class MapGenerator {
     }
 
     generatePopulation(level) {
-        console.log( MonsterFactory.getMonster(this.cells[0], 'ORC', 'test'));
         let livingsLevel = 20;
         while (livingsLevel > 0) {
             let goodCell;
@@ -383,12 +382,7 @@ class MapGenerator {
 
             }
             let monster;
-            let hunger = this.randomize(1, 100);
-			let courage = this.randomize(1, 100);
-			let fatigue = this.randomize(1, 100);
-			let faith = this.randomize(1, 100);
             let monsterRace;
-            let monsterType;
             let monsterLevel = Math.max(1, this.randomize(level, level-2));
 
             switch (this.randomize(1, 3)) {
@@ -402,10 +396,9 @@ class MapGenerator {
 				monsterRace = MonsterConstants.GOBLIN;
                 break;
             }
-
-            monster = new Monster(cell, monsterRace, MonsterListing[monsterRace], monsterLevel);
+            monster = MonsterFactory.getMonster(cell, monsterRace, monsterLevel)
             cell.occupant=monster.key;
-            //cell.content = monster;
+
             this.livings.push(monster);
             livingsLevel -= MonsterListing[monsterRace].indice;
         }

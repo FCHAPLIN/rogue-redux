@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 import CellConstants from 'utils/rogue/map/CellConstants';
 import MonsterConstants from 'utils/rogue/map/monsters/MonsterConstants';
@@ -26,12 +26,15 @@ class Map {
     getRectangularCells(rectX, rectY, rectWidth, rectHeight) {
         var result = [];
         for (let c of this.cells) {
-            if (c.posX >= rectX && c.posX <= rectX + rectWidth && c.posY >= rectY && c.posY <= rectY + rectHeight) {
+            if (c.posX >= rectX && c.posX <= rectX + rectWidth &&
+                c.posY >= rectY && c.posY <= rectY + rectHeight) {
                 result.push(c);
             }
         }
+
         return result;
     }
+
     getOpenCell() {
         let goodCell = false;
         let cell;
@@ -43,6 +46,7 @@ class Map {
                 goodCell = false;
             }
         }
+
         return cell;
     }
 
@@ -66,11 +70,12 @@ class Map {
                     break;
                 }
             }
+
             return result;
         }
     }
 
-    playerAttack(monsterKey){
+    playerAttack(monsterKey) {
         MonsterUtils.playerAttack(this.data.livings, monsterKey);
     }
 
@@ -78,11 +83,12 @@ class Map {
         this.data.attacks = [];
         for (let monster of this.data.livings) {
             let attack;
-            if (monster.patience > 5) {
+            if (monster.patience === 0) {
                 monster.path = [];
                 monster.goalType = MonsterConstants.WANDERING;
-                monster.patience = 0;
+                monster.patience = monster.maxValues.patience;
             }
+
             if (monster.detectPlayer(playerCell)) {
                 monster.path = [];
                 monster.goal = playerCell;
@@ -108,15 +114,16 @@ class Map {
                     }
                 }
             }
+
             if (attack) {
-                this.data.attacks.push(attack)
+                this.data.attacks.push(attack);
             }
         }
+
         return [
             this.data.livings,
-            this.data.attacks
-        ]
-
+            this.data.attacks,
+        ];
     }
-  }
-    export default Map;
+}
+export default Map;

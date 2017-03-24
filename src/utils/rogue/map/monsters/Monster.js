@@ -1,5 +1,5 @@
 import MonsterConstants from 'utils/rogue/map/monsters/MonsterConstants';
-import Parts from 'utils/rogue/map/monsters/Parts';
+import Utils from 'utils/Utils';
 
 class Monster {
     constructor(cell, monsterType, monsterValues) {
@@ -11,26 +11,13 @@ class Monster {
         this.goal = {};
         this.goalType = 'none';
         this.path = [];
-        this.body = monsterValues.parts;
-        this.description = monsterValues.description;
-        this.life = monsterValues.life;
-        this.dexterity = monsterValues.dexterity;
-        this.strength = monsterValues.strength;
-        this.intellect = monsterValues.intellect;
-        this.patience = monsterValues.patience;
-        this.hunger = monsterValues.hunger;
-        this.faith = monsterValues.faith;
-        this.smell = monsterValues.smell;
-        this.view = monsterValues.view;
-        this.courage = monsterValues.courage;
-        this.fatigue = monsterValues.fatigue;
-        this.difficulty = monsterValues.difficulty;
-        this.weapon = monsterValues.weapon;
-        this.armor = monsterValues.armor;
+        this.maxValues = {};
+        Object.assign(this, monsterValues);
+        Object.assign(this.maxValues, monsterValues);
     }
 
     wait() {
-        this.patience++;
+        this.patience--;
     }
 
     advance() {
@@ -56,7 +43,9 @@ class Monster {
     }
 
     attack() {
-        return this.strength;
+        let attack = this.strength + 2 + Utils.randomize(1, 10);
+        let damage = this.strength + 2;
+        return { attack, damage };
     }
 
     detectPlayer(playerCell) {
