@@ -11,7 +11,6 @@ const log = (state = {}, action) => {
 				visible: !state.visible
             })
         case LOG_ENTRY:
-            console.log(moment);
             const id = uuid.v4();
             const time = moment().format('DD/MM, hh:mm:ss')
             const newEntry = action.payload;

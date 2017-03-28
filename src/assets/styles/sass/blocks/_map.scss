@@ -26,7 +26,65 @@
             height: 50px;
 
             background-image: url('../../../assets/img/tiles50x50.jpg');
-
+            opacity:0;
+            &.red{
+                &:before{
+                    position: absolute;
+                    content:"";
+                    top:0;
+                    left:0;
+                    right:0;
+                    bottom:0;
+                    background:red;
+                    opacity:0.5;
+                    z-index: 10;
+                }
+            }
+            &.blue{
+                &:before{
+                    position: absolute;
+                    content:"";
+                    top:0;
+                    left:0;
+                    right:0;
+                    bottom:0;
+                    background:blue;
+                    opacity:0.5;
+                    z-index: 10;
+                }
+            }
+            &.green{
+                &:before{
+                    position: absolute;
+                    content:"";
+                    top:0;
+                    left:0;
+                    right:0;
+                    bottom:0;
+                    background:green;
+                    opacity:0.5;
+                    z-index: 10;
+                }
+            }
+            &.yellow{
+                &:before{
+                    position: absolute;
+                    content:"";
+                    top:0;
+                    left:0;
+                    right:0;
+                    bottom:0;
+                    background:yellow;
+                    opacity:0.5;
+                    z-index: 10;
+                }
+            }
+            &.visible{
+                opacity:1;
+            }
+            &.viewed{
+                opacity:0.7;
+            }
             &.empty
             {
                 background-position: 0 0;

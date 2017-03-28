@@ -20,6 +20,9 @@ function getCellElement(cell, viewport){
         size={cell.size}
         cellType = {cell.cellType}
         cellContent = {cell.cellContent}
+        visible = {cell.visible}
+        colored = {cell.colored}
+        viewed = {cell.viewed}
         blocking = {cell.blocking}
         />
     );

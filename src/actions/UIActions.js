@@ -82,7 +82,6 @@ export const infoModalCloseAction = () => {
 };
 
 export const startModalToggleAction = (data) => {
-	console.log(data);
 	return {
 		type: STARTMODAL_TOGGLE,
 	};

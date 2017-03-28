@@ -1,6 +1,21 @@
-"use strict";
-var Cell = (function () {
-    function Cell(posX, posY, cellType) {
+class Cell {
+    key:string;
+    posX:number;
+    posY:number;
+    cellType:string;
+    cellContent:Array<any>;
+    occupant:any;
+    visible:boolean;
+    room:any;
+    opaque:boolean;
+    obst:boolean;
+    colored:string;
+    canBeCorridor:boolean;
+    contiguousCells: Array<string>;
+    movement:number; 
+
+    constructor(posX:number, posY:number, cellType:string) {
+
         this.key = posX + '-' + posY;
         this.posX = posX;
         this.posY = posY;
@@ -8,12 +23,13 @@ var Cell = (function () {
         this.cellContent = [];
         this.occupant = false;
         this.room = false;
+        this.visible = false;
+        this.opaque = true;
         this.obst = true;
+        this.colored = " none";
         this.canBeCorridor = true;
         this.contiguousCells = [];
         this.movement = 1;
     }
-    return Cell;
-}());
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.default = Cell;
+}
+export default Cell;

@@ -7,7 +7,8 @@ import MonsterFactory from 'utils/rogue/map/monsters/MonsterFactory';
 import Treasure from 'utils/rogue/map/Treasure';
 import Room from 'utils/rogue/map/Room';
 import Cell from 'utils/rogue/map/Cell';
-import CorridorMaker from 'utils/rogue/map/CorridorMaker';
+import CorridorMaker from 'utils/rogue/map/CorridorMaker'
+import FieldOfView from 'utils/rogue/pathfinding/FieldOfView';
 
 class MapGenerator {
     constructor(height, width) {
@@ -62,6 +63,7 @@ class MapGenerator {
             for (let y = 0; y < this.height; y++) {
                 let cellType = CellConstants.EMPTY;
                 let cell = new Cell(x, y, cellType);
+                cell.opaque = true;
                 this.cells.push(cell);
                 this.map[x].push(cell);
             }
@@ -174,6 +176,7 @@ class MapGenerator {
                 for (let c of cells) {
                     c.cellType = CellConstants.EMPTY;
                     c.obst = true;
+                    c.opaque = true;
                 }
             }
         }
@@ -215,6 +218,7 @@ class MapGenerator {
             for (let c of newCorridor) {
                 if (c.cellType != CellConstants.DOOR) {
                     c.obst = false;
+                    c.opaque = false;
                     c.cellType = CellConstants.FLOOR;
                 }
                 corridorRef.push(c.key);
@@ -255,6 +259,7 @@ class MapGenerator {
                             c.obst = false;
                             c.canBeCorridor = true;
                             c.movement = 1;
+                            c.opaque = false;
                             c.pathFindingEnabled = true;
                             this.doors.push(c);
                             owner.doors.push(c);
@@ -284,6 +289,7 @@ class MapGenerator {
                 c.obst = false;
                 c.canBeCorridor = false;
                 c.movement = 1;
+                c.opaque = false;
                 c.pathFindingEnabled = true;
                 if (c.posX == rectX + 1 || c.posY == rectY + 1 || c.posX == rectX + rectWidth - 1 || c.posY == rectY + rectHeight - 1) {
                     if (c.posX == rectX + 1 && c.posY == rectY + 1 || c.posX == rectX + 1 && c.posY == rectY + rectHeight - 1 || c.posX == rectX + rectWidth - 1 && c.posY == rectY + 1 || c.posX == rectX + rectWidth - 1 && c.posY == rectY + rectHeight - 1) {
@@ -292,6 +298,7 @@ class MapGenerator {
                         c.cellType = CellConstants.WALL;
                     }
                     c.obst = true;
+                    c.opaque = true;
                     c.canBeCorridor = false;
                     c.movement = Infinity;
                     c.pathFindingEnabled = false;
@@ -330,6 +337,7 @@ class MapGenerator {
         }
         if (player) {
             startCell.cellType = CellConstants.START;
+            FieldOfView.getFieldOfView(startCell, 5, this.map, true);
         }
         return startCell;
     }

@@ -4,7 +4,11 @@ import CellConstants from 'utils/rogue/map/CellConstants';
 import MonsterConstants from 'utils/rogue/map/monsters/MonsterConstants';
 import MapGenerator from 'utils/rogue/map/MapGenerator';
 import MonsterUtils from 'utils/rogue/map/monsters/MonsterUtils';
+import BehaviorResolver from 'utils/rogue/map/monsters/BehaviorResolver';
 import AStar from 'utils/rogue/pathfinding/AStar';
+import FieldOfView from 'utils/rogue/pathfinding/FieldOfView';
+import MapUtils from 'utils/rogue/map/MapUtils';
+
 
 class Map {
     constructor(height, width) {
@@ -80,9 +84,14 @@ class Map {
     }
 
     monstersTurn(playerCell) {
+        for (let cell of this.data.cells){
+            cell.colored = " none";
+        }
+        var test = FieldOfView.getFieldOfView(playerCell, 5, this.data.map2d, true);
         this.data.attacks = [];
         for (let monster of this.data.livings) {
             let attack;
+
             if (monster.patience === 0) {
                 monster.path = [];
                 monster.goalType = MonsterConstants.WANDERING;
@@ -114,6 +123,7 @@ class Map {
                     }
                 }
             }
+            BehaviorResolver.resolveBehavior(monster, this.data.map2d, playerCell);
 
             if (attack) {
                 this.data.attacks.push(attack);
