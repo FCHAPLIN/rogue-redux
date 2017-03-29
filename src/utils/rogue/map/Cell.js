@@ -1,20 +1,7 @@
 class Cell {
-    key:string;
-    posX:number;
-    posY:number;
-    cellType:string;
-    cellContent:Array<any>;
-    occupant:any;
-    visible:boolean;
-    room:any;
-    opaque:boolean;
-    obst:boolean;
-    colored:string;
-    canBeCorridor:boolean;
-    contiguousCells: Array<string>;
-    movement:number; 
 
-    constructor(posX:number, posY:number, cellType:string) {
+
+    constructor(posX, posY, cellType) {
 
         this.key = posX + '-' + posY;
         this.posX = posX;

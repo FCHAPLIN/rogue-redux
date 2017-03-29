@@ -5,7 +5,7 @@ import TreasureConstants from 'utils/rogue/map/TreasureConstants';
 import Monster from 'utils/rogue/map/monsters/Monster';
 import MonsterFactory from 'utils/rogue/map/monsters/MonsterFactory';
 import Treasure from 'utils/rogue/map/Treasure';
-import Room from 'utils/rogue/map/Room';
+import Room from 'utils/rogue/map/rooms/Room';
 import Cell from 'utils/rogue/map/Cell';
 import CorridorMaker from 'utils/rogue/map/CorridorMaker'
 import FieldOfView from 'utils/rogue/pathfinding/FieldOfView';

@@ -7,7 +7,7 @@ class Room {
     doors:Array<any>;
     doorsLimit:number;
     description:string;
-
+    type:string;
     constructor(posX:number, posY:number, roomWidth:number, roomHeight:number) {
         this.posX = posX;
         this.posY = posY;
@@ -17,6 +17,8 @@ class Room {
         this.doors=[];
         this.doorsLimit = 2;
         this.description = "";
+        this.type = RoomType.none;
+        
     }
 }
 export default Room;
