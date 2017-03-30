@@ -4,6 +4,7 @@ import MonsterListing from 'utils/rogue/map/monsters/MonsterValues';
 import TreasureConstants from 'utils/rogue/map/TreasureConstants';
 import Monster from 'utils/rogue/map/monsters/Monster';
 import MonsterFactory from 'utils/rogue/map/monsters/MonsterFactory';
+import RoomFactory from 'utils/rogue/map/rooms/RoomFactory';
 import Treasure from 'utils/rogue/map/Treasure';
 import Room from 'utils/rogue/map/rooms/Room';
 import Cell from 'utils/rogue/map/Cell';
@@ -164,7 +165,8 @@ class MapGenerator {
             for (let c of selection) {
                 selectionRefs.push(c.key);
             }
-            let room = new Room(posX, posY, roomWidth, roomHeight, selectionRefs);
+            let room = RoomFactory.getRoom(posX, posY, roomWidth, roomHeight, selectionRefs);
+            console.log(room);
             this.makeRectanglarRoom(posX, posY, roomWidth, roomHeight, room);
             this.rooms.push(room);
         }
@@ -408,6 +410,7 @@ class MapGenerator {
             cell.occupant=monster.key;
 
             this.livings.push(monster);
+            console.log(monster);
             livingsLevel -= MonsterListing[monsterRace].indice;
         }
     }

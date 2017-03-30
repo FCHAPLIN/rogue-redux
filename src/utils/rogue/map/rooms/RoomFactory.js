@@ -1,15 +1,22 @@
 import Room from './Room';
 import RoomConstants from './RoomConstants';
-
+import RoomValues from './RoomValues';
 import utils from 'utils/Utils';
 
 export default class RoomFactory {
 
-    static getRoom(cell, type) {
-        return this.createRoom(cell, type, MonsterValues[type]);
+    static getRoom(posX, posY, roomWidth, roomHeight, selectionRefs) {
+        return this.createRoom(posX, posY, roomWidth, roomHeight, selectionRefs);
     }
 
-    static createRoom(cell, type, values) {
+    static createRoom(posX, posY, roomWidth, roomHeight, selectionRefs) {
+        let isSpecialRoom = utils.randomize(1, 10) === 1;
+        let type = 'ROOM';
+        if (isSpecialRoom) {
+            type = 'TEMPLE';
+        }
+        let values = RoomValues[type];
+
         for (const key of Object.keys(values)) {
             const val = values[key];
             switch (val.type){
@@ -19,7 +26,6 @@ export default class RoomFactory {
                     }else {
                         values[key] = val.value;
                     }
-
                     break;
                 case ('randomize'):
                     values[key] = utils.randomize(val.min, val.max);
@@ -29,7 +35,7 @@ export default class RoomFactory {
                     break;
             }
         }
-
-        return new Monster(cell, type, values);
+        console.log(values);
+        return new Room(posX, posY, roomWidth, roomHeight, type, values, selectionRefs);
     }
 }
