@@ -2,7 +2,7 @@ import Monster from './Monster';
 import MonsterValues from './MonsterValues';
 import utils from 'utils/Utils';
 
-export default class MonsterFactory {
+class MonsterFactory {
 
     static getMonster(cell, type) {
         return this.createMonster(cell, type, MonsterValues[type]);
@@ -32,3 +32,4 @@ export default class MonsterFactory {
         return new Monster(cell, type, values);
     }
 }
+export { MonsterFactory }

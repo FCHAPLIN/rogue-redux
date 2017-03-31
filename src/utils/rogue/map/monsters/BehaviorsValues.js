@@ -1,4 +1,4 @@
-export default {
+export const BehaviorsValues = {
     WANDERING: {
         lookingFor: [],
         autoTarget: ['PLAYER'],
@@ -45,4 +45,3 @@ export default {
         stayDistant: 2,
     },
 };
-

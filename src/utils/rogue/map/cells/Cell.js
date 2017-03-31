@@ -1,6 +1,4 @@
 class Cell {
-
-
     constructor(posX, posY, cellType) {
 
         this.key = posX + '-' + posY;
@@ -13,10 +11,11 @@ class Cell {
         this.visible = false;
         this.opaque = true;
         this.obst = true;
-        this.colored = " none";
+        this.colored = ' none';
         this.canBeCorridor = true;
         this.contiguousCells = [];
         this.movement = 1;
     }
 }
-export default Cell;
+
+export { Cell };

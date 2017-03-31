@@ -1,6 +1,6 @@
-import Behaviors from 'utils/rogue/map/monsters/BehaviorsValues';
+import Behaviors from 'utils/rogue/map/monsters';
 
-export default {
+export MonsterValues = {
     'ORC': {
         'behaviors' : {type: 'pickone', value: [Behaviors.WANDERING]},
     	'indice': {type: 'value', value:1},

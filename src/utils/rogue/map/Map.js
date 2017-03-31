@@ -1,14 +1,12 @@
 'use strict'
 
-import CellConstants from 'utils/rogue/map/CellConstants';
-import MonsterConstants from 'utils/rogue/map/monsters/MonsterConstants';
+import { CellConstants } from 'utils/rogue/map/cells';
+import { MonsterConstants } from 'utils/rogue/map/monsters';
 import MapGenerator from 'utils/rogue/map/MapGenerator';
-import MonsterUtils from 'utils/rogue/map/monsters/MonsterUtils';
-import BehaviorResolver from 'utils/rogue/map/monsters/BehaviorResolver';
+import { MonsterUtils } from 'utils/rogue/map/monsters';
+import { BehaviorResolver } from 'utils/rogue/map/monsters';
 import AStar from 'utils/rogue/pathfinding/AStar';
 import FieldOfView from 'utils/rogue/pathfinding/FieldOfView';
-import MapUtils from 'utils/rogue/map/MapUtils';
-
 
 class Map {
     constructor(height, width) {

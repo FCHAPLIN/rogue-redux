@@ -1,21 +1,14 @@
-import Monster from './Monster';
-import MonsterValues from './MonsterValues';
 import BehaviorsValues from './BehaviorsValues';
-import utils from 'utils/Utils';
 import FieldOfView from 'utils/rogue/pathfinding/FieldOfView';
-import MapUtils from 'utils/rogue/map/MapUtils';
 
-//en entrée : le monstre , la carte, le joueur
-
-export default class BehaviorResolver {
+class BehaviorResolver {
 
     static resolveBehavior(monster, map,  player){
         this.behavior = BehaviorsValues[monster.behaviorValue];
         this.monster = monster;
         this.player = player;
-
-        //what does the monster see or hear or smell ?
         this.detections = BehaviorResolver.getDetections(monster, map, player);
+
         if (this.detections.player.length){
 			console.log(monster.key + ' saw you !!! Run for your life !');
 		}
@@ -38,6 +31,7 @@ export default class BehaviorResolver {
         let items = [];
         let playerDetection = [];
         let monsterDetection = [];
+
         if (detectZone) {
             for (let cell of detectZone) {
                 cell.colored = " red";
@@ -56,9 +50,11 @@ export default class BehaviorResolver {
 				}
             }
         }
+
         detections.items = items;
         detections.player = playerDetection;
         detections.occupants = monsterDetection;
         return detections;
     }
 }
+export { BehaviorResolver };

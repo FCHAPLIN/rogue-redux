@@ -3,7 +3,7 @@ import RoomConstants from './RoomConstants';
 import RoomValues from './RoomValues';
 import utils from 'utils/Utils';
 
-export default class RoomFactory {
+ class RoomFactory {
 
     static getRoom(posX, posY, roomWidth, roomHeight, selectionRefs) {
         return this.createRoom(posX, posY, roomWidth, roomHeight, selectionRefs);
@@ -39,3 +39,5 @@ export default class RoomFactory {
         return new Room(posX, posY, roomWidth, roomHeight, type, values, selectionRefs);
     }
 }
+
+export { RoomFactory }

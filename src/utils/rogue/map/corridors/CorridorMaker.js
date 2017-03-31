@@ -125,4 +125,4 @@ class CorridorMaker {
     }
 }
 
-export default CorridorMaker;
+export { CorridorMaker };

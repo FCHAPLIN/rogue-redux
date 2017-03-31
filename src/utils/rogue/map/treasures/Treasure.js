@@ -1,6 +1,4 @@
-import CellConstants from 'utils/rogue/map/CellConstants';
-import TreasureConstants from 'utils/rogue/map/TreasureConstants';
-
+import { TreasureConstants } from 'utils/rogue/map/treasures';
 
 class Treasure {
     constructor(treasureType, treasureLevel) {
@@ -8,4 +6,4 @@ class Treasure {
         this.type = treasureType;
     }
 }
-export default Treasure;
+export { Treasure };

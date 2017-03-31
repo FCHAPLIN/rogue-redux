@@ -1,4 +1,4 @@
-export default {
+export const MonsterConstants = {
     ORC: 'ORC',
     GOBLIN: 'GOBLIN',
     CYCLOP: 'CYCLOP',

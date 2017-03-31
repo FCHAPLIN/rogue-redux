@@ -1,8 +1,7 @@
 'use strict';
 
-import CellConstants from 'utils/rogue/map/CellConstants';
-import MonsterConstants from 'utils/rogue/map/monsters/MonsterConstants';
-import AStar from 'utils/rogue/pathfinding/AStar';
+import { CellConstants } from 'utils/rogue/map/cells';
+import { MonsterConstants } from 'utils/rogue/map/monsters';
 
 export default {
     getMonsterByKey: function(monsters, key) {
