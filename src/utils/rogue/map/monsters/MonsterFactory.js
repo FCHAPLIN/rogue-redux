@@ -1,5 +1,4 @@
-import Monster from './Monster';
-import MonsterValues from './MonsterValues';
+import { Monster, MonsterValues } from 'utils/rogue/map/monsters';
 import utils from 'utils/Utils';
 
 class MonsterFactory {
@@ -28,7 +27,7 @@ class MonsterFactory {
                     break;
             }
         }
-
+        //TODO check behaviorValue
         return new Monster(cell, type, values);
     }
 }

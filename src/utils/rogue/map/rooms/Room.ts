@@ -24,4 +24,4 @@ class Room {
         
     }
 }
-export default Room;
+export { Room };

@@ -1,4 +1,4 @@
-export default {
+const RoomConstants = {
     NONE: 'none',
     KITCHEN: 'kitchen',
     TEMPLE: 'temple',
@@ -17,3 +17,5 @@ export default {
     DEN: 'den',
     GARBAGE: 'garbage room',
 };
+
+export { RoomConstants }

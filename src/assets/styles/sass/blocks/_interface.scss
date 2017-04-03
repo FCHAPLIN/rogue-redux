@@ -46,12 +46,13 @@
         }
     }
 }
-
-.command-input
-{
-    position: absolute;
-    top: 0;
-    left: -1000px;
+.command-container{
+    width:0;
+    .command-input
+    {
+        opacity:0;
+        filter:alpha(opacity=0);
+    }
 }
 
 .notification

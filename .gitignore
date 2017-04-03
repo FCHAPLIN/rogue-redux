@@ -1,6 +1,4 @@
 node_modules
-
 !karma*.js
-
-
-
+dist/
+\.idea/

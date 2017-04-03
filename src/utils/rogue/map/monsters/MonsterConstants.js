@@ -1,13 +1,18 @@
-export const MonsterConstants = {
+const MonsterConstants = {
     ORC: 'ORC',
     GOBLIN: 'GOBLIN',
     CYCLOP: 'CYCLOP',
-    ATTACK: 'ATTACK',
+    CLOSE_ATTACK: 'CLOSE_ATTACK',
     WANDERING: 'WANDERING',
-    SEARCH_BED: 'SEARCH_BED',
-    SEARCH_FOOD: 'SEARCH_FOOD',
-    FLEE: 'FLEE',
-    RANGE_ATTACK: 'RANGE_ATTACK',
+    LOOKING_FOR_FOOD: 'LOOKING_FOR_FOOD',
+    LOOKING_FOR_BED: 'LOOKING_FOR_BED',
+    FLEEING: 'FLEEING',
+    SLEEPING: 'SLEEPING',
+    LOOKING_FOR_TEMPLE: 'LOOKING_FOR_TEMPLE',
+    LOOKING_FOR_HEAL: 'LOOKING_FOR_HEAL',
+    RANGED_ATTACK: 'RANGED_ATTACK',
+    ON_AMBUSH: 'ON_AMBUSH',
+    PROTECTING: 'PROTECTING',
     HEAD: 'HEAD',
     LEFT_ARM: 'LEFT_ARM',
     RIGHT_ARM: 'RIGHT_ARM',
@@ -16,3 +21,5 @@ export const MonsterConstants = {
     LEFT_LEG: 'LEFT_LEG',
     RIGHT_LEG: 'RIGHT_LEG',
 };
+
+export { MonsterConstants };

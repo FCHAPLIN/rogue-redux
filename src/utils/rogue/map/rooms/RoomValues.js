@@ -1,4 +1,4 @@
-export default {
+const RoomValues = {
     'ROOM': {
         'pillars' : {type: 'randomize', 'min':0, 'max':4},
         'beds': {type: 'randomize', 'min':1, 'max':2},
@@ -112,3 +112,4 @@ export default {
         'description': {type: 'value', value:'A very clean room with marble everywhere.'},
     }
 };
+export { RoomValues };

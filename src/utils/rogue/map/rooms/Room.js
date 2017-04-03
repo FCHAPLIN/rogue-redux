@@ -12,5 +12,5 @@ class Room {
         Object.assign(this, values);
     }
 }
-export default Room;
+export { Room };
 //# sourceMappingURL=Room.js.map

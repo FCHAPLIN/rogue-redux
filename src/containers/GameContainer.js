@@ -59,7 +59,8 @@ class GameContainer extends Component {
         }
 
         //keep focus on command-input
-        document.querySelectorAll('.command-input')[0].focus();
+        document.querySelectorAll('.command-input')[0].focus;
+        console.log('test');
         document.querySelectorAll('.command-input')[0].onblur = function(event)  {
             let blurElement = this;
             setTimeout(function() {
@@ -129,7 +130,9 @@ class GameContainer extends Component {
         const modals = this.props.modals;
         return (
             <div>
-                <input className="command-input" onKeyDown={this.command}></input>
+                <div className="command-container">
+                    <input className="command-input" onKeyDown={this.command}></input>
+                </div>
                 <Interface
                   data={this.props}
                   onInventoryClick= {this.inventoryToggle}

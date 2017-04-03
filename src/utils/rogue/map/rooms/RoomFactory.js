@@ -1,9 +1,7 @@
-import Room from './Room';
-import RoomConstants from './RoomConstants';
-import RoomValues from './RoomValues';
+import { Room, RoomValues } from 'utils/rogue/map/rooms';
 import utils from 'utils/Utils';
 
- class RoomFactory {
+class RoomFactory {
 
     static getRoom(posX, posY, roomWidth, roomHeight, selectionRefs) {
         return this.createRoom(posX, posY, roomWidth, roomHeight, selectionRefs);
@@ -39,5 +37,5 @@ import utils from 'utils/Utils';
         return new Room(posX, posY, roomWidth, roomHeight, type, values, selectionRefs);
     }
 }
-
 export { RoomFactory }
+

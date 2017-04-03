@@ -1,8 +1,40 @@
+import { CellConstants} from 'utils/rogue/map/cells';
+
 class MapUtils {
     static getSquareFromDiagonal(map, topLeftCell, bottomRightCell) {
         const offsetX = bottomRightCell.posX - topLeftCell.posX;
         const offsetY = bottomRightCell.posY - topLeftCell.posY;
         return MapUtils.getSquareFromOrigin(map, topLeftCell, offsetX, offsetY);
+    }
+
+    static cellIsOccupied(cell, livings) {
+        let result = false;
+        if (cell) {
+            for (let i = 0; i < livings.length; i++) {
+                let monst = livings[i];
+                if (monst.cell.posX == cell.posX && monst.cell.posY == cell.posY) {
+                    result = true;
+                    break;
+                }
+            }
+
+            return result;
+        }
+    }
+
+    static getOpenCell(cells) {
+        let goodCell = false;
+        let cell;
+        while (goodCell != true) {
+            goodCell = true;
+            let rn = Math.floor(Math.random() * cells.length);
+            cell = cells[rn];
+            if (cell.cellType != CellConstants.FLOOR) {
+                goodCell = false;
+            }
+        }
+
+        return cell;
     }
 
     static getSquareFromCenter(map, centerCell, d) {

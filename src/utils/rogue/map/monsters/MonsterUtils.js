@@ -1,9 +1,9 @@
 'use strict';
 
 import { CellConstants } from 'utils/rogue/map/cells';
-import { MonsterConstants } from 'utils/rogue/map/monsters';
+import { MonsterConstants, BehaviorsValues } from 'utils/rogue/map/monsters';
 
-export default {
+const MonsterUtils = {
     getMonsterByKey: function(monsters, key) {
         for (let monster of monsters) {
             if (monster.key == key) {
@@ -27,7 +27,7 @@ export default {
 
     moveMonster: function(monster) {
         let attack;
-        if (monster.goalType == MonsterConstants.WANDERING) {
+        if (monster.behaviors.behaviorValue === BehaviorsValues.WANDERING) {
             if (monster.path.length > 0) {
                 monster.cell.occupant = false;
                 monster.cell = monster.path.pop();
@@ -35,7 +35,7 @@ export default {
                 monster.posY = monster.cell.posY;
                 monster.cell.occupant = monster.key;
             }
-        } else if (monster.goalType == MonsterConstants.ATTACK) {
+        } else if (monster.behaviors.behaviorValue === BehaviorsValues.CLOSE_ATTACK) {
             if (monster.path.length > 1) {
                 monster.cell.occupant = false;
                 monster.cell = monster.path.pop();
@@ -49,3 +49,5 @@ export default {
         return attack;
     },
 };
+
+export { MonsterUtils };

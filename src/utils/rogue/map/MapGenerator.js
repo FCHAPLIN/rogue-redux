@@ -1,5 +1,5 @@
 import { Cell, CellConstants } from 'utils/rogue/map/cells';
-import { MonsterConstants, MonsterFactory, MonsterListing } from 'utils/rogue/map/monsters';
+import { MonsterConstants, MonsterFactory, MonsterValues } from 'utils/rogue/map/monsters';
 import { TreasureConstants, Treasure } from 'utils/rogue/map/treasures';
 import { RoomFactory } from 'utils/rogue/map/rooms';
 import { CorridorMaker } from 'utils/rogue/map/corridors'
@@ -405,7 +405,7 @@ class MapGenerator {
 
             this.livings.push(monster);
             console.log(monster);
-            livingsLevel -= MonsterListing[monsterRace].indice;
+            livingsLevel -= MonsterValues[monsterRace].indice;
         }
     }
 

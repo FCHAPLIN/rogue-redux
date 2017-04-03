@@ -1,4 +1,4 @@
-import MonsterConstants from 'utils/rogue/map/monsters/MonsterConstants';
+import { MonsterConstants } from 'utils/rogue/map/monsters';
 import Utils from 'utils/Utils';
 
 class Monster {
@@ -9,11 +9,13 @@ class Monster {
         this.key = 'm-' + this.posX + '-' + this.posY;
         this.monsterType = monsterType;
         this.goal = {};
-        this.goalType = 'none';
         this.path = [];
+        this.needsHealing = false;
+        this.isFighting = false;
         this.maxValues = {};
         Object.assign(this, monsterValues);
         Object.assign(this.maxValues, monsterValues);
+        console.log(this);
     }
 
     wait() {
@@ -21,7 +23,7 @@ class Monster {
     }
 
     advance() {
-        if (this.goalType == MonsterConstants.WANDERING) {
+        if (this.behaviors.behaviorValue == MonsterConstants.WANDERING) {
             if (this.path.length > 0) {
                 this.cell.occupant = false;
                 this.cell = this.path.pop();
@@ -29,7 +31,7 @@ class Monster {
                 this.posY = this.cell.posY;
                 this.cell.occupant = this.key;
             }
-        } else if (this.goalType == MonsterConstants.ATTACK) {
+        } else if (this.behaviors.behaviorValue == MonsterConstants.CLOSE_ATTACK) {
             if (this.path.length > 1) {
                 this.cell.occupant = false;
                 this.cell = this.path.pop();
@@ -53,4 +55,4 @@ class Monster {
             Math.abs(this.cell.posY - playerCell.posY) < 3)
     }
 }
-export default Monster;
+export { Monster };
